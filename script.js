@@ -9,6 +9,81 @@ function escapeHTML(value) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  let deferredInstallPrompt = null;
+
+  if (!window.location.pathname.toLowerCase().endsWith('admin.html') && !window.matchMedia('(display-mode: standalone)').matches) {
+    const installButton = document.createElement('button');
+    installButton.id = 'installAppBtn';
+    installButton.className = 'install-app-btn';
+    installButton.type = 'button';
+    installButton.hidden = true;
+    installButton.innerHTML = '<i class="fa-solid fa-download" aria-hidden="true"></i> Instalar aplicación';
+    document.body.appendChild(installButton);
+
+    window.addEventListener('beforeinstallprompt', event => {
+      event.preventDefault();
+      deferredInstallPrompt = event;
+      installButton.hidden = false;
+    });
+
+    installButton.addEventListener('click', async () => {
+      if (!deferredInstallPrompt) return;
+      deferredInstallPrompt.prompt();
+      await deferredInstallPrompt.userChoice;
+      deferredInstallPrompt = null;
+      installButton.hidden = true;
+    });
+
+    window.addEventListener('appinstalled', () => {
+      installButton.hidden = true;
+      deferredInstallPrompt = null;
+    });
+  }
+
+  if (!document.getElementById('fbModalOverlay') && !window.location.pathname.toLowerCase().endsWith('admin.html')) {
+    const emergencyPanel = document.createElement('div');
+    emergencyPanel.innerHTML = `
+      <div class="fb-modal-overlay" id="fbModalOverlay">
+        <div class="fb-modal-card">
+          <div class="fb-modal-header">
+            <h3>Crear Reporte de Emergencia</h3>
+            <button class="fb-modal-close" id="closeFbModalBtn" type="button" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+          <div class="fb-modal-body">
+            <div class="fb-user-badge">
+              <div class="fb-user-avatar"><i class="fa-solid fa-user-shield"></i></div>
+              <div class="fb-user-info"><div class="name">Ciudadano / Reportante</div><div class="tag"><i class="fa-solid fa-earth-americas"></i> Envío directo a Sala de Guardia</div></div>
+            </div>
+            <div class="fb-incident-selector">
+              <div class="incident-chip selected" data-type="Accidente de Tránsito"><i class="fa-solid fa-car-burst"></i> Accidente Tránsito</div>
+              <div class="incident-chip" data-type="Emergencia Médica / Traslado"><i class="fa-solid fa-heart-pulse"></i> Emergencia Médica</div>
+              <div class="incident-chip" data-type="Inundación / Crecida"><i class="fa-solid fa-house-tsunami"></i> Inundación / Crecida</div>
+              <div class="incident-chip" data-type="Incendio / Estructural"><i class="fa-solid fa-fire"></i> Incendio / Fuego</div>
+            </div>
+            <textarea class="fb-textarea" id="incidentDetails" rows="2" placeholder="Describe brevemente lo ocurrido..."></textarea>
+            <div class="fb-location-box">
+              <div class="location-box-header"><div class="location-title"><i class="fa-solid fa-location-dot"></i> Ubicación del Incidente</div><span class="gps-status" id="gpsStatusBadge">Esperando capturar GPS</span></div>
+              <div class="location-details" id="locationDetailsText">Presiona <strong>"Obtener mi GPS actual"</strong> para adjuntar tus coordenadas.</div>
+              <div class="location-actions"><button type="button" class="btn-gps-auto" id="getGpsBtn"><i class="fa-solid fa-crosshairs"></i> Obtener mi GPS actual</button></div>
+            </div>
+          </div>
+          <div class="fb-modal-footer"><button class="fb-submit-btn" id="sendWhatsappBtn" type="button"><i class="fa-brands fa-whatsapp"></i> Enviar Reporte a Protección Civil</button></div>
+        </div>
+      </div>`;
+    document.body.appendChild(emergencyPanel.firstElementChild);
+  }
+
+  if (!window.location.pathname.toLowerCase().endsWith('admin.html') && !document.querySelector('.float-emergency-btn')) {
+    const emergencyLink = document.createElement('a');
+    emergencyLink.className = 'float-emergency-btn';
+    emergencyLink.id = 'floatEmergencyBtn';
+    emergencyLink.href = 'tel:911';
+    emergencyLink.title = 'Llamar a emergencias 911';
+    emergencyLink.setAttribute('aria-label', 'Llamar a emergencias 911');
+    emergencyLink.innerHTML = '<i class="fa-solid fa-phone-volume" aria-hidden="true"></i>';
+    document.body.appendChild(emergencyLink);
+  }
+
   // NÚMERO DE WHATSAPP INSTITUCIONAL
   const WHATSAPP_NUMBER = "584264744951";
 
@@ -65,9 +140,19 @@ document.addEventListener('DOMContentLoaded', () => {
     fbModalOverlay.classList.remove('active');
   }
 
-  if (reportEmergencyNav) reportEmergencyNav.addEventListener('click', openModal);
+  if (reportEmergencyNav) reportEmergencyNav.addEventListener('click', () => {
+    if (navLinks) navLinks.classList.remove('active');
+    openModal();
+  });
   if (floatEmergencyBtn) floatEmergencyBtn.addEventListener('click', openModal);
   if (closeFbModalBtn) closeFbModalBtn.addEventListener('click', closeModal);
+
+  document.querySelectorAll('.simple-header a[href="tel:911"]').forEach(link => {
+    link.addEventListener('click', event => {
+      event.preventDefault();
+      openModal();
+    });
+  });
 
   if (fbModalOverlay) {
     fbModalOverlay.addEventListener('click', (e) => {
@@ -140,14 +225,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.addEventListener('click', event => {
     const imageLink = event.target.closest('.image-link');
-    if (!imageLink || !imageViewerOverlay || !imageViewerImage) return;
+    if (!imageLink) return;
 
-    event.preventDefault();
     const muroCard = imageLink.closest('.muro-card');
     if (muroCard) {
+      event.preventDefault();
       openPostDetail(muroCard);
       return;
     }
+    if (!imageViewerOverlay || !imageViewerImage) return;
+
+    event.preventDefault();
     event.stopPropagation();
     const image = imageLink.querySelector('img');
     imageViewerImage.src = imageLink.href;

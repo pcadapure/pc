@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Protección Civil y Administración de Desastres</title>
-      <link rel="icon" type="image/png" href="img/pc logo.png">
-  
+  <title>Protección Civil y Administracion de Desastres</title>
+  <link rel="icon" type="image/png" href="img/pc logo.png">
+  <link rel="apple-touch-icon" href="img/pc logo.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#0046e7">
   <!-- Tipografía Montserrat -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +35,7 @@
     <nav class="navbar">
       <div class="brand-logo">
         <img src="img/pc logo.png" alt="logopc" class="logo-pc">
-        <span class="brand-title">PROTECCIÓN CIVIL Y ADMINISTRACION DE DESASTRES</span>
+        <span class="brand-title">PROTECCIÓN CIVIL Y ADMINISTRACION DE DESASTRES ZOEDAN APURE</span>
       </div>
 
       <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menú">
@@ -42,6 +44,7 @@
 
       <ul class="nav-links" id="navLinks">
         <li><a href="#inicio">Inicio</a></li>
+        <li><a href="publicaciones.html">Publicaciones</a></li>
         <li><a href="servicios.html">Servicios <i class="fa-solid fa-chevron-down"></i></a></li>
         <li><a href="prevencion.html">Prevención</a></li>
         <li><a href="quienes-somos.html">Quiénes Somos <i class="fa-solid fa-chevron-down"></i></a></li>
@@ -102,7 +105,12 @@
 
   <!-- 3. SECCIÓN DE SERVICIOS -->
   <section class="services-section" id="servicios">
-    <h2 class="section-title">Servicios Principales</h2>
+    <span id="solicitar" class="anchor-target" aria-hidden="true"></span>
+    <div class="section-heading">
+      <span class="section-kicker">Atención y prevención</span>
+      <h2 class="section-title">Servicios principales</h2>
+      <p>Conoce cómo podemos acompañar a tu comunidad antes, durante y después de una emergencia.</p>
+    </div>
     <div class="cards-container">
       <div class="service-card">
         <div class="card-icon"><i class="fa-solid fa-truck-medical"></i></div>
@@ -127,6 +135,28 @@
         <h3>Alertas Tempranas</h3>
         <p>Monitoreo constante de ríos y condiciones meteorológicas en tiempo real.</p>
       </div>
+    </div>
+  </section>
+
+  <section class="preparedness-section" id="preparacion">
+    <div class="preparedness-heading">
+      <span class="section-kicker">Orientación ciudadana</span>
+      <h2 class="section-title">Prepárate para actuar</h2>
+      <p>Una comunidad informada responde mejor. Sigue estas recomendaciones básicas ante cualquier eventualidad.</p>
+    </div>
+    <div class="preparedness-steps">
+      <article class="preparedness-step">
+        <span class="step-number">01</span>
+        <div><i class="fa-solid fa-clipboard-check" aria-hidden="true"></i><h3>Antes</h3><p>Identifica riesgos, prepara un kit y acuerda un punto de encuentro con tu familia.</p></div>
+      </article>
+      <article class="preparedness-step">
+        <span class="step-number">02</span>
+        <div><i class="fa-solid fa-person-running" aria-hidden="true"></i><h3>Durante</h3><p>Mantén la calma, aléjate del peligro y sigue las instrucciones de las autoridades.</p></div>
+      </article>
+      <article class="preparedness-step">
+        <span class="step-number">03</span>
+        <div><i class="fa-solid fa-people-arrows" aria-hidden="true"></i><h3>Después</h3><p>Verifica a las personas cercanas, evita zonas inseguras y reporta cualquier emergencia.</p></div>
+      </article>
     </div>
   </section>
 
@@ -304,6 +334,7 @@
         <a href="prevencion.html">Prevención</a>
         <a href="quienes-somos.html">Quiénes Somos</a>
         <a href="contacto.html">Contactos</a>
+        <a href="publicaciones.html">Publicaciones</a>
         <a href="#muro">Noticias y avisos</a>
       </div>
 
