@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Protección Civil y Gestión de Riesgos</title>
+  
+  <!-- Tipografía Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Iconos FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- 1. CINTILLO SUPERIOR INSTITUCIONAL -->
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <img src="img/banner-mpprijp.jpg" alt="Gobierno Bolivariano" class="logo-gobierno">
+    </div>
+  </header>
+
+  <!-- 2. BANNER PRINCIPAL (HERO) -->
+  <section class="hero-banner" id="inicio">
+    <div class="shape-yellow"></div>
+    <div class="shape-red"></div>
+
+    <nav class="navbar">
+      <div class="brand-logo">
+        <img src="img/pc logo.png" alt="logopc" class="logo-pc">
+        <span class="brand-title">PROTECCIÓN CIVIL Y ADMINISTRACION DE DESASTRES</span>
+      </div>
+
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menú">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="servicios.html">Servicios <i class="fa-solid fa-chevron-down"></i></a></li>
+        <li><a href="prevencion.html">Prevención</a></li>
+        <li><a href="quienes-somos.html">Quiénes Somos <i class="fa-solid fa-chevron-down"></i></a></li>
+        <li><a href="contacto.html">Contactos</a></li>
+        <li class="social-nav-item">
+          <div class="social-icons">
+            <a href="#" aria-label="TikTok" title="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+            <a href="#" aria-label="YouTube" title="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+            <a href="#" aria-label="Facebook" title="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="#" aria-label="Instagram" title="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+          </div>
+        </li>
+        <li><button id="requestServiceNav" class="btn-pill btn-service"><i class="fa-solid fa-handshake" aria-hidden="true"></i> Solicitar Servicio</button></li>
+        <li><button id="reportEmergencyNav" class="btn-pill"><i class="fa-solid fa-phone-volume" aria-hidden="true"></i> Reportar Emergencia</button></li>
+      </ul>
+    </nav>
+    <div class="nav-divider"></div>
+
+    <div class="slider-container" id="slidesWrapper">
+      <button class="arrow-btn prev" id="prevBtn" type="button" title="Diapositiva anterior" aria-label="Diapositiva anterior"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+
+      <div class="slides-wrapper">
+        <div class="hero-slide active">
+          <div class="slide-text-content">
+            <h1 class="hero-title">PREVENCIÓN Y ACCIÓN, TU SEGURIDAD ES PRIMERO</h1>
+            <p class="hero-description">Monitoreo constante, atención prehospitalaria y gestión de riesgos ante cualquier eventualidad.</p>
+          </div>
+          <div class="slide-image-content">
+            <a href="img/CLASE.jpeg" target="_blank" rel="noopener noreferrer" class="image-link" aria-label="Abrir imagen de Personal PC">
+              <img src="img/CLASE.jpeg" alt="Personal PC" class="person-img">
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-slide">
+          <div class="slide-text-content">
+            <h1 class="hero-title">CAPACITACIÓN COMUNITARIA CONSTANTE</h1>
+            <p class="hero-description">Formamos comunidades resilientes preparadas para la evacuación y primeros auxilios.</p>
+          </div>
+          <div class="slide-image-content">
+            <a href="img/CAPT.jpg" target="_blank" rel="noopener noreferrer" class="image-link" aria-label="Abrir imagen de Bombero / Rescatista">
+              <img src="img/CAPT.jpg" alt="Bombero / Rescatista" class="person-img">
+            </a>
+          </div>
+        </div>
+      </div>
+
+<button
+  class="arrow-btn next"
+  id="nextBtn"
+  type="button"
+  title="Siguiente diapositiva"
+  aria-label="Siguiente diapositiva">
+  <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+</button>
+   </div>
+  </section>
+
+  <!-- 3. SECCIÓN DE SERVICIOS -->
+  <section class="services-section" id="servicios">
+    <h2 class="section-title">Servicios Principales</h2>
+    <div class="cards-container">
+      <div class="service-card">
+        <div class="card-icon"><i class="fa-solid fa-truck-medical"></i></div>
+        <h3>Atención Prehospitalaria</h3>
+        <p>Despliegue rápido de unidades de ambulancia y paramédicos para la evaluación y traslado médico.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+        <h3>Evaluación EDAN</h3>
+        <p>Inspección técnica de zonas vulnerables a inundaciones o fallas estructurales.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon"><i class="fa-solid fa-users-rays"></i></div>
+        <h3>Capacitaciones</h3>
+        <p>Cursos de primeros auxilios y simulacros para empresas, escuelas y comunidades.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+        <h3>Alertas Tempranas</h3>
+        <p>Monitoreo constante de ríos y condiciones meteorológicas en tiempo real.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTÓN FLOTANTE PERMANENTE DE EMERGENCIA -->
+  <button id="floatEmergencyBtn" class="float-emergency-btn" title="Reportar Emergencia">
+    <i class="fa-solid fa-phone-volume"></i>
+  </button>
+
+  <!-- MODAL DE REPORTE -->
+  <div class="fb-modal-overlay" id="fbModalOverlay">
+    <div class="fb-modal-card">
+      
+      <!-- Encabezado -->
+      <div class="fb-modal-header">
+        <h3>Crear Reporte de Emergencia</h3>
+        <button class="fb-modal-close" id="closeFbModalBtn" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <!-- Cuerpo -->
+      <div class="fb-modal-body">
+        
+        <!-- Identificación -->
+        <div class="fb-user-badge">
+          <div class="fb-user-avatar"><i class="fa-solid fa-user-shield"></i></div>
+          <div class="fb-user-info">
+            <div class="name">Ciudadano / Reportante</div>
+            <div class="tag"><i class="fa-solid fa-earth-americas"></i> Envío directo a Sala de Guardia</div>
+          </div>
+        </div>
+
+        <!-- Selección de Incidencia -->
+        <div class="fb-incident-selector">
+          <div class="incident-chip selected" data-type="Accidente de Tránsito">
+            <i class="fa-solid fa-car-burst"></i> Accidente Tránsito
+          </div>
+          <div class="incident-chip" data-type="Emergencia Médica / Traslado">
+            <i class="fa-solid fa-heart-pulse"></i> Emergencia Médica
+          </div>
+          <div class="incident-chip" data-type="Inundación / Crecida">
+            <i class="fa-solid fa-house-tsunami"></i> Inundación / Crecida
+          </div>
+          <div class="incident-chip" data-type="Incendio / Estructural">
+            <i class="fa-solid fa-fire"></i> Incendio / Fuego
+          </div>
+        </div>
+
+        <!-- Observaciones -->
+        <textarea class="fb-textarea" id="incidentDetails" rows="2" placeholder="Describe brevemente lo ocurrido (Ej: choque entre dos motos, personas heridas)..."></textarea>
+
+        <!-- Ubicación GPS -->
+        <div class="fb-location-box">
+          <div class="location-box-header">
+            <div class="location-title">
+              <i class="fa-solid fa-location-dot"></i> Ubicación del Incidente
+            </div>
+            <span class="gps-status" id="gpsStatusBadge">Esperando capturar GPS</span>
+          </div>
+
+          <div class="location-details" id="locationDetailsText">
+            Presiona <strong>"Obtener mi GPS actual"</strong> para adjuntar automáticamente tus coordenadas exactas.
+          </div>
+
+          <div class="location-actions">
+            <button type="button" class="btn-gps-auto" id="getGpsBtn">
+              <i class="fa-solid fa-crosshairs"></i> Obtener mi GPS actual
+            </button>
+          </div>
+        </div>
+
+        <!-- Guía WhatsApp -->
+        <div class="fb-guide-steps">
+          <h4><i class="fa-solid fa-lightbulb"></i> ¿Cómo enviar ubicación precisa en WhatsApp?</h4>
+          <ol>
+            <li>Al presionar el botón de abajo, se abrirá el chat oficial de Protección Civil.</li>
+            <li>En WhatsApp, toca el icono de <strong>clip 📎</strong> o <strong>más ➕</strong>.</li>
+            <li>Selecciona <strong>Ubicación</strong> 📍 y elige <strong>"Ubicación en tiempo real"</strong> para un rastreo exacto de las unidades.</li>
+          </ol>
+        </div>
+
+      </div>
+
+      <!-- Pie -->
+      <div class="fb-modal-footer">
+        <button class="fb-submit-btn" id="sendWhatsappBtn">
+          <i class="fa-brands fa-whatsapp"></i> Enviar Reporte a Protección Civil
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- VISOR DE IMÁGENES -->
+  <div class="fb-modal-overlay" id="serviceModalOverlay">
+    <div class="fb-modal-card service-modal-card">
+      <div class="fb-modal-header">
+        <h3>Solicitar Servicio</h3>
+        <button class="fb-modal-close" id="closeServiceModalBtn" type="button" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form class="service-form" id="serviceRequestForm">
+        <div class="fb-modal-body">
+          <p class="service-intro">Completa tus datos y describe el servicio que necesitas. Este formulario no es para emergencias.</p>
+          <label for="serviceName">Nombre y apellido</label>
+          <input id="serviceName" name="name" type="text" autocomplete="name" required>
+          <label for="servicePhone">Teléfono de contacto</label>
+          <input id="servicePhone" name="phone" type="tel" autocomplete="tel" required>
+          <label for="serviceType">Tipo de servicio</label>
+          <select id="serviceType" name="service" required>
+            <option value="">Selecciona una opción</option>
+            <option>Capacitación comunitaria</option>
+            <option>Inspección y evaluación de riesgos</option>
+            <option>Simulacro de evacuación</option>
+            <option>Asesoría en prevención</option>
+            <option>Otro servicio</option>
+          </select>
+          <label for="serviceDetails">Información de la solicitud</label>
+          <textarea id="serviceDetails" name="details" rows="4" required placeholder="Indica lugar, cantidad de personas y detalles importantes..."></textarea>
+        </div>
+        <div class="fb-modal-footer">
+          <button class="fb-submit-btn" id="sendServiceRequestBtn" type="submit"><i class="fa-brands fa-whatsapp"></i> Solicitar por WhatsApp</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="image-viewer-overlay" id="imageViewerOverlay" role="dialog" aria-modal="true" aria-label="Vista ampliada de imagen">
+    <button class="image-viewer-close" id="imageViewerClose" type="button" aria-label="Cerrar imagen">
+      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+    </button>
+    <img id="imageViewerImage" class="image-viewer-image" src="" alt="">
+  </div>
+
+  <div class="post-detail-overlay" id="postDetailOverlay" role="dialog" aria-modal="true" aria-label="Detalle de publicación">
+    <article class="post-detail-card">
+      <header class="post-detail-header">
+        <h2 id="postDetailTitle"></h2>
+        <button class="post-detail-close" id="postDetailClose" type="button" aria-label="Cerrar publicación">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+      </header>
+      <div class="post-detail-content">
+        <div class="post-detail-date" id="postDetailDate"></div>
+        <div class="post-detail-gallery" id="postDetailGallery"></div>
+        <p class="post-detail-text" id="postDetailText"></p>
+        <div class="post-detail-reactions" id="postDetailReactions"></div>
+        <button class="post-share-button" id="postShareButton" type="button">
+          <i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Compartir publicación
+        </button>
+      </div>
+    </article>
+  </div>
+
+  <section class="muro-section" id="muro">
+  <div class="container">
+    <h2 class="section-title">Muro de Noticias y Avisos</h2>
+    <div id="muroGridContainer" class="muro-grid">
+      <!-- Las publicaciones de Firestore se renderizan automáticamente aquí -->
+    </div>
+  </div>
+</section>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img src="img/pc logo.png" alt="Protección Civil" class="footer-logo">
+        <div>
+          <h2>Protección Civil</h2>
+          <p>Prevención, atención y gestión de riesgos al servicio de la comunidad.</p>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3>Enlaces rápidos</h3>
+        <a href="#inicio">Inicio</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="prevencion.html">Prevención</a>
+        <a href="quienes-somos.html">Quiénes Somos</a>
+        <a href="contacto.html">Contactos</a>
+        <a href="#muro">Noticias y avisos</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Atención</h3>
+        <a href="tel:911"><i class="fa-solid fa-phone"></i> Emergencias: 911</a>
+        <a href="https://wa.me/584264744951" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> WhatsApp institucional</a>
+      </div>
+
+      <div class="footer-column footer-social-column">
+        <h3>Síguenos</h3>
+        <div class="footer-socials">
+          <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Protección Civil y Administración de Desastres</span>
+      <span>Comprometidos con tu seguridad</span>
+    </div>
+  </footer>
+
+  <!-- Carga de SDKs de Firebase primero -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+
+  <!-- Lógica personalizada JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
