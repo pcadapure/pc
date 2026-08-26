@@ -7,8 +7,7 @@
   <link rel="icon" type="image/png" href="img/pc logo.png">
   <link rel="apple-touch-icon" href="img/pc logo.png">
   <link rel="manifest" href="manifest.webmanifest">
-  <meta name="theme-color" content="#0046e7">
-  <!-- Tipografía Montserrat -->
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -291,19 +290,25 @@
   <div class="post-detail-overlay" id="postDetailOverlay" role="dialog" aria-modal="true" aria-label="Detalle de publicación">
     <article class="post-detail-card">
       <header class="post-detail-header">
-        <h2 id="postDetailTitle"></h2>
+        <div class="post-detail-title-row">
+          <img src="img/pc logo.png" alt="" class="muro-profile-avatar">
+          <div><strong>Protección Civil Apure</strong><span><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Cuenta institucional</span></div>
+        </div>
         <button class="post-detail-close" id="postDetailClose" type="button" aria-label="Cerrar publicación">
           <i class="fa-solid fa-xmark" aria-hidden="true"></i>
         </button>
       </header>
       <div class="post-detail-content">
+        <span class="post-detail-kicker"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Publicación oficial</span>
         <div class="post-detail-date" id="postDetailDate"></div>
+        <h2 class="post-detail-body-title" id="postDetailTitle"></h2>
         <div class="post-detail-gallery" id="postDetailGallery"></div>
         <p class="post-detail-text" id="postDetailText"></p>
         <div class="post-detail-reactions" id="postDetailReactions"></div>
         <button class="post-share-button" id="postShareButton" type="button">
           <i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Compartir publicación
         </button>
+        <div class="post-detail-pdf" id="postDetailPdf"></div>
       </div>
     </article>
   </div>

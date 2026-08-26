@@ -13,6 +13,10 @@ if (!firebase.apps.length) {
 }
 const db = firebase.firestore();
 window.db = db;
+const supabaseClient = window.supabase.createClient(
+  'https://spsktxmwsrmkaanqqcud.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNwc2t0eG13c3Jta2FhbnFxY3VkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3Njk3ODMsImV4cCI6MjEwMzM0NTc4M30.cRW2fWRsDuuph82Al1s1aso2y01Ug53iVnfaZ8q8eCc'
+);
 
 const adminLogin = document.getElementById('adminLogin');
 const adminLoginForm = document.getElementById('adminLoginForm');
@@ -394,6 +398,56 @@ function validateImageUrl(value) {
   }
 }
 
+function validateImageUrls(value) {
+  const urls = String(value || '').split(/\r?\n/).map(url => url.trim()).filter(Boolean);
+  return [...new Set(urls.map(validateImageUrl))];
+}
+
+function validateYoutubeUrl(value) {
+  if (!value) return '';
+  try {
+    const url = new URL(value);
+    const validHost = ['youtube.com', 'www.youtube.com', 'm.youtube.com', 'youtu.be'].includes(url.hostname.toLowerCase());
+    const videoId = url.hostname.toLowerCase() === 'youtu.be'
+      ? url.pathname.slice(1).split('/')[0]
+      : url.searchParams.get('v') || url.pathname.match(/\/(?:shorts|embed)\/([^/?]+)/)?.[1];
+    if (!validHost || !videoId || !/^[A-Za-z0-9_-]{11}$/.test(videoId)) throw new Error();
+    return `https://www.youtube.com/watch?v=${videoId}`;
+  } catch {
+    throw new Error('Introduce una URL válida de YouTube (watch, youtu.be o Shorts).');
+  }
+}
+
+async function uploadMuroPdf(file) {
+  if (!file) return null;
+  if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
+    throw new Error('El archivo seleccionado debe ser un PDF.');
+  }
+  if (file.size > 10 * 1024 * 1024) {
+    throw new Error('El PDF no puede superar los 10 MB.');
+  }
+  const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+  const path = `publicaciones/${Date.now()}-${safeName}`;
+  const { error: uploadError } = await supabaseClient.storage.from('pc').upload(path, file, {
+    contentType: 'application/pdf',
+    upsert: false
+  });
+  if (uploadError) throw uploadError;
+  const { data } = supabaseClient.storage.from('pc').getPublicUrl(path);
+  return { url: data.publicUrl, name: file.name };
+}
+
+function getPublicationTypeLabel(data) {
+  const hasPhoto = Boolean(data.imageUrl || (Array.isArray(data.imageUrls) && data.imageUrls.length));
+  const hasPdf = Boolean(data.pdfUrl);
+  const hasVideo = Boolean(data.youtubeUrl);
+  const types = [];
+  if (hasPhoto) types.push('<i class="fa-solid fa-image"></i> Foto');
+  if (hasPdf) types.push('<i class="fa-solid fa-file-pdf"></i> PDF');
+  if (hasVideo) types.push('<i class="fa-brands fa-youtube"></i> Video');
+  return types.length ? types.join(' <span class="publication-type-separator">+</span> ') : 'Solo texto';
+}
+
 function resetCarruselEdit() {
   editingCarruselId = null;
   if (formCarrusel) formCarrusel.reset();
@@ -429,7 +483,10 @@ window.editPublication = async function(type, id) {
     editingMuroId = id;
     document.getElementById('muro-title').value = data.title || '';
     document.getElementById('muro-content').value = data.content || '';
-    document.getElementById('muro-image-url').value = data.imageUrl || '';
+    document.getElementById('muro-image-urls').value = Array.isArray(data.imageUrls)
+      ? data.imageUrls.join('\n')
+      : data.imageUrl || '';
+    document.getElementById('muro-youtube-url').value = data.youtubeUrl || '';
     document.getElementById('btn-save-muro').innerText = 'Actualizar Publicación';
     document.getElementById('btn-cancel-muro').hidden = false;
     showTab('muro-tab');
@@ -509,8 +566,10 @@ if (formMuro) {
     e.preventDefault();
     const title = document.getElementById('muro-title').value.trim();
     const content = document.getElementById('muro-content').value.trim();
-    const imageUrlInput = document.getElementById('muro-image-url');
-    const imageUrl = imageUrlInput.value.trim() ? validateImageUrl(imageUrlInput.value.trim()) : '';
+    const imageUrls = validateImageUrls(document.getElementById('muro-image-urls').value);
+    const imageUrl = imageUrls[0] || '';
+    const youtubeUrl = validateYoutubeUrl(document.getElementById('muro-youtube-url').value.trim());
+    const pdfFile = document.getElementById('muro-pdf').files[0];
     const btn = document.getElementById('btn-save-muro');
 
     btn.disabled = true;
@@ -518,10 +577,14 @@ if (formMuro) {
 
     try {
       btn.innerText = "Guardando noticia...";
+      const uploadedPdf = await uploadMuroPdf(pdfFile);
       const postData = {
         title,
         content,
         imageUrl,
+        imageUrls,
+        youtubeUrl,
+        ...(uploadedPdf ? { pdfUrl: uploadedPdf.url, pdfName: uploadedPdf.name } : {}),
         createdAt: firebase.firestore.FieldValue.serverTimestamp()
       };
       if (editingMuroId) {
@@ -552,6 +615,7 @@ db.collection('muro').orderBy('createdAt', 'desc').onSnapshot(snapshot => {
     listMuro.innerHTML += `
       <div class="data-item">
         ${d.imageUrl ? `<img src="${escapeHTML(d.imageUrl)}" width="60" height="40" alt="" style="object-fit:cover; border-radius:4px;">` : ''}
+        <span class="publication-type-badge">${getPublicationTypeLabel(d)}</span>
         <div>
           <strong>${escapeHTML(d.title || 'Sin Título')}</strong>
           <p>${escapeHTML((d.content || '').substring(0, 80))}...</p>

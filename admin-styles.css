@@ -405,6 +405,25 @@ body.admin-authenticated .admin-container {
   min-height: 76px;
 }
 
+.publication-type-badge {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  min-width: 120px;
+  color: var(--primary);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.publication-type-badge i {
+  color: #e51a24;
+}
+
+.publication-type-separator {
+  color: var(--text-muted);
+}
+
 /* --- SALA DE GUARDIA HEADER & CONTROLS --- */
 .sala-header {
   display: flex;

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pcad-apure-v1';
+const CACHE_NAME = 'pcad-apure-v19';
 const APP_SHELL = [
   './',
   './index.html',

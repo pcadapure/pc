@@ -12,6 +12,7 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
@@ -101,10 +102,16 @@
         <form id="form-muro">
           <input type="text" id="muro-title" placeholder="Título del reporte/noticia" required>
           <textarea id="muro-content" placeholder="Cuerpo de la noticia..." rows="4" required></textarea>
-          <label for="muro-image-url">URL de la imagen (opcional):</label>
+          <label for="muro-image-urls">Fotos de la publicación (opcional):</label>
           <a href="https://phototourl.com/es" target="_blank" rel="noopener noreferrer">Subir imagen y obtener URL</a>
-          <small class="image-url-help">Pega aquí la URL que te entregue PhotoToURL.</small>
-          <input type="url" id="muro-image-url" placeholder="https://ejemplo.com/imagen.jpg">
+          <small class="image-url-help">Pega una URL por línea. Puedes agregar varias fotos a la misma publicación.</small>
+          <textarea id="muro-image-urls" rows="4" placeholder="https://ejemplo.com/foto-1.jpg&#10;https://ejemplo.com/foto-2.jpg"></textarea>
+          <label for="muro-pdf">Documento PDF para descargar (opcional):</label>
+          <input type="file" id="muro-pdf" accept="application/pdf,.pdf">
+          <small class="image-url-help">Selecciona un PDF de máximo 10 MB. Al editar, déjalo vacío para conservar el documento actual.</small>
+          <label for="muro-youtube-url">URL del video de YouTube (opcional):</label>
+          <small class="image-url-help">Acepta enlaces youtube.com/watch, youtu.be o Shorts.</small>
+          <input type="url" id="muro-youtube-url" placeholder="https://www.youtube.com/watch?v=...">
           <button type="submit" class="btn-save" id="btn-save-muro">Publicar en Muro</button>
           <button type="button" class="btn-cancel-edit" id="btn-cancel-muro" hidden>Cancelar edición</button>
         </form>

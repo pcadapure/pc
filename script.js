@@ -8,6 +8,21 @@ function escapeHTML(value) {
   }[character]));
 }
 
+function getYoutubeVideoId(value) {
+  if (typeof value !== 'string') return '';
+  try {
+    const url = new URL(value);
+    const host = url.hostname.toLowerCase();
+    if (!['youtube.com', 'www.youtube.com', 'm.youtube.com', 'youtu.be'].includes(host)) return '';
+    const videoId = host === 'youtu.be'
+      ? url.pathname.slice(1).split('/')[0]
+      : url.searchParams.get('v') || url.pathname.match(/\/(?:shorts|embed)\/([^/?]+)/)?.[1];
+    return videoId && /^[A-Za-z0-9_-]{11}$/.test(videoId) ? videoId : '';
+  } catch {
+    return '';
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   let deferredInstallPrompt = null;
 
@@ -216,6 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const postDetailText = document.getElementById('postDetailText');
   const postDetailReactions = document.getElementById('postDetailReactions');
   const postShareButton = document.getElementById('postShareButton');
+  const postDetailPdf = document.getElementById('postDetailPdf');
 
   function closeImageViewer() {
     if (!imageViewerOverlay) return;
@@ -243,6 +259,15 @@ document.addEventListener('DOMContentLoaded', () => {
     imageViewerOverlay.classList.add('active');
   });
 
+  document.addEventListener('error', event => {
+    const image = event.target;
+    if (!(image instanceof HTMLImageElement)) return;
+    const imageLink = image.closest('.muro-card-image .image-link');
+    const detailImage = image.closest('.post-detail-gallery img');
+    if (imageLink) imageLink.remove();
+    if (detailImage) detailImage.remove();
+  }, true);
+
   if (imageViewerClose) imageViewerClose.addEventListener('click', closeImageViewer);
   if (imageViewerOverlay) imageViewerOverlay.addEventListener('click', event => {
     if (event.target === imageViewerOverlay) closeImageViewer();
@@ -253,6 +278,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function closePostDetail() {
     if (postDetailOverlay) postDetailOverlay.classList.remove('active');
+    if (postDetailGallery) postDetailGallery.innerHTML = '';
+    if (postDetailPdf) postDetailPdf.innerHTML = '';
+  }
+
+  function renderPostMedia(slides, activeSlide = 0) {
+    if (!postDetailGallery || !slides.length) {
+      if (postDetailGallery) postDetailGallery.innerHTML = '';
+      return;
+    }
+    const safeSlide = Math.max(0, Math.min(activeSlide, slides.length - 1));
+    postDetailGallery.innerHTML = `
+      <div class="post-media-slide">${slides[safeSlide]}</div>
+      ${slides.length > 1 ? `
+        <div class="post-media-controls">
+          <button class="post-media-button" type="button" data-media-slide="${safeSlide - 1}" ${safeSlide === 0 ? 'disabled' : ''} aria-label="Contenido anterior"><i class="fa-solid fa-chevron-left"></i></button>
+          <span>${safeSlide + 1} / ${slides.length}</span>
+          <button class="post-media-button" type="button" data-media-slide="${safeSlide + 1}" ${safeSlide === slides.length - 1 ? 'disabled' : ''} aria-label="Contenido siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+      ` : ''}
+    `;
+    postDetailGallery.querySelectorAll('img').forEach(image => {
+      image.addEventListener('error', () => image.closest('a')?.remove(), { once: true });
+    });
+  }
+
+  function getYoutubeEmbedMarkup(videoId, title) {
+    const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
+    return `<div class="post-media-video-slide">
+      <div class="post-detail-video">
+        <iframe src="https://www.youtube.com/embed/${videoId}?rel=0&playsinline=1${/^https?:$/.test(window.location.protocol) ? `&origin=${encodeURIComponent(window.location.origin)}` : ''}" title="${escapeHTML(title)}" loading="eager" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+    </div>`;
   }
 
   function openPostDetail(card) {
@@ -271,16 +328,47 @@ document.addEventListener('DOMContentLoaded', () => {
         <span>${reactions[reaction] || 0}</span>
       </button>
     `).join('');
-    postDetailGallery.innerHTML = card.dataset.images
-      ? JSON.parse(card.dataset.images).map(imageUrl => `
-          <img src="${imageUrl}" alt="${card.dataset.title || 'Imagen de la publicación'}">
-        `).join('')
+    const youtubeId = getYoutubeVideoId(card.dataset.youtubeUrl || '');
+    const pdfLink = card.dataset.pdfUrl
+      ? `<a class="post-pdf-link" href="${escapeHTML(card.dataset.pdfUrl)}" download target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i> Descargar ${escapeHTML(card.dataset.pdfName || 'documento PDF')}</a>`
       : '';
+    const images = card.dataset.images ? JSON.parse(card.dataset.images) : [];
+    const mediaSlides = [];
+    if (youtubeId) {
+      mediaSlides.push(getYoutubeEmbedMarkup(youtubeId, card.dataset.title || 'Video de la publicación'));
+    }
+    images.forEach(imageUrl => {
+      mediaSlides.push(`
+        <div class="post-detail-single-image">
+          <img src="${escapeHTML(imageUrl)}" alt="${escapeHTML(card.dataset.title || 'Imagen de la publicación')}">
+        </div>
+      `);
+    });
+    renderPostMedia(mediaSlides);
+    if (postDetailPdf) postDetailPdf.innerHTML = pdfLink;
     postDetailOverlay.classList.add('active');
   }
 
   document.addEventListener('click', event => {
-    if (event.target.closest('.reaction-button')) return;
+    const mediaButton = event.target.closest('[data-media-slide]');
+    if (mediaButton) {
+      event.preventDefault();
+      const card = postDetailOverlay?.dataset.postId
+        ? document.querySelector(`.muro-card[data-post-id="${CSS.escape(postDetailOverlay.dataset.postId)}"]`)
+        : null;
+      if (card) {
+        const youtubeId = getYoutubeVideoId(card.dataset.youtubeUrl || '');
+        const images = card.dataset.images ? JSON.parse(card.dataset.images) : [];
+        const slides = [];
+        if (youtubeId) slides.push(getYoutubeEmbedMarkup(youtubeId, card.dataset.title || 'Video de la publicación'));
+        images.forEach(imageUrl => {
+          slides.push(`<div class="post-detail-single-image"><img src="${escapeHTML(imageUrl)}" alt="${escapeHTML(card.dataset.title || 'Imagen de la publicación')}"></div>`);
+        });
+        renderPostMedia(slides, Number(mediaButton.dataset.mediaSlide));
+      }
+      return;
+    }
+    if (event.target.closest('.reaction-button, .muro-pdf-link, .post-pdf-link')) return;
     const card = event.target.closest('.muro-card');
     if (card) openPostDetail(card);
   });
@@ -524,7 +612,7 @@ function cargarMuroNoticias(database) {
       snapshot.docs.forEach((doc) => {
         const data = doc.data();
         const postImages = Array.isArray(data.imageUrls)
-          ? data.imageUrls.filter(imageUrl => typeof imageUrl === 'string' && imageUrl)
+          ? [...new Set(data.imageUrls.filter(imageUrl => typeof imageUrl === 'string' && imageUrl))]
           : (data.imageUrl ? [data.imageUrl] : []);
         
         let fechaFormateada = "Reciente";
@@ -532,7 +620,9 @@ function cargarMuroNoticias(database) {
           fechaFormateada = data.createdAt.toDate().toLocaleDateString('es-ES', {
             day: '2-digit',
             month: 'short',
-            year: 'numeric'
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
           });
         }
 
@@ -542,29 +632,42 @@ function cargarMuroNoticias(database) {
             data-title="${escapeHTML(data.title || 'Sin título')}"
             data-date="${escapeHTML(fechaFormateada)}"
             data-content="${escapeHTML(data.content || '')}"
+            data-youtube-url="${escapeHTML(data.youtubeUrl || '')}"
+            data-pdf-url="${escapeHTML(data.pdfUrl || '')}"
+            data-pdf-name="${escapeHTML(data.pdfName || 'Documento PDF')}"
             data-reactions='${escapeHTML(JSON.stringify(data.reacciones || {}))}'
             data-images='${escapeHTML(JSON.stringify(postImages))}'>
-            ${data.imageUrl ? `
-              <div class="muro-card-image">
-                <a href="${data.imageUrl}" target="_blank" rel="noopener noreferrer" class="image-link" aria-label="Abrir imagen de ${data.title || 'Noticia'}">
-                  <img src="${data.imageUrl}" alt="${data.title || 'Noticia'}" loading="lazy">
-                </a>
-              </div>
-            ` : ''}
+            <div class="muro-card-profile">
+              <img src="img/pc logo.png" alt="" class="muro-profile-avatar">
+              <div><strong>Protección Civil Apure</strong><span><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Cuenta institucional</span></div>
+            </div>
+            <div class="muro-card-meta">
+              <span class="muro-card-official"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Publicación oficial</span>
+              <span class="muro-card-date"><i class="fa-regular fa-calendar-days" aria-hidden="true"></i> ${fechaFormateada}</span>
+            </div>
             <div class="muro-card-content">
-              <span class="muro-card-date">
-                <i class="fa-regular fa-calendar-days"></i> ${fechaFormateada}
-              </span>
               <h3 class="muro-card-title">${data.title || 'Sin título'}</h3>
               <p class="muro-card-text">${data.content || ''}</p>
-              <div class="muro-reactions" data-post-id="${escapeHTML(doc.id)}">
-                <button class="reaction-button" data-reaction="meGusta" type="button"><i class="fa-solid fa-thumbs-up"></i> Me gusta <span>${data.reacciones?.meGusta || 0}</span></button>
-                <button class="reaction-button" data-reaction="apoyo" type="button"><i class="fa-solid fa-hands-helping"></i> Apoyo <span>${data.reacciones?.apoyo || 0}</span></button>
-                <button class="reaction-button" data-reaction="importante" type="button"><i class="fa-solid fa-circle-exclamation"></i> Importante <span>${data.reacciones?.importante || 0}</span></button>
+              ${data.pdfUrl ? `<a class="muro-pdf-link" href="${escapeHTML(data.pdfUrl)}" download target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i> Descargar ${escapeHTML(data.pdfName || 'documento PDF')}</a>` : ''}
+            </div>
+            ${postImages.length ? `
+              <div class="muro-card-image">
+                <a href="${postImages[0]}" class="image-link" aria-label="Abrir foto de ${data.title || 'Noticia'}">
+                  <img src="${postImages[0]}" alt="${data.title || 'Noticia'}" loading="lazy">
+                </a>
+                ${postImages.length > 1 ? `<span class="muro-image-count"><i class="fa-solid fa-images" aria-hidden="true"></i> ${postImages.length} fotos</span>` : ''}
               </div>
+            ` : (getYoutubeVideoId(data.youtubeUrl || '') ? `<div class="muro-card-video"><div class="video-placeholder"><i class="fa-brands fa-youtube"></i><span>Ver video en la publicación</span></div></div>` : '')}
+            <div class="muro-reactions" data-post-id="${escapeHTML(doc.id)}">
+              <button class="reaction-button" data-reaction="meGusta" type="button"><i class="fa-solid fa-thumbs-up"></i> Me gusta <span>${data.reacciones?.meGusta || 0}</span></button>
+              <button class="reaction-button" data-reaction="apoyo" type="button"><i class="fa-solid fa-hands-helping"></i> Apoyo <span>${data.reacciones?.apoyo || 0}</span></button>
+              <button class="reaction-button" data-reaction="importante" type="button"><i class="fa-solid fa-circle-exclamation"></i> Importante <span>${data.reacciones?.importante || 0}</span></button>
             </div>
           </article>
         `;
+        muroGridContainer.querySelectorAll('.muro-card:last-child .muro-card-image img').forEach(image => {
+          image.addEventListener('error', () => image.closest('.image-link')?.remove(), { once: true });
+        });
       });
     }, (error) => {
       console.error("Error al cargar el Muro de Noticias:", error);
