@@ -108,9 +108,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const emergencyLink = document.createElement('a');
     emergencyLink.className = 'float-emergency-btn';
     emergencyLink.id = 'floatEmergencyBtn';
-    emergencyLink.href = 'tel:911';
-    emergencyLink.title = 'Llamar a emergencias 911';
-    emergencyLink.setAttribute('aria-label', 'Llamar a emergencias 911');
+    emergencyLink.href = '#';
+    emergencyLink.title = 'Reportar emergencia';
+    emergencyLink.setAttribute('aria-label', 'Abrir panel para reportar emergencia');
     emergencyLink.innerHTML = '<i class="fa-solid fa-phone-volume" aria-hidden="true"></i>';
     document.body.appendChild(emergencyLink);
   }
@@ -193,7 +193,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('popstate', resetOverlaysFromHistory);
 
   // ABRIR Y CERRAR MODAL
-  function openModal() {
+  function openModal(event) {
+    if (event) event.preventDefault();
     showOverlay(fbModalOverlay);
   }
 
