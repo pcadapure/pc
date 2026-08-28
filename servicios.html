@@ -25,12 +25,40 @@
     </ul>
   </header>
   <main class="info-page">
-    <section class="info-hero"><span class="info-kicker">Atención institucional</span><h1>Servicios para tu comunidad</h1><p>Trabajamos para prevenir riesgos, responder ante emergencias y fortalecer la preparación ciudadana.</p><button id="requestServiceNav" class="btn-pill btn-service services-cta" type="button"><i class="fa-solid fa-handshake" aria-hidden="true"></i> Solicitar Servicio</button></section>
+    <section class="info-hero"><span class="info-kicker">Atención institucional</span><h1>Servicios para tu comunidad</h1><p>Trabajamos para prevenir riesgos, responder ante emergencias y fortalecer la preparación ciudadana.</p></section>
     <section class="info-grid">
-      <article class="info-card"><i class="fa-solid fa-truck-medical"></i><h2>Atención prehospitalaria</h2><p>Respuesta inicial, evaluación y traslado de personas ante situaciones que requieren atención médica.</p></article>
-      <article class="info-card"><i class="fa-solid fa-map-location-dot"></i><h2>Evaluación de riesgos</h2><p>Inspección de zonas vulnerables y elaboración de recomendaciones para reducir sus riesgos.</p></article>
-      <article class="info-card"><i class="fa-solid fa-people-group"></i><h2>Capacitaciones</h2><p>Formación en primeros auxilios, prevención, evacuación y preparación comunitaria.</p></article>
-      <article class="info-card"><i class="fa-solid fa-triangle-exclamation"></i><h2>Alertas tempranas</h2><p>Orientación y monitoreo preventivo para actuar a tiempo frente a posibles amenazas.</p></article>
+      <article class="info-card">
+        <i class="fa-solid fa-truck-medical"></i>
+        <h2>Atención prehospitalaria</h2>
+        <p>Respuesta inicial, evaluación y traslado de personas ante situaciones que requieren atención médica.</p>
+        <button class="service-card-action btn-pill btn-service" type="button" data-service-type="Atención prehospitalaria">
+          <i class="fa-solid fa-handshake" aria-hidden="true"></i> Solicitar
+        </button>
+      </article>
+      <article class="info-card">
+        <i class="fa-solid fa-map-location-dot"></i>
+        <h2>Evaluación de riesgos</h2>
+        <p>Inspección de zonas vulnerables y elaboración de recomendaciones para reducir sus riesgos.</p>
+        <button class="service-card-action btn-pill btn-service" type="button" data-service-type="Evaluación de riesgos">
+          <i class="fa-solid fa-handshake" aria-hidden="true"></i> Solicitar
+        </button>
+      </article>
+      <article class="info-card">
+        <i class="fa-solid fa-people-group"></i>
+        <h2>Capacitaciones</h2>
+        <p>Formación en primeros auxilios, prevención, evacuación y preparación comunitaria.</p>
+        <button class="service-card-action btn-pill btn-service" type="button" data-service-type="Capacitación comunitaria">
+          <i class="fa-solid fa-handshake" aria-hidden="true"></i> Solicitar
+        </button>
+      </article>
+      <article class="info-card">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <h2>Alertas tempranas</h2>
+        <p>Orientación y monitoreo preventivo para actuar a tiempo frente a posibles amenazas.</p>
+        <button class="service-card-action btn-pill btn-service" type="button" data-service-type="Asesoría en prevención">
+          <i class="fa-solid fa-handshake" aria-hidden="true"></i> Solicitar
+        </button>
+      </article>
     </section>
   </main>
   <div class="fb-modal-overlay" id="serviceModalOverlay">
@@ -49,9 +77,9 @@
           <label for="serviceType">Tipo de servicio</label>
           <select id="serviceType" name="service" required>
             <option value="">Selecciona una opción</option>
+            <option>Atención prehospitalaria</option>
+            <option>Evaluación de riesgos</option>
             <option>Capacitación comunitaria</option>
-            <option>Inspección y evaluación de riesgos</option>
-            <option>Simulacro de evacuación</option>
             <option>Asesoría en prevención</option>
             <option>Otro servicio</option>
           </select>

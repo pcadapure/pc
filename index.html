@@ -44,9 +44,9 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="publicaciones.html">Publicaciones</a></li>
-        <li><a href="servicios.html">Servicios <i class="fa-solid fa-chevron-down"></i></a></li>
+        <li><a href="servicios.html">Servicios </a></li>
         <li><a href="prevencion.html">Prevención</a></li>
-        <li><a href="quienes-somos.html">Quiénes Somos <i class="fa-solid fa-chevron-down"></i></a></li>
+        <li><a href="quienes-somos.html">Quiénes Somos</a></li>
         <li><a href="contacto.html">Contactos</a></li>
         <li class="social-nav-item">
           <div class="social-icons">
@@ -115,24 +115,36 @@
         <div class="card-icon"><i class="fa-solid fa-truck-medical"></i></div>
         <h3>Atención Prehospitalaria</h3>
         <p>Despliegue rápido de unidades de ambulancia y paramédicos para la evaluación y traslado médico.</p>
+        <button class="service-card-action btn-pill btn-service" type="button" data-service-type="Atención prehospitalaria">
+          <i class="fa-solid fa-handshake" aria-hidden="true"></i> Solicitar
+        </button>
       </div>
 
       <div class="service-card">
         <div class="card-icon"><i class="fa-solid fa-map-location-dot"></i></div>
         <h3>Evaluación EDAN</h3>
         <p>Inspección técnica de zonas vulnerables a inundaciones o fallas estructurales.</p>
+        <button class="service-card-action btn-pill btn-service" type="button" data-service-type="Evaluación de riesgos">
+          <i class="fa-solid fa-handshake" aria-hidden="true"></i> Solicitar
+        </button>
       </div>
 
       <div class="service-card">
         <div class="card-icon"><i class="fa-solid fa-users-rays"></i></div>
         <h3>Capacitaciones</h3>
         <p>Cursos de primeros auxilios y simulacros para empresas, escuelas y comunidades.</p>
+        <button class="service-card-action btn-pill btn-service" type="button" data-service-type="Capacitación comunitaria">
+          <i class="fa-solid fa-handshake" aria-hidden="true"></i> Solicitar
+        </button>
       </div>
 
       <div class="service-card">
         <div class="card-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
         <h3>Alertas Tempranas</h3>
         <p>Monitoreo constante de ríos y condiciones meteorológicas en tiempo real.</p>
+        <button class="service-card-action btn-pill btn-service" type="button" data-service-type="Asesoría en prevención">
+          <i class="fa-solid fa-handshake" aria-hidden="true"></i> Solicitar
+        </button>
       </div>
     </div>
   </section>
@@ -264,9 +276,9 @@
           <label for="serviceType">Tipo de servicio</label>
           <select id="serviceType" name="service" required>
             <option value="">Selecciona una opción</option>
+            <option>Atención prehospitalaria</option>
+            <option>Evaluación de riesgos</option>
             <option>Capacitación comunitaria</option>
-            <option>Inspección y evaluación de riesgos</option>
-            <option>Simulacro de evacuación</option>
             <option>Asesoría en prevención</option>
             <option>Otro servicio</option>
           </select>

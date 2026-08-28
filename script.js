@@ -226,15 +226,47 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function openServiceModal() {
+  function openServiceModal(preselectedType = '') {
+    const serviceTypeField = document.getElementById('serviceType');
+    const serviceDetailsField = document.getElementById('serviceDetails');
+    const templates = {
+      'Atención prehospitalaria': 'Solicito atención prehospitalaria para una persona que requiere apoyo inmediato. Les comparto los detalles del caso y mi ubicación.',
+      'Evaluación de riesgos': 'Solicito evaluación de riesgos en mi comunidad o en un sitio específico para conocer posibles peligros y recomendaciones de prevención.',
+      'Capacitación comunitaria': 'Solicito una capacitación comunitaria sobre primeros auxilios, evacuación o prevención de riesgos para nuestra comunidad.',
+      'Asesoría en prevención': 'Solicito asesoría en prevención para reforzar la preparación y reducir riesgos en nuestra zona.',
+      'Otro servicio': 'Solicito información sobre un servicio adicional y quiero compartir más detalles para recibir orientación adecuada.'
+    };
+
+    if (serviceTypeField) {
+      serviceTypeField.value = preselectedType || serviceTypeField.value || '';
+    }
+
+    if (serviceDetailsField) {
+      const matchingTemplate = preselectedType ? templates[preselectedType] || '' : '';
+      serviceDetailsField.value = matchingTemplate || serviceDetailsField.value.trim();
+      if (!matchingTemplate && !serviceDetailsField.value.trim()) {
+        serviceDetailsField.value = '';
+      }
+    }
+
     showOverlay(serviceModalOverlay);
+
+    if (serviceDetailsField) {
+      requestAnimationFrame(() => serviceDetailsField.focus());
+    }
   }
 
   function closeServiceModal() {
     hideOverlay(serviceModalOverlay);
   }
 
-  if (requestServiceNav) requestServiceNav.addEventListener('click', openServiceModal);
+  if (requestServiceNav) requestServiceNav.addEventListener('click', () => openServiceModal());
+  document.querySelectorAll('.service-card-action').forEach(button => {
+    button.addEventListener('click', () => {
+      const selectedType = button.dataset.serviceType || '';
+      openServiceModal(selectedType);
+    });
+  });
   if (closeServiceModalBtn) closeServiceModalBtn.addEventListener('click', closeServiceModal);
   if (serviceModalOverlay) serviceModalOverlay.addEventListener('click', event => {
     if (event.target === serviceModalOverlay) closeServiceModal();
@@ -684,6 +716,8 @@ function cargarMuroNoticias(database) {
     return;
   }
 
+  const homePreviewLimit = 4;
+
   function renderPublications() {
     const searchTerm = (publicationSearch?.value || '').trim().toLowerCase();
     const selectedCategory = publicationCategory?.value || 'all';
@@ -695,13 +729,16 @@ function cargarMuroNoticias(database) {
       return (selectedCategory === 'all' || category === selectedCategory) && searchableText.includes(searchTerm);
     });
 
-    if (!filteredDocs.length) {
+    const shouldLimitHomePreview = !publicationSearch && !publicationCategory && window.location.pathname.toLowerCase().endsWith('index.html');
+    const visibleDocs = shouldLimitHomePreview ? filteredDocs.slice(0, homePreviewLimit) : filteredDocs;
+
+    if (!visibleDocs.length) {
       muroGridContainer.innerHTML = '<div class="empty-muro"><p>No hay publicaciones que coincidan con la búsqueda.</p></div>';
       return;
     }
 
     muroGridContainer.innerHTML = '';
-    filteredDocs.forEach((doc) => {
+    visibleDocs.forEach((doc) => {
         const data = doc.data();
         const postImages = Array.isArray(data.imageUrls)
           ? [...new Set(data.imageUrls.filter(imageUrl => typeof imageUrl === 'string' && imageUrl))]
@@ -765,6 +802,17 @@ function cargarMuroNoticias(database) {
           image.addEventListener('error', () => image.closest('.image-link')?.remove(), { once: true });
         });
     });
+
+    if (shouldLimitHomePreview && filteredDocs.length > homePreviewLimit) {
+      const seeMoreButton = document.createElement('button');
+      seeMoreButton.type = 'button';
+      seeMoreButton.className = 'muro-see-more';
+      seeMoreButton.textContent = 'Ver más';
+      seeMoreButton.addEventListener('click', () => {
+        window.location.href = 'publicaciones.html';
+      });
+      muroGridContainer.appendChild(seeMoreButton);
+    }
 
     if (!openedFromUrl) {
       const publicationId = new URLSearchParams(window.location.search).get('publicacion');
