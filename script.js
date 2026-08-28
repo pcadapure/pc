@@ -26,6 +26,22 @@ function getYoutubeVideoId(value) {
 document.addEventListener('DOMContentLoaded', () => {
   let deferredInstallPrompt = null;
 
+  document.querySelectorAll('a[aria-label="Facebook"], a .fa-facebook-f').forEach(element => {
+    const link = element.closest('a');
+    if (!link) return;
+    link.href = 'https://www.facebook.com/profile.php?id=61556602676193';
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+  });
+
+  document.querySelectorAll('a[aria-label="Instagram"], a .fa-instagram').forEach(element => {
+    const link = element.closest('a');
+    if (!link) return;
+    link.href = 'https://www.instagram.com/pcivilapure/';
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+  });
+
   if (!window.location.pathname.toLowerCase().endsWith('admin.html') && !window.matchMedia('(display-mode: standalone)').matches) {
     const installButton = document.createElement('button');
     installButton.id = 'installAppBtn';
@@ -146,18 +162,53 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentGpsData = null;
   let selectedIncidentType = "Accidente de Tránsito";
 
+  const overlayElements = () => [
+    fbModalOverlay,
+    serviceModalOverlay,
+    imageViewerOverlay,
+    postDetailOverlay
+  ].filter(Boolean);
+
+  function showOverlay(overlay) {
+    if (!overlay) return;
+    overlay.classList.add('active');
+    if (history.state?.pcadOverlay !== overlay.id) {
+      history.pushState({ pcadOverlay: overlay.id }, '', window.location.href);
+    }
+  }
+
+  function hideOverlay(overlay, fromHistory = false) {
+    if (!overlay) return;
+    overlay.classList.remove('active');
+    if (!fromHistory && history.state?.pcadOverlay === overlay.id) history.back();
+  }
+
+  function resetOverlaysFromHistory() {
+    overlayElements().forEach(overlay => overlay.classList.remove('active'));
+    if (imageViewerImage) imageViewerImage.removeAttribute('src');
+    if (postDetailGallery) postDetailGallery.innerHTML = '';
+    if (postDetailPdf) postDetailPdf.innerHTML = '';
+  }
+
+  window.addEventListener('popstate', resetOverlaysFromHistory);
+
   // ABRIR Y CERRAR MODAL
   function openModal() {
-    fbModalOverlay.classList.add('active');
+    showOverlay(fbModalOverlay);
   }
 
   function closeModal() {
-    fbModalOverlay.classList.remove('active');
+    hideOverlay(fbModalOverlay);
   }
 
-  if (reportEmergencyNav) reportEmergencyNav.addEventListener('click', () => {
-    if (navLinks) navLinks.classList.remove('active');
-    openModal();
+  function callEmergency(event) {
+    event.preventDefault();
+    window.location.href = 'tel:911';
+  }
+
+  if (reportEmergencyNav) reportEmergencyNav.addEventListener('click', callEmergency);
+  document.querySelectorAll('.navbar a[href="tel:911"]').forEach(link => {
+    link.addEventListener('click', callEmergency);
   });
   if (floatEmergencyBtn) floatEmergencyBtn.addEventListener('click', openModal);
   if (closeFbModalBtn) closeFbModalBtn.addEventListener('click', closeModal);
@@ -176,11 +227,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function openServiceModal() {
-    if (serviceModalOverlay) serviceModalOverlay.classList.add('active');
+    showOverlay(serviceModalOverlay);
   }
 
   function closeServiceModal() {
-    if (serviceModalOverlay) serviceModalOverlay.classList.remove('active');
+    hideOverlay(serviceModalOverlay);
   }
 
   if (requestServiceNav) requestServiceNav.addEventListener('click', openServiceModal);
@@ -235,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function closeImageViewer() {
     if (!imageViewerOverlay) return;
-    imageViewerOverlay.classList.remove('active');
+    hideOverlay(imageViewerOverlay);
     if (imageViewerImage) imageViewerImage.removeAttribute('src');
   }
 
@@ -256,7 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const image = imageLink.querySelector('img');
     imageViewerImage.src = imageLink.href;
     imageViewerImage.alt = image ? image.alt : 'Imagen ampliada';
-    imageViewerOverlay.classList.add('active');
+    showOverlay(imageViewerOverlay);
   });
 
   document.addEventListener('error', event => {
@@ -277,7 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function closePostDetail() {
-    if (postDetailOverlay) postDetailOverlay.classList.remove('active');
+    hideOverlay(postDetailOverlay);
     if (postDetailGallery) postDetailGallery.innerHTML = '';
     if (postDetailPdf) postDetailPdf.innerHTML = '';
   }
@@ -346,7 +397,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     renderPostMedia(mediaSlides);
     if (postDetailPdf) postDetailPdf.innerHTML = pdfLink;
-    postDetailOverlay.classList.add('active');
+    showOverlay(postDetailOverlay);
   }
 
   document.addEventListener('click', event => {
@@ -386,14 +437,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (event.target === postDetailOverlay) closePostDetail();
   });
   if (postShareButton) postShareButton.addEventListener('click', async () => {
-    const title = postDetailOverlay.dataset.shareTitle || 'Publicación';
-    const text = postDetailOverlay.dataset.shareText || '';
-    const shareData = { title, text, url: window.location.href };
+    const shareMessage = `Mira esta publicación en la web de Protección Civil:\n${window.location.href}`;
+    const shareData = { title: 'Mira esta publicación', text: shareMessage };
     try {
       if (navigator.share) {
         await navigator.share(shareData);
       } else {
-        await navigator.clipboard.writeText(`${title}\n\n${text}\n\n${window.location.href}`);
+        await navigator.clipboard.writeText(shareMessage);
         postShareButton.innerHTML = '<i class="fa-solid fa-check"></i> Enlace copiado';
         setTimeout(() => { postShareButton.innerHTML = '<i class="fa-solid fa-share-nodes"></i> Compartir publicación'; }, 1800);
       }
