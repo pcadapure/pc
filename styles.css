@@ -166,20 +166,21 @@ body {
 /* 3. Asegurar que la barra de navegación esté por ENCIMA de las formas geométricas */
 .navbar {
   position: relative;
-  z-index: 20;            /* Elevado a 20 para quedar encima del círculo (z-index: 1) */
+  z-index: 20;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: clamp(14px, 2vw, 28px);
   padding: 16px clamp(18px, 4vw, 52px);
-  background: rgba(0, 38, 135, 0.28);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
+  background: linear-gradient(180deg, rgba(4, 31, 87, 0.82), rgba(0, 38, 135, 0.52));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 28px rgba(0, 18, 52, 0.12);
 }
 
 .publications-navbar {
-  background: rgba(0, 38, 135, 0.9);
+  background: rgba(0, 38, 135, 0.92);
 }
 
 .navbar-logo img {
@@ -194,7 +195,10 @@ body {
   gap: 10px;
   flex: 0 1 250px;
   min-width: 210px;
+  padding: 8px 12px 8px 8px;
+  border-radius: 14px;
   text-decoration: none;
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .brand-logo:hover,
@@ -241,16 +245,17 @@ body {
   text-decoration: none;
   font-weight: 700;
   font-size: 0.85rem;
-  padding: 10px 2px;
+  padding: 10px 12px;
   white-space: nowrap;
-  transition: color 0.2s ease;
+  border-radius: 999px;
+  transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease;
 }
 
 .nav-links a::after {
   content: '';
   position: absolute;
-  left: 0;
-  right: 0;
+  left: 10px;
+  right: 10px;
   bottom: 3px;
   height: 2px;
   background: var(--orange-accent);
@@ -261,6 +266,7 @@ body {
 .nav-links a:hover,
 .nav-links a:focus-visible {
   color: var(--orange-accent);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .nav-links a:hover::after,
@@ -277,13 +283,13 @@ body {
 }
 
 .btn-pill {
-  background-color: var(--red-accent);
+  background: linear-gradient(135deg, #e51a24 0%, #ea3a1c 100%);
   color: var(--text-white) !important;
-  padding: 10px 14px;
-  border-radius: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
   font-weight: 800 !important;
   display: inline-block;
-  box-shadow: 0 4px 10px rgba(229, 26, 36, 0.4);
+  box-shadow: 0 8px 16px rgba(229, 26, 36, 0.28);
   cursor: pointer;
   border: none;
   font-family: inherit;
@@ -292,7 +298,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  transition: transform 0.2s ease, filter 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease, background 0.2s ease;
 }
 
 .btn-pill i {
@@ -301,8 +307,10 @@ body {
 
 .btn-pill:hover,
 .btn-pill:focus-visible {
-  background-color: var(--orange-accent, #f28c28);
+  background: linear-gradient(135deg, #f28c28 0%, #f5a63a 100%);
+  color: var(--blue-dark) !important;
   transform: translateY(-2px);
+  box-shadow: 0 12px 20px rgba(242, 140, 40, 0.28);
   filter: brightness(1.08);
   outline: none;
 }
@@ -319,17 +327,17 @@ a.btn-pill:focus-visible,
 .btn-service:focus-visible,
 .service-card-action:hover,
 .service-card-action:focus-visible {
-  background-color: var(--orange-accent, #f28c28) !important;
+  background: linear-gradient(135deg, #f28c28 0%, #f5a63a 100%) !important;
   color: var(--blue-dark) !important;
   filter: brightness(1.04);
   outline: none;
 }
 
 .btn-service {
-  background-color: var(--yellow-accent);
+  background: linear-gradient(135deg, #f7b52d 0%, #f28c28 100%);
   color: var(--blue-dark) !important;
-  border: 1px solid rgba(0, 38, 135, 0.2);
-  box-shadow: 0 4px 10px rgba(255, 204, 0, 0.35);
+  border: 1px solid rgba(0, 38, 135, 0.18);
+  box-shadow: 0 8px 18px rgba(242, 140, 40, 0.25);
 }
 
 #reportEmergencyNav {
@@ -584,17 +592,17 @@ a.btn-pill:focus-visible,
   display: flex;
   flex-direction: column;
   background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%);
-  border-radius: 18px;
+  border-radius: 20px;
   padding: 28px 20px 24px;
   text-align: center;
-  box-shadow: 0 14px 28px rgba(0, 45, 100, 0.08);
+  box-shadow: 0 16px 30px rgba(0, 45, 100, 0.08);
   border: 1px solid rgba(0, 70, 231, 0.08);
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .service-card:hover,
 .service-card:focus-within {
-  border-color: rgba(0, 70, 231, 0.35);
+  border-color: rgba(242, 140, 40, 0.4);
   box-shadow: 0 18px 34px rgba(0, 45, 100, 0.12);
   transform: translateY(-4px);
 }
@@ -632,14 +640,14 @@ a.btn-pill:focus-visible,
   align-items: center;
   justify-content: center;
   width: fit-content;
-  min-width: 150px;
+  min-width: 160px;
   margin-top: auto;
   margin-inline: auto;
-  padding: 10px 18px;
+  padding: 11px 18px;
   border-radius: 999px;
   font-size: 0.78rem;
   font-weight: 800;
-  box-shadow: 0 10px 18px rgba(0, 70, 231, 0.18);
+  box-shadow: 0 10px 18px rgba(242, 140, 40, 0.18);
 }
 
 .preparedness-section {
@@ -1258,11 +1266,11 @@ a.btn-pill:focus-visible,
     gap: 15px;
     padding: 18px 20px 22px;
     border-top: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 18px 28px rgba(0, 0, 0, 0.24);
+    box-shadow: none;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-15px);
-    transition: all 0.3s ease-in-out;
+    transform: translateY(-10px);
+    transition: opacity 0.18s ease, visibility 0.18s ease, transform 0.18s ease;
     z-index: 1000;
     pointer-events: none;
     border-radius: 0 0 18px 18px;
@@ -1868,7 +1876,8 @@ a.btn-pill:focus-visible,
 .site-footer {
   margin-top: 32px;
   color: #ffffff;
-  background: #06245c;
+  background: linear-gradient(180deg, #06245c 0%, #041f4d 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .footer-main {
@@ -1877,7 +1886,7 @@ a.btn-pill:focus-visible,
   gap: 36px;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 50px 30px 42px;
+  padding: 52px 30px 42px;
 }
 
 .footer-brand {
@@ -1891,8 +1900,9 @@ a.btn-pill:focus-visible,
   height: 54px;
   object-fit: contain;
   padding: 5px;
-  border-radius: 10px;
+  border-radius: 12px;
   background: #ffffff;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
 }
 
 .footer-brand h2 {
@@ -1920,6 +1930,7 @@ a.btn-pill:focus-visible,
   color: var(--orange-accent);
   font-size: 0.9rem;
   text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 .footer-column a {
@@ -1931,7 +1942,7 @@ a.btn-pill:focus-visible,
 
 .footer-column a:hover,
 .footer-column a:focus-visible {
-  color: #ffffff;
+  color: var(--orange-accent);
   transform: translateX(3px);
   outline: none;
 }
@@ -1944,8 +1955,8 @@ a.btn-pill:focus-visible,
   margin-top: 6px;
   padding: 9px 13px;
   border: 1px solid rgba(255, 255, 255, 0.28);
-  border-radius: 7px;
-  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
   color: #ffffff;
   font-weight: 800;
 }
@@ -1976,7 +1987,8 @@ a.btn-pill:focus-visible,
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   color: #ffffff;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
+  transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
 }
 
 .footer-socials a:hover,
@@ -2327,6 +2339,21 @@ a.btn-pill:focus-visible,
     background: linear-gradient(180deg, #f4f8ff 0%, #f7f9fc 100%);
   }
 
+  .navbar,
+  .arrow-btn,
+  .fb-modal-overlay,
+  .image-viewer-overlay,
+  .nav-links {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  .nav-links,
+  .fb-modal-card,
+  .image-viewer-image {
+    will-change: transform, opacity;
+  }
+
   .install-app-btn {
     bottom: 88px;
     left: 18px;
@@ -2337,15 +2364,14 @@ a.btn-pill:focus-visible,
     min-height: 420px;
     border-bottom-left-radius: 24px;
     border-bottom-right-radius: 24px;
-    box-shadow: inset 0 -20px 35px rgba(0, 0, 0, 0.08);
+    box-shadow: none;
   }
 
   .navbar {
     padding: 10px 14px;
     border-bottom: 0;
     background: rgba(3, 26, 84, 0.6);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
+    box-shadow: none;
   }
 
   .brand-logo {
@@ -2385,7 +2411,7 @@ a.btn-pill:focus-visible,
     width: min(100%, 290px);
     height: 210px;
     margin-top: 8px;
-    filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.2));
+    filter: none;
   }
 
   .arrow-btn {
@@ -2396,8 +2422,9 @@ a.btn-pill:focus-visible,
     height: 42px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.12);
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    transition: opacity 0.15s ease;
   }
 
   .arrow-btn.prev { left: 14px; }
@@ -2524,6 +2551,13 @@ a.btn-pill:focus-visible,
 
   .fb-modal-card {
     max-height: 88vh;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
+    transition: transform 0.18s ease-in-out;
+  }
+
+  .fb-modal-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    transition: opacity 0.18s ease-in-out;
   }
 
   .fb-modal-header {
