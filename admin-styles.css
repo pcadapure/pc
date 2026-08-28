@@ -301,6 +301,95 @@ body.admin-authenticated .admin-container {
   min-width: 0;
 }
 
+.dashboard-summary {
+  margin-bottom: 24px;
+  padding: 24px;
+  border: 1px solid #dbe5f0;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ffffff 0%, #f5f9ff 100%);
+  box-shadow: 0 10px 24px rgba(0, 32, 80, 0.08);
+}
+
+.dashboard-summary-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.dashboard-summary-heading h1 {
+  margin-top: 5px;
+  color: var(--text-main);
+  font-size: clamp(1.35rem, 2.5vw, 1.8rem);
+  line-height: 1.1;
+}
+
+.dashboard-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #15803d;
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.dashboard-live i {
+  font-size: 0.48rem;
+}
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.dashboard-stat {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 86px;
+  padding: 14px;
+  border: 1px solid #e5ebf2;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.dashboard-stat-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.dashboard-stat strong,
+.dashboard-stat span {
+  display: block;
+}
+
+.dashboard-stat strong {
+  color: var(--text-main);
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+.dashboard-stat div > span {
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.stat-danger .dashboard-stat-icon { background: #fff1f2; color: #dc2626; }
+.stat-warning .dashboard-stat-icon { background: #fff8df; color: #a16207; }
+.stat-blue .dashboard-stat-icon { background: #e7f0ff; color: var(--primary); }
+.stat-process .dashboard-stat-icon { background: #eff6ff; color: #2563eb; }
+
 .tab-content {
   display: none;
   background: var(--card-bg);
@@ -836,6 +925,14 @@ form textarea {
   
   .content {
     padding: 20px;
+  }
+
+  .dashboard-summary {
+    padding: 18px;
+  }
+
+  .dashboard-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .sala-header {

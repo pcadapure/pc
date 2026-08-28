@@ -261,11 +261,29 @@ if (pageSelector) window.loadPageData(pageSelector.value);
 const emergenciasContainer = document.getElementById('emergenciasContainer');
 const emergencySound = document.getElementById('emergencyAlertSound');
 const soundToggle = document.getElementById('soundToggle');
+const statEmergenciesPending = document.getElementById('statEmergenciesPending');
+const statServicesPending = document.getElementById('statServicesPending');
+const statPublications = document.getElementById('statPublications');
+const statEmergenciesProcess = document.getElementById('statEmergenciesProcess');
+let emergencyDocs = [];
+let publicationCount = 0;
+
+function updateDashboardStats() {
+  const pendingEmergencies = emergencyDocs.filter(doc => (doc.data().estatus || 'Pendiente') === 'Pendiente').length;
+  const processEmergencies = emergencyDocs.filter(doc => (doc.data().estatus || 'Pendiente') === 'En Proceso').length;
+  const pendingServices = serviceRequestDocs.filter(doc => (doc.data().estatus || 'Pendiente') === 'Pendiente').length;
+  if (statEmergenciesPending) statEmergenciesPending.textContent = pendingEmergencies;
+  if (statServicesPending) statServicesPending.textContent = pendingServices;
+  if (statPublications) statPublications.textContent = publicationCount;
+  if (statEmergenciesProcess) statEmergenciesProcess.textContent = processEmergencies;
+}
 let initialLoad = true;
 
 db.collection('reportes_emergencia')
   .orderBy('fechaHora', 'desc')
   .onSnapshot(snapshot => {
+    emergencyDocs = snapshot.docs;
+    updateDashboardStats();
     if (!initialLoad) {
       snapshot.docChanges().forEach(change => {
         if (change.type === 'added' && soundToggle && soundToggle.checked) {
@@ -327,6 +345,7 @@ function renderServiceRequests() {
       .filter(Boolean).join(' ').toLowerCase();
     return (selectedStatus === 'all' || status === selectedStatus) && searchableText.includes(searchTerm);
   });
+  updateDashboardStats();
 
   if (!filteredDocs.length) {
     serviciosContainer.innerHTML = '<p class="empty-state">No hay solicitudes que coincidan con el filtro.</p>';
@@ -482,6 +501,7 @@ window.editPublication = async function(type, id) {
   } else {
     editingMuroId = id;
     document.getElementById('muro-title').value = data.title || '';
+    document.getElementById('muro-category').value = data.category || 'Noticias';
     document.getElementById('muro-content').value = data.content || '';
     document.getElementById('muro-image-urls').value = Array.isArray(data.imageUrls)
       ? data.imageUrls.join('\n')
@@ -565,6 +585,7 @@ if (formMuro) {
   formMuro.addEventListener('submit', async (e) => {
     e.preventDefault();
     const title = document.getElementById('muro-title').value.trim();
+    const category = document.getElementById('muro-category').value;
     const content = document.getElementById('muro-content').value.trim();
     const imageUrls = validateImageUrls(document.getElementById('muro-image-urls').value);
     const imageUrl = imageUrls[0] || '';
@@ -580,6 +601,8 @@ if (formMuro) {
       const uploadedPdf = await uploadMuroPdf(pdfFile);
       const postData = {
         title,
+        author: 'Protección Civil Apure',
+        category,
         content,
         imageUrl,
         imageUrls,
@@ -608,6 +631,8 @@ if (formMuro) {
 }
 
 db.collection('muro').orderBy('createdAt', 'desc').onSnapshot(snapshot => {
+  publicationCount = snapshot.size;
+  updateDashboardStats();
   if (!listMuro) return;
   listMuro.innerHTML = '';
   snapshot.docs.forEach(doc => {

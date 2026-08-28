@@ -20,7 +20,7 @@
     <form class="admin-login-card" id="adminLoginForm">
       <div class="admin-login-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div>
       <span class="eyebrow">Acceso protegido</span>
-      <h1 id="adminLoginTitle">Panel de Administración</h1>
+      <h1 id="adminLoginTitle">Iniciar sesión</h1>
       <p>Inicia sesión para gestionar emergencias, solicitudes y publicaciones.</p>
       <label for="adminEmail">Correo electrónico</label>
       <input id="adminEmail" type="email" autocomplete="email" required>
@@ -50,6 +50,33 @@
     </aside>
 
     <main class="content">
+      <section class="dashboard-summary" aria-label="Resumen del panel">
+        <div class="dashboard-summary-heading">
+          <div>
+            <span class="eyebrow">Resumen operativo</span>
+            <h1>Centro de control</h1>
+          </div>
+          <span class="dashboard-live"><i class="fa-solid fa-circle" aria-hidden="true"></i> Datos en vivo</span>
+        </div>
+        <div class="dashboard-stats">
+          <article class="dashboard-stat stat-danger">
+            <span class="dashboard-stat-icon"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i></span>
+            <div><strong id="statEmergenciesPending">0</strong><span>Emergencias pendientes</span></div>
+          </article>
+          <article class="dashboard-stat stat-warning">
+            <span class="dashboard-stat-icon"><i class="fa-solid fa-handshake" aria-hidden="true"></i></span>
+            <div><strong id="statServicesPending">0</strong><span>Solicitudes pendientes</span></div>
+          </article>
+          <article class="dashboard-stat stat-blue">
+            <span class="dashboard-stat-icon"><i class="fa-solid fa-newspaper" aria-hidden="true"></i></span>
+            <div><strong id="statPublications">0</strong><span>Publicaciones activas</span></div>
+          </article>
+          <article class="dashboard-stat stat-process">
+            <span class="dashboard-stat-icon"><i class="fa-solid fa-truck-medical" aria-hidden="true"></i></span>
+            <div><strong id="statEmergenciesProcess">0</strong><span>Emergencias en proceso</span></div>
+          </article>
+        </div>
+      </section>
       <!-- Pestaña Sala de Guardia -->
       <section id="guardia-tab" class="tab-content active">
         <div class="sala-header">
@@ -101,6 +128,14 @@
         </div>
         <form id="form-muro">
           <input type="text" id="muro-title" placeholder="Título del reporte/noticia" required>
+          <label for="muro-category">Categoría:</label>
+          <select id="muro-category" required>
+            <option value="Noticias">Noticias</option>
+            <option value="Comunicados">Comunicados</option>
+            <option value="Capacitación">Capacitación</option>
+            <option value="Prevención">Prevención</option>
+            <option value="Emergencias">Emergencias</option>
+          </select>
           <textarea id="muro-content" placeholder="Cuerpo de la noticia..." rows="4" required></textarea>
           <label for="muro-image-urls">Fotos de la publicación (opcional):</label>
           <a href="https://phototourl.com/es" target="_blank" rel="noopener noreferrer">Subir imagen y obtener URL</a>

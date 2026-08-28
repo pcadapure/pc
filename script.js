@@ -277,6 +277,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const postDetailOverlay = document.getElementById('postDetailOverlay');
   const postDetailClose = document.getElementById('postDetailClose');
   const postDetailTitle = document.getElementById('postDetailTitle');
+  const postDetailAuthor = document.getElementById('postDetailAuthor');
+  const postDetailCategory = document.getElementById('postDetailCategory');
   const postDetailDate = document.getElementById('postDetailDate');
   const postDetailGallery = document.getElementById('postDetailGallery');
   const postDetailText = document.getElementById('postDetailText');
@@ -365,6 +367,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function openPostDetail(card) {
     if (!postDetailOverlay) return;
+    const publicationUrl = new URL(window.location.href);
+    publicationUrl.searchParams.set('publicacion', card.dataset.postId || '');
+    history.pushState({ pcadOverlay: postDetailOverlay.id }, '', publicationUrl.href);
+    document.title = `${card.dataset.title || 'Publicación'} | Protección Civil Apure`;
+    const description = (card.dataset.content || '').replace(/\s+/g, ' ').trim().slice(0, 160);
+    const imageUrl = card.dataset.images ? JSON.parse(card.dataset.images)[0] : '';
+    document.querySelector('meta[name="description"]')?.setAttribute('content', description || 'Publicación oficial de Protección Civil Apure.');
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', card.dataset.title || 'Publicación | Protección Civil Apure');
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', description || 'Publicación oficial de Protección Civil Apure.');
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', publicationUrl.href);
+    if (imageUrl) document.querySelector('meta[property="og:image"]')?.setAttribute('content', imageUrl);
+    document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', card.dataset.title || 'Publicación | Protección Civil Apure');
+    document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', description || 'Publicación oficial de Protección Civil Apure.');
+    if (imageUrl) document.querySelector('meta[name="twitter:image"]')?.setAttribute('content', imageUrl);
+    if (postDetailAuthor) postDetailAuthor.textContent = card.dataset.author || 'Protección Civil Apure';
+    if (postDetailCategory) postDetailCategory.textContent = card.dataset.category || 'Noticias';
     postDetailTitle.textContent = card.dataset.title || 'Sin título';
     postDetailDate.textContent = card.dataset.date || 'Reciente';
     postDetailText.textContent = card.dataset.content || '';
@@ -450,6 +468,22 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       if (error.name !== 'AbortError') console.error('No se pudo compartir la publicación:', error);
     }
+  });
+  document.querySelectorAll('[data-share-network]').forEach(button => {
+    button.addEventListener('click', async () => {
+      const shareUrl = window.location.href;
+      const shareMessage = `Mira esta publicación en la web de Protección Civil:\n${shareUrl}`;
+      const network = button.dataset.shareNetwork;
+      if (network === 'whatsapp') {
+        window.open(`https://wa.me/?text=${encodeURIComponent(shareMessage)}`, '_blank', 'noopener,noreferrer');
+      } else if (network === 'facebook') {
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`, '_blank', 'noopener,noreferrer');
+      } else if (network === 'instagram') {
+        await navigator.clipboard.writeText(shareMessage);
+        button.innerHTML = '<i class="fa-solid fa-check" aria-hidden="true"></i> Enlace copiado';
+        setTimeout(() => { button.innerHTML = '<i class="fa-brands fa-instagram" aria-hidden="true"></i> Instagram'; }, 1800);
+      }
+    });
   });
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') closePostDetail();
@@ -637,6 +671,11 @@ function cargarMuroNoticias(database) {
   const muroGridContainer = document.getElementById('muroGridContainer');
   if (!muroGridContainer) return;
 
+  const publicationSearch = document.getElementById('publicationSearch');
+  const publicationCategory = document.getElementById('publicationCategory');
+  let publicationDocs = [];
+  let openedFromUrl = false;
+
   // Obtener la instancia de firestore de forma segura
   const firestoreDB = database || window.db || (firebase.apps.length ? firebase.firestore() : null);
 
@@ -645,21 +684,24 @@ function cargarMuroNoticias(database) {
     return;
   }
 
-  firestoreDB.collection('muro')
-    .orderBy('createdAt', 'desc')
-    .onSnapshot((snapshot) => {
-      if (snapshot.empty) {
-        muroGridContainer.innerHTML = `
-          <div class="empty-muro" style="grid-column: 1 / -1; text-align: center; padding: 2rem; color: #666;">
-            <p>No hay publicaciones recientes en el muro por el momento.</p>
-          </div>
-        `;
-        return;
-      }
+  function renderPublications() {
+    const searchTerm = (publicationSearch?.value || '').trim().toLowerCase();
+    const selectedCategory = publicationCategory?.value || 'all';
+    const filteredDocs = publicationDocs.filter(doc => {
+      const data = doc.data();
+      const category = data.category || 'Noticias';
+      const searchableText = [data.title, data.content, data.author || 'Protección Civil Apure', category]
+        .filter(Boolean).join(' ').toLowerCase();
+      return (selectedCategory === 'all' || category === selectedCategory) && searchableText.includes(searchTerm);
+    });
 
-      muroGridContainer.innerHTML = '';
+    if (!filteredDocs.length) {
+      muroGridContainer.innerHTML = '<div class="empty-muro"><p>No hay publicaciones que coincidan con la búsqueda.</p></div>';
+      return;
+    }
 
-      snapshot.docs.forEach((doc) => {
+    muroGridContainer.innerHTML = '';
+    filteredDocs.forEach((doc) => {
         const data = doc.data();
         const postImages = Array.isArray(data.imageUrls)
           ? [...new Set(data.imageUrls.filter(imageUrl => typeof imageUrl === 'string' && imageUrl))]
@@ -681,6 +723,8 @@ function cargarMuroNoticias(database) {
             data-post-id="${escapeHTML(doc.id)}"
             data-title="${escapeHTML(data.title || 'Sin título')}"
             data-date="${escapeHTML(fechaFormateada)}"
+            data-author="${escapeHTML(data.author || 'Protección Civil Apure')}"
+            data-category="${escapeHTML(data.category || 'Noticias')}"
             data-content="${escapeHTML(data.content || '')}"
             data-youtube-url="${escapeHTML(data.youtubeUrl || '')}"
             data-pdf-url="${escapeHTML(data.pdfUrl || '')}"
@@ -692,11 +736,13 @@ function cargarMuroNoticias(database) {
               <div><strong>Protección Civil Apure</strong><span><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Cuenta institucional</span></div>
             </div>
             <div class="muro-card-meta">
+              <span class="muro-card-category"><i class="fa-solid fa-tag" aria-hidden="true"></i> ${escapeHTML(data.category || 'Noticias')}</span>
               <span class="muro-card-official"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Publicación oficial</span>
               <span class="muro-card-date"><i class="fa-regular fa-calendar-days" aria-hidden="true"></i> ${fechaFormateada}</span>
             </div>
             <div class="muro-card-content">
               <h3 class="muro-card-title">${data.title || 'Sin título'}</h3>
+              <p class="muro-card-author">Por ${escapeHTML(data.author || 'Protección Civil Apure')}</p>
               <p class="muro-card-text">${data.content || ''}</p>
               ${data.pdfUrl ? `<a class="muro-pdf-link" href="${escapeHTML(data.pdfUrl)}" download target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i> Descargar ${escapeHTML(data.pdfName || 'documento PDF')}</a>` : ''}
             </div>
@@ -718,7 +764,33 @@ function cargarMuroNoticias(database) {
         muroGridContainer.querySelectorAll('.muro-card:last-child .muro-card-image img').forEach(image => {
           image.addEventListener('error', () => image.closest('.image-link')?.remove(), { once: true });
         });
-      });
+    });
+
+    if (!openedFromUrl) {
+      const publicationId = new URLSearchParams(window.location.search).get('publicacion');
+      const targetCard = publicationId ? muroGridContainer.querySelector(`[data-post-id="${CSS.escape(publicationId)}"]`) : null;
+      if (targetCard) {
+        openedFromUrl = true;
+        targetCard.click();
+      }
+    }
+  }
+
+  publicationSearch?.addEventListener('input', renderPublications);
+  publicationCategory?.addEventListener('change', renderPublications);
+
+  firestoreDB.collection('muro')
+    .orderBy('createdAt', 'desc')
+    .onSnapshot((snapshot) => {
+      publicationDocs = snapshot.docs;
+      const categories = [...new Set(publicationDocs.map(doc => doc.data().category || 'Noticias'))].sort();
+      if (publicationCategory) {
+        publicationCategory.innerHTML = '<option value="all">Todas las categorías</option>';
+        categories.forEach(category => {
+          publicationCategory.innerHTML += `<option value="${escapeHTML(category)}">${escapeHTML(category)}</option>`;
+        });
+      }
+      renderPublications();
     }, (error) => {
       console.error("Error al cargar el Muro de Noticias:", error);
     });

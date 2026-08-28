@@ -43,6 +43,7 @@ body, html {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
+  touch-action: pan-x pan-y;
 }
 
 body {
@@ -1359,6 +1360,50 @@ body {
   font-size: clamp(2rem, 4vw, 3rem);
 }
 
+.publication-filters {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 1200px;
+  margin: 24px auto 0;
+}
+
+.publication-search {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid #dbe3ec;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #64748b;
+}
+
+.publication-search input,
+#publicationCategory {
+  min-height: 44px;
+  border: 0;
+  background: transparent;
+  color: #102a56;
+  font: inherit;
+  font-size: 0.85rem;
+}
+
+.publication-search input {
+  width: 100%;
+  outline: 0;
+}
+
+#publicationCategory {
+  min-width: 210px;
+  padding: 0 12px;
+  border: 1px solid #dbe3ec;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
 .publications-back-link {
   display: inline-flex;
   align-items: center;
@@ -1446,6 +1491,18 @@ body {
 
 .muro-card-official i {
   color: var(--blue-main);
+}
+
+.muro-card-category {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #fff3e0;
+  color: #b45309;
+  font-size: 0.68rem;
+  font-weight: 800;
 }
 
 .muro-profile-avatar {
@@ -1636,6 +1693,13 @@ body {
   line-height: 1.35;
 }
 
+.muro-card-author {
+  margin: -3px 0 10px;
+  color: #64748b;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
 /* Texto o descripción */
 .muro-card-text {
   display: -webkit-box;
@@ -1786,6 +1850,27 @@ body {
   color: #ffffff;
   transform: translateX(3px);
   outline: none;
+}
+
+.footer-column .footer-admin-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  margin-top: 6px;
+  padding: 9px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.footer-column .footer-admin-link:hover,
+.footer-column .footer-admin-link:focus-visible {
+  border-color: var(--yellow-accent);
+  background: var(--yellow-accent);
+  color: var(--blue-dark);
 }
 
 .footer-column a i {
@@ -2209,6 +2294,16 @@ body {
     flex-direction: column;
   }
 
+  .publication-filters {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  #publicationCategory {
+    min-width: 0;
+    width: 100%;
+  }
+
   .muro-section {
     padding: 2.5rem 1rem;
   }
@@ -2246,6 +2341,16 @@ body {
 
   .post-detail-video {
     margin-bottom: 12px;
+  }
+
+  .post-social-share {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .post-social-share button {
+    padding-inline: 6px;
+    font-size: 0.72rem;
   }
 
   .post-media-video-slide .post-detail-video {
@@ -2296,6 +2401,40 @@ body {
   font: inherit;
   font-weight: 700;
 }
+
+.post-social-share {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  order: 6;
+  margin-top: 20px;
+}
+
+.post-social-share button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 38px;
+  padding: 8px 12px;
+  border: 1px solid #dbe3ec;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #475569;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.post-social-share button:hover {
+  border-color: var(--blue-main);
+  color: var(--blue-main);
+}
+
+.post-social-share button[data-share-network="whatsapp"] i { color: #16a34a; }
+.post-social-share button[data-share-network="facebook"] i { color: #1877f2; }
+.post-social-share button[data-share-network="instagram"] i { color: #d62976; }
 
 .post-share-button:hover {
   background: #dbe7f2;

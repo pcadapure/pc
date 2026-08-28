@@ -6,6 +6,15 @@
   <title>Publicaciones | Protección Civil</title>
   <link rel="icon" type="image/png" href="img/pc logo.png">
   <link rel="apple-touch-icon" href="img/pc logo.png">
+    <meta name="description" content="Noticias, comunicados y actividades oficiales de Protección Civil Apure.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Publicaciones | Protección Civil Apure">
+    <meta property="og:description" content="Noticias, comunicados y actividades oficiales de Protección Civil Apure.">
+    <meta property="og:image" content="img/pc logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Publicaciones | Protección Civil Apure">
+    <meta name="twitter:description" content="Noticias, comunicados y actividades oficiales de Protección Civil Apure.">
+    <meta name="twitter:image" content="img/pc logo.png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,6 +71,15 @@
           </div>
           <a class="publications-back-link" href="index.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Volver al inicio</a>
         </div>
+        <div class="publication-filters" aria-label="Filtrar publicaciones">
+          <label class="publication-search">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            <input id="publicationSearch" type="search" placeholder="Buscar publicaciones...">
+          </label>
+          <select id="publicationCategory" aria-label="Filtrar por categoría">
+            <option value="all">Todas las categorías</option>
+          </select>
+        </div>
         <div id="muroGridContainer" class="muro-grid" aria-live="polite">
           <div class="empty-muro">
             <p>Cargando publicaciones...</p>
@@ -76,17 +94,22 @@
       <header class="post-detail-header">
         <div class="post-detail-title-row">
           <img src="img/pc logo.png" alt="" class="muro-profile-avatar">
-          <div><strong>Protección Civil Apure</strong><span><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Cuenta institucional</span></div>
+          <div><strong id="postDetailAuthor">Protección Civil Apure</strong><span><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Cuenta institucional</span></div>
         </div>
         <button class="post-detail-close" id="postDetailClose" type="button" aria-label="Cerrar publicación"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
       </header>
       <div class="post-detail-content">
-        <span class="post-detail-kicker"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Publicación oficial</span>
+        <span class="post-detail-kicker"><i class="fa-solid fa-tag" aria-hidden="true"></i> <span id="postDetailCategory">Publicación oficial</span></span>
         <div class="post-detail-date" id="postDetailDate"></div>
         <h2 class="post-detail-body-title" id="postDetailTitle"></h2>
         <div class="post-detail-gallery" id="postDetailGallery"></div>
         <p class="post-detail-text" id="postDetailText"></p>
         <div class="post-detail-reactions" id="postDetailReactions"></div>
+        <div class="post-social-share" aria-label="Compartir publicación">
+          <button type="button" data-share-network="whatsapp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp</button>
+          <button type="button" data-share-network="facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i> Facebook</button>
+          <button type="button" data-share-network="instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i> Instagram</button>
+        </div>
         <button class="post-share-button" id="postShareButton" type="button"><i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Compartir publicación</button>
         <div class="post-detail-pdf" id="postDetailPdf"></div>
       </div>
