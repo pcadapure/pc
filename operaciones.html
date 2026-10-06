@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía ciudadana de Operaciones | Protección Civil ZOEDAN Apure</title>
+  <meta name="description" content="Guía ciudadana de Operaciones de Protección Civil ZOEDAN Apure: cómo reportar una emergencia, colaborar con los equipos y actuar con seguridad.">
+  <link rel="icon" type="image/png" href="img/pc logo.png">
+  <link rel="apple-touch-icon" href="img/pc logo.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#0046e7">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="simple-header">
+    <a href="index.html" class="simple-brand">
+      <img src="img/pc logo.png" alt="Protección Civil" class="logo-pc">
+      <span>PROTECCIÓN CIVIL Y ADMINISTRACIÓN DE DESASTRES ZOEDAN APURE</span>
+    </a>
+    <button class="hamburger-btn" id="hamburgerBtn" type="button" aria-label="Abrir menú">
+      <i class="fa-solid fa-bars" aria-hidden="true"></i>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Inicio</a></li>
+      <li class="nav-dropdown active-dropdown">
+        <button class="nav-dropdown-toggle" type="button" aria-expanded="false">
+          <span>Divisiones</span>
+          <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+        </button>
+        <div class="nav-dropdown-menu">
+          <a href="direccion.html">Dirección</a>
+          <a href="operaciones.html" aria-current="page">Operaciones</a>
+          <a href="rrhh.html">Recursos Humanos</a>
+          <a href="gestion-riesgo.html">Gestión del riesgo</a>
+          <a href="educacion.html">Educación</a>
+          <a href="prehospitalario.html">Prehospitalaria</a>
+        </div>
+      </li>
+      <li><a href="publicaciones.html">Publicaciones</a></li>
+      <li><a href="quienes-somos.html">Quiénes Somos</a></li>
+      <li><a class="btn-pill btn-service" href="servicios.html"><i class="fa-solid fa-handshake" aria-hidden="true"></i> Solicitar Servicio</a></li>
+      <li><button id="reportEmergencyNav" class="btn-pill" type="button"><i class="fa-solid fa-phone-volume" aria-hidden="true"></i> Reportar Emergencia</button></li>
+    </ul>
+  </header>
+
+  <main class="info-page operations-page">
+    <section class="info-hero operations-hero">
+      <span class="info-kicker"><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i> División de Operaciones · Guía ciudadana</span>
+      <h1>Cómo se organiza la respuesta ante una emergencia</h1>
+      <p>Conoce qué hace el equipo operativo de Protección Civil, cómo reportar una situación y qué puedes hacer para protegerte y facilitar el trabajo de los organismos de respuesta.</p>
+      <a class="btn-pill btn-service" href="#reportar-emergencia"><i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i> Cómo reportar</a>
+    </section>
+
+    <nav class="operations-guide-nav" aria-label="Secciones de la guía de operaciones">
+      <a href="#que-hace-operaciones">Qué hace Operaciones</a>
+      <a href="#ciclo-operativo">Ciclo de respuesta</a>
+      <a href="#prepararse-evento">Antes, durante y después</a>
+      <a href="#incidentes-comunes">Incidentes frecuentes</a>
+      <a href="#reportar-emergencia">Reportar una emergencia</a>
+      <a href="#colaborar-respuesta">Cómo colaborar</a>
+    </nav>
+
+    <section class="info-grid operations-functions" id="que-hace-operaciones" aria-label="Funciones de Operaciones">
+      <article class="info-card">
+        <i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i>
+        <h2>Recibe y verifica información</h2>
+        <p>Los reportes y avisos ayudan a conocer qué ocurre, dónde se necesita apoyo y qué peligros están presentes. La información se evalúa con los recursos y protocolos disponibles.</p>
+      </article>
+      <article class="info-card">
+        <i class="fa-solid fa-people-arrows-left-right" aria-hidden="true"></i>
+        <h2>Coordina la respuesta</h2>
+        <p>Organiza la movilización y el trabajo de los equipos con los organismos competentes, según el tipo de emergencia, las prioridades y las condiciones del lugar.</p>
+      </article>
+      <article class="info-card">
+        <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+        <h2>Protege a la población y al personal</h2>
+        <p>Las actuaciones de campo deben procurar reducir la exposición al peligro, atender primero las necesidades urgentes y conservar rutas de acceso para los equipos.</p>
+      </article>
+    </section>
+
+    <section class="operations-stages" id="ciclo-operativo" aria-labelledby="operations-cycle-title">
+      <div class="operations-section-heading">
+        <span class="section-kicker">Del aviso a la recuperación</span>
+        <h2 id="operations-cycle-title">Así se organiza una respuesta operativa</h2>
+        <p>Cada incidente es distinto. La secuencia y los recursos se ajustan a la evaluación, los protocolos institucionales y las indicaciones de las autoridades responsables.</p>
+      </div>
+      <ol class="operations-timeline">
+        <li><span>01</span><div><h3>Recepción del aviso</h3><p>Se recopilan ubicación, tipo de evento, peligros visibles, personas afectadas y medios para volver a contactar.</p></div></li>
+        <li><span>02</span><div><h3>Evaluación y prioridades</h3><p>Se analiza la información disponible y se determina qué necesidades requieren atención más urgente. Si faltan datos, se busca confirmarlos por canales apropiados.</p></div></li>
+        <li><span>03</span><div><h3>Activación y coordinación</h3><p>Se notifican y coordinan los recursos pertinentes conforme a las competencias y procedimientos establecidos para el evento.</p></div></li>
+        <li><span>04</span><div><h3>Despliegue seguro</h3><p>Los equipos se dirigen a la zona cuando las condiciones lo permiten, mantienen comunicación operativa y coordinan el acceso con los organismos participantes.</p></div></li>
+        <li><span>05</span><div><h3>Atención y seguimiento</h3><p>Se ejecutan las acciones asignadas, se actualiza la evaluación del lugar y se comunican necesidades o cambios importantes al centro de coordinación.</p></div></li>
+        <li><span>06</span><div><h3>Cierre y recuperación</h3><p>Cuando el peligro inmediato disminuye, se organiza el relevo o cierre de las acciones y se apoyan las tareas de evaluación y recuperación que correspondan.</p></div></li>
+      </ol>
+    </section>
+
+    <section class="operations-public" id="prepararse-evento" aria-labelledby="operations-public-title">
+      <div class="operations-section-heading">
+        <span class="section-kicker">Recomendaciones para la población</span>
+        <h2 id="operations-public-title">Qué hacer antes, durante y después</h2>
+        <p>La mejor ayuda comienza por proteger tu vida y seguir la información confirmada de las autoridades.</p>
+      </div>
+      <div class="operations-public-grid">
+        <article><span><i class="fa-solid fa-calendar-check" aria-hidden="true"></i></span><h3>Antes: prepara tu hogar</h3><p>Conoce los riesgos de tu sector, acuerda rutas y puntos de encuentro, guarda contactos y prepara un bolso con artículos esenciales. Identifica quién podría necesitar apoyo para evacuar.</p></article>
+        <article><span><i class="fa-solid fa-bell" aria-hidden="true"></i></span><h3>Antes: verifica las alertas</h3><p>Consulta canales oficiales y conversa con tu familia sobre cómo reconocer una instrucción de evacuación, dónde reunirse y qué hacer si falla la comunicación.</p></article>
+        <article><span><i class="fa-solid fa-person-walking-arrow-right" aria-hidden="true"></i></span><h3>Durante: aléjate del peligro</h3><p>Evacúa si así lo ordenan las autoridades. Usa la ruta indicada, ayuda sin exponerte y mantén libres los accesos. No cruces inundaciones ni ingreses en estructuras dañadas.</p></article>
+        <article><span><i class="fa-solid fa-house-circle-check" aria-hidden="true"></i></span><h3>Después: espera autorización</h3><p>No regreses a la zona evacuada hasta que se indique que es seguro. Evita cables caídos, agua contaminada y edificios inestables; comparte solo información confirmada.</p></article>
+      </div>
+    </section>
+
+    <section class="operations-public operations-stages" id="incidentes-comunes" aria-labelledby="operations-hazards-title">
+      <div class="operations-section-heading">
+        <span class="section-kicker">Autoprotección</span>
+        <h2 id="operations-hazards-title">Cómo actuar ante incidentes frecuentes</h2>
+        <p>Estas pautas generales no sustituyen las instrucciones específicas de los organismos en el lugar.</p>
+      </div>
+      <div class="operations-public-grid">
+        <article><span><i class="fa-solid fa-house-flood-water" aria-hidden="true"></i></span><h3>Inundación o crecida</h3><p>Aléjate de cauces y del agua en movimiento. No camines ni conduzcas por una vía inundada. Si recibes una instrucción de evacuación, sal de inmediato por la ruta indicada y no regreses hasta recibir autorización.</p></article>
+        <article><span><i class="fa-solid fa-fire" aria-hidden="true"></i></span><h3>Incendio</h3><p>Da aviso y evacúa por una salida segura, lejos del humo. No intentes apagar un fuego que crece o bloquea tu salida. No regreses por objetos ni te acerques para observar o fotografiar.</p></article>
+        <article><span><i class="fa-solid fa-cloud-bolt" aria-hidden="true"></i></span><h3>Tormenta o viento fuerte</h3><p>Busca refugio dentro de una edificación segura y aléjate de ventanas. Evita árboles aislados, postes, estructuras inestables y cables caídos. Sigue los avisos oficiales antes de salir.</p></article>
+        <article><span><i class="fa-solid fa-car-burst" aria-hidden="true"></i></span><h3>Accidente de tránsito</h3><p>Ubícate fuera del tránsito y de cualquier peligro adicional. Solicita ayuda e informa la ubicación y el número de personas afectadas. No muevas a alguien lesionado, salvo que exista un peligro inmediato.</p></article>
+        <article><span><i class="fa-solid fa-house-crack" aria-hidden="true"></i></span><h3>Sismo o daño estructural</h3><p>Durante el movimiento, protégete de objetos que puedan caer. Después, aléjate de fachadas y estructuras dañadas; no entres en una edificación con grietas o inestabilidad visible.</p></article>
+        <article><span><i class="fa-solid fa-bolt" aria-hidden="true"></i></span><h3>Cables o instalaciones peligrosas</h3><p>No toques ni te acerques a cables caídos, postes inclinados o agua en contacto con instalaciones. Advierte a otras personas desde un lugar seguro y reporta el peligro.</p></article>
+      </div>
+    </section>
+
+    <section class="operations-stages" id="reportar-emergencia" aria-labelledby="operations-report-title">
+      <div class="operations-section-heading">
+        <span class="section-kicker">Comunicación efectiva</span>
+        <h2 id="operations-report-title">Cómo reportar una emergencia</h2>
+        <p>Una ubicación clara y una descripción breve ayudan a orientar la respuesta. Si hay peligro inmediato, llama al 911; no esperes respuesta en redes sociales, por correo ni en un formulario web.</p>
+      </div>
+      <ol class="operations-timeline">
+        <li><span><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span><div><h3>Di dónde ocurre</h3><p>Indica municipio, comunidad o sector, calle, carretera, sentido de circulación y un punto de referencia visible. Da coordenadas si las conoces.</p></div></li>
+        <li><span><i class="fa-solid fa-circle-info" aria-hidden="true"></i></span><div><h3>Explica qué pasó</h3><p>Describe el tipo de evento y cuándo comenzó. Comunica peligros presentes, como agua, fuego, humo, cables o estructuras inestables, solo si puedes observarlos desde un lugar seguro.</p></div></li>
+        <li><span><i class="fa-solid fa-people-group" aria-hidden="true"></i></span><div><h3>Indica quién necesita ayuda</h3><p>Señala cuántas personas están afectadas, si hay personas lesionadas o que no pueden salir, y qué apoyo parece necesario. No arriesgues tu vida para obtener datos.</p></div></li>
+        <li><span><i class="fa-solid fa-phone" aria-hidden="true"></i></span><div><h3>Deja un medio de contacto</h3><p>Facilita un número al que puedan devolverte la llamada y sigue las instrucciones del operador. Si la situación cambia, vuelve a informar el dato nuevo.</p></div></li>
+      </ol>
+      <div class="operations-alert" role="region" aria-labelledby="operations-alert-title">
+        <span class="operations-alert-icon"><i class="fa-solid fa-phone-volume" aria-hidden="true"></i></span>
+        <div><h2 id="operations-alert-title">¿Alguien está en peligro ahora?</h2><p>Llama al 911. Indica dónde estás, qué ocurrió y cuáles son los peligros visibles. Mantente en un lugar seguro y no entres a la zona para intentar rescatar a alguien sin entrenamiento y equipo adecuados.</p></div>
+        <a class="btn-pill operations-call-button" href="tel:911"><i class="fa-solid fa-phone" aria-hidden="true"></i> Llamar al 911</a>
+      </div>
+    </section>
+
+    <section class="operations-public" id="colaborar-respuesta" aria-labelledby="operations-help-title">
+      <div class="operations-section-heading">
+        <span class="section-kicker">Apoyo ciudadano responsable</span>
+        <h2 id="operations-help-title">Cómo facilitar la labor de los equipos</h2>
+        <p>La colaboración más útil es segura, coordinada y basada en información confirmada.</p>
+      </div>
+      <div class="operations-public-grid">
+        <article><span><i class="fa-solid fa-route" aria-hidden="true"></i></span><h3>Deja libres las rutas</h3><p>No bloquees calles, accesos ni zonas de trabajo. Sigue los desvíos e indicaciones del personal y no atravieses un perímetro acordonado.</p></article>
+        <article><span><i class="fa-solid fa-people-arrows-left-right" aria-hidden="true"></i></span><h3>No te autodespliegues</h3><p>No ingreses a la zona de peligro ni te sumes a una operación por cuenta propia. Las tareas de rescate y control corresponden a equipos coordinados y equipados.</p></article>
+        <article><span><i class="fa-solid fa-bullhorn" aria-hidden="true"></i></span><h3>Comparte avisos verificados</h3><p>Consulta la fecha, el lugar y la fuente antes de reenviar una alerta. No publiques nombres, rostros, ubicación privada ni imágenes de personas afectadas.</p></article>
+        <article><span><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i></span><h3>Apoya sin exponerte</h3><p>Comprueba que tú y tu hogar están a salvo. Ofrece ayuda a vecinos desde un lugar seguro y coordina cualquier entrega o voluntariado con los canales oficiales.</p></article>
+      </div>
+      <p class="operations-disclaimer"><i class="fa-solid fa-circle-info" aria-hidden="true"></i><span>La asignación de recursos, el ingreso a zonas restringidas, la evacuación y el rescate son coordinados por las autoridades competentes. Esta guía ofrece orientación general y no confirma disponibilidad, tiempos de respuesta ni procedimientos locales específicos.</span></p>
+    </section>
+
+    <section class="operations-stages" aria-labelledby="operations-follow-title">
+      <div class="operations-section-heading">
+        <span class="section-kicker">Información y orientación</span>
+        <h2 id="operations-follow-title">Mantente informado por canales oficiales</h2>
+        <p>Durante una emergencia, sigue las instrucciones de Protección Civil y de las autoridades con competencia en la zona. Para consultas o actividades preventivas que no sean urgentes, utiliza los canales de contacto institucionales.</p>
+      </div>
+      <div class="info-grid">
+        <article class="info-card"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i><h3>Avisos confirmados</h3><p>Verifica que la información corresponda a tu municipio y al momento actual. No difundas ubicaciones o instrucciones que no hayan sido confirmadas.</p></article>
+        <article class="info-card"><i class="fa-solid fa-clipboard-check" aria-hidden="true"></i><h3>Solicitudes preventivas</h3><p>Para evaluaciones, capacitaciones y orientación que puedan programarse, consulta la sección de <a href="servicios.html">Servicios</a>.</p></article>
+        <article class="info-card"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i><h3>Guía para prevenir riesgos</h3><p>Consulta la <a href="gestion-riesgo.html">Guía ciudadana de Gestión del Riesgo</a> para elaborar un plan familiar y prepararte ante las amenazas de tu zona.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img src="img/pc logo.png" alt="Protección Civil" class="footer-logo">
+        <div>
+          <h2>Protección Civil</h2>
+          <p>Prevención, atención y gestión de riesgos al servicio de la comunidad.</p>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>Enlaces rápidos</h3>
+        <a href="index.html">Inicio</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="gestion-riesgo.html">Gestión del riesgo</a>
+        <a href="quienes-somos.html">Quiénes Somos</a>
+        <a href="contacto.html">Contacto</a>
+      </div>
+      <div class="footer-column">
+        <h3>Atención</h3>
+        <a href="tel:911"><i class="fa-solid fa-phone" aria-hidden="true"></i> Emergencias: 911</a>
+        <a href="https://wa.me/584264744951" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp institucional</a>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>Protección Civil y Administración de Desastres</span><span>Comprometidos con tu seguridad</span></div>
+  </footer>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

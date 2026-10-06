@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Información ciudadana, prevención, preparación familiar, servicios coordinados y canales de emergencia de Protección Civil ZOEDAN Apure.">
+  <meta name="theme-color" content="#0046e7">
+  <title>Protección Civil ZOEDAN Apure | Información ciudadana</title>
+  <link rel="icon" type="image/png" href="img/pc logo.png">
+  <link rel="apple-touch-icon" href="img/pc logo.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Iconos FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="home-page">
+
+  <!-- BANNER PRINCIPAL (HERO) -->
+  <section class="hero-banner" id="inicio">
+    <div class="shape-yellow"></div>
+    <div class="shape-red"></div>
+
+    <nav class="navbar">
+      <div class="brand-logo">
+        <img src="img/pc logo.png" alt="logopc" class="logo-pc">
+        <span class="brand-title">PROTECCIÓN CIVIL Y ADMINISTRACION DE DESASTRES ZOEDAN APURE</span>
+      </div>
+
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menú">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#inicio">Inicio</a></li>
+        <li class="nav-dropdown">
+          <button class="nav-dropdown-toggle" type="button" aria-expanded="false">
+            <span>Divisiones</span>
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="direccion.html">Dirección</a>
+            <a href="operaciones.html">Operaciones</a>
+            <a href="rrhh.html">Recursos Humanos</a>
+            <a href="gestion-riesgo.html">Gestión de riesgo</a>
+            <a href="educacion.html">Educación</a>
+            <a href="prehospitalario.html">Prehospitalaria</a>
+          </div>
+        </li>
+        <li><a href="publicaciones.html">Publicaciones</a></li>
+        <li><a href="quienes-somos.html">Quiénes Somos</a></li>
+        <li class="social-nav-item">
+          <div class="social-icons">
+            <a href="#" aria-label="TikTok" title="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+            <a href="#" aria-label="YouTube" title="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61556602676193" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="#" aria-label="Instagram" title="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+          </div>
+        </li>
+        <li><button id="requestServiceNav" class="btn-pill btn-service"><i class="fa-solid fa-handshake" aria-hidden="true"></i> Solicitar Servicio</button></li>
+        <li><button id="reportEmergencyNav" class="btn-pill"><i class="fa-solid fa-phone-volume" aria-hidden="true"></i> Reportar Emergencia</button></li>
+      </ul>
+    </nav>
+    <div class="nav-divider"></div>
+
+    <div class="slider-container" id="slidesWrapper">
+      <button class="arrow-btn prev" id="prevBtn" type="button" title="Diapositiva anterior" aria-label="Diapositiva anterior"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+
+      <div class="slides-wrapper">
+        <div class="hero-slide active">
+          <div class="slide-text-content">
+            <h1 class="hero-title">PREVENCIÓN, INFORMACIÓN Y ACCIÓN PARA PROTEGERTE</h1>
+            <p class="hero-description">Encuentra orientación ciudadana, conoce nuestros servicios y aprende cómo prepararte antes de una emergencia.</p>
+          </div>
+          <div class="slide-image-content">
+            <a href="img/CLASE.jpeg" target="_blank" rel="noopener noreferrer" class="image-link" aria-label="Abrir imagen de Personal PC">
+              <img src="img/CLASE.jpeg" alt="Personal PC" class="person-img">
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-slide">
+          <div class="slide-text-content">
+            <h1 class="hero-title">COMUNIDADES PREPARADAS, COMUNIDADES MÁS SEGURAS</h1>
+            <p class="hero-description">Conoce las opciones de capacitación y preparación que pueden coordinarse con escuelas, instituciones y comunidades.</p>
+          </div>
+          <div class="slide-image-content">
+            <a href="img/CAPT.jpg" target="_blank" rel="noopener noreferrer" class="image-link" aria-label="Abrir imagen de Bombero / Rescatista">
+              <img src="img/CAPT.jpg" alt="Bombero / Rescatista" class="person-img">
+            </a>
+          </div>
+        </div>
+      </div>
+
+<button
+  class="arrow-btn next"
+  id="nextBtn"
+  type="button"
+  title="Siguiente diapositiva"
+  aria-label="Siguiente diapositiva">
+  <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+</button>
+   </div>
+  </section>
+
+  <section class="home-emergency-band" aria-labelledby="home-emergency-title">
+    <div class="home-emergency-icon"><i class="fa-solid fa-phone-volume" aria-hidden="true"></i></div>
+    <div class="home-emergency-copy">
+      <span>¿Hay peligro inmediato?</span>
+      <h2 id="home-emergency-title">Llama al 911</h2>
+      <p>Indica la ubicación exacta, qué ocurrió, cuántas personas necesitan ayuda y los peligros presentes. El reporte por WhatsApp de este sitio no sustituye la llamada de emergencia.</p>
+    </div>
+    <a class="home-emergency-call" href="tel:911"><i class="fa-solid fa-phone" aria-hidden="true"></i> Llamar al 911</a>
+  </section>
+
+  <section class="home-welcome" aria-labelledby="home-welcome-title">
+    <span class="section-kicker">Protección Civil ZOEDAN Apure</span>
+    <h2 id="home-welcome-title">¡Bienvenidos! Estamos aquí para orientarte y servir a la comunidad.</h2>
+    <p>Este portal reúne información para ayudarte a prevenir riesgos, prepararte en familia, conocer nuestros servicios y consultar avisos institucionales. Explora las guías y encuentra el área que puede orientarte.</p>
+    <div class="home-welcome-actions">
+      <a href="#servicios" class="btn-pill btn-service"><i class="fa-solid fa-compass" aria-hidden="true"></i> Explorar servicios</a>
+      <a href="#preparacion" class="home-welcome-link"><i class="fa-solid fa-list-check" aria-hidden="true"></i> Guía de preparación</a>
+    </div>
+  </section>
+
+  <section class="apure-map-section" id="mapa-apure" aria-labelledby="apure-map-title">
+    <div class="apure-map-heading">
+      <span class="section-kicker">Nuestro ámbito regional</span>
+      <h2 id="apure-map-title">Protección Civil ZOEDAN Apure, cerca de tu comunidad</h2>
+      <p>Explora los siete municipios del estado. Selecciona un área en el mapa o búscala en la lista para ver información general y encontrar orientación útil.</p>
+    </div>
+
+    <div class="apure-map-layout">
+      <div class="apure-map-card">
+        <div class="apure-map-toolbar">
+          <span><i class="fa-solid fa-map" aria-hidden="true"></i> Mapa municipal de Apure</span>
+          <button type="button" id="apureMapReset" class="apure-map-reset">Ver estado completo</button>
+        </div>
+        <div class="apure-map-canvas" id="apureMapCanvas">
+          <svg class="apure-map-svg" id="apureMapSvg" viewBox="0 0 760 400" role="group" aria-labelledby="apureMapSvgTitle apureMapSvgDesc">
+            <title id="apureMapSvgTitle">Mapa interactivo del estado Apure dividido por municipios</title>
+            <desc id="apureMapSvgDesc">Selecciona Achaguas, Biruaca, Muñoz, Páez, Pedro Camejo, Rómulo Gallegos o San Fernando.</desc>
+            <path class="apure-state-outline" d="M608.5,303.7 L642.3,271.8 L656.5,236.5 L654,195.5 L711.6,168.9 L724.9,141.6 L739.8,132.2 L736.7,123.1 L721.6,122.1 L716.2,112.5 L693.1,127.5 L654.7,115.4 L641.8,118.8 L590.2,92.2 L575.6,101.1 L534.4,106.1 L469.1,94.8 L449,103.3 L432,100.1 L426.9,89.8 L418.5,93.7 L399,82.5 L374,82.3 L337.8,111.3 L295,123.4 L280.3,138.9 L267.4,137.7 L258.7,156.4 L223.5,173.9 L191.8,172.2 L151,156.1 L106.7,159.4 L88.2,150.9 L69.6,165.8 L42.7,157.4 L20,160.6 L45.8,163.2 L63.3,204.2 L76.2,208 L99,201 L117.8,206.8 L171.9,204.9 L184.7,211.8 L224.3,196.4 L267.4,216.5 L291.7,211.2 L373.3,314.4 L383.1,310 L395.8,317.6 L418.4,300.8 L465.9,311.8 L525.4,300 L539,303.9 L564.7,288.7 L608.5,303.7 Z"></path>
+            <g class="apure-map-municipalities" id="apureMapMunicipalities" aria-label="Municipios de Apure">
+              <path class="apure-municipality" data-municipality="muñoz" tabindex="0" role="button" aria-label="Seleccionar municipio Muñoz" d="M445,102.3 L432,99.2 L426.9,89 L420.3,89.2 L418.2,92.8 L398.6,81.5 L374,81.6 L337.6,110.3 L317.3,114.2 L345,142.4 L350.8,164.5 L365.3,185.5 L371.3,182 L408.8,190.1 L422.1,183.5 L429.5,173 Z"></path>
+              <path class="apure-municipality" data-municipality="páez" tabindex="0" role="button" aria-label="Seleccionar municipio Páez" d="M23.2,159 L20,160.5 L46,162.4 L50.7,168.7 L48.5,177 L63.4,203 L69.3,206.6 L88.6,205.1 L97.4,197.8 L98.2,201 L101.9,199.5 L102.2,203.2 L110,205.6 L111.5,201.4 L117.4,201.6 L118.5,204.9 L132,203.8 L132.7,206.6 L136.9,203.4 L158.8,206.4 L171.9,203.9 L173.8,209.4 L185.1,211.9 L191.9,205 L204.7,201.5 L204.5,198.9 L224.2,196 L229.9,199.7 L239.7,198.5 L246.3,207.2 L254.8,207.1 L267.4,215.5 L280.5,210.3 L291.5,210.7 L295.3,205.2 L261.5,179 L279.7,181.3 L288.2,179 L293.1,183 L306.6,182.3 L309.3,179.3 L323.8,180.2 L335.1,174.4 L341.6,175.4 L351.4,167.2 L345,142.4 L317.3,114.2 L311.4,120.9 L308.6,118.9 L294.9,122.5 L280.3,138 L274.8,135.1 L267.6,136.7 L259.6,154.9 L245.1,159.3 L244.8,164.3 L225.2,170 L223.6,172.9 L217.1,173.8 L203.6,168.2 L192.4,171.5 L177.1,164.1 L168.8,164.4 L161.9,157.9 L133.4,153.1 L125.9,158.2 L113,155.6 L106.7,158.4 L96.7,151.2 L88,149.9 L83.9,158.5 L67.2,165.1 L58.2,160.4 L49.6,162.6 L42.9,156.5 Z"></path>
+              <path class="apure-municipality" data-municipality="biruaca" tabindex="0" role="button" aria-label="Seleccionar municipio Biruaca" d="M559.9,122.1 L582.1,126.7 L600.6,118.4 L601.8,101.2 L589.8,91.2 L575.1,100.3 L562.8,98.5 L559.7,103.3 L548.8,100.2 L537.4,104.2 L547.1,109 L562.7,107.5 Z"></path>
+              <path class="apure-municipality" data-municipality="achaguas" tabindex="0" role="button" aria-label="Seleccionar municipio Achaguas" d="M559.9,122.1 L562.7,107.5 L547.1,109 L523.8,100.2 L517.9,102.4 L508.2,98.7 L500.8,103.6 L496.6,98.6 L469.1,93.9 L456.9,101 L445,102.3 L429.4,172.3 L438.2,228 L472.9,253.1 L476.8,250.8 L480.1,252.9 L478.4,257.3 L482.1,261.6 L490.8,254.9 L494.9,259.5 L504.7,262.2 L510.7,259.3 L515.5,264.1 L519.6,260.2 L536,258.7 L536.2,250.7 L540.6,249.8 L531.3,212.1 L536.3,149.6 L537.2,144.6 L546.3,143.5 L552.6,138 L562.2,139.7 Z"></path>
+              <path class="apure-municipality" data-municipality="pedro-camejo" tabindex="0" role="button" aria-label="Seleccionar municipio Pedro Camejo" d="M472.9,253.1 L467.8,253.2 L466.6,256.8 L463.9,254.4 L454.9,264.3 L438.1,265.6 L428.5,273.3 L424.7,270.9 L422.6,274.1 L404.1,277 L395.5,286.4 L384.3,284 L377.8,289.1 L367.3,289.2 L363.6,296.6 L359.9,297.1 L373.4,314.4 L383,309.9 L390.8,318.9 L413.7,301.1 L425.3,301.8 L432.7,306.4 L444.3,304.8 L465.7,311.4 L470.4,307.1 L477.8,308.2 L491.3,302 L504.5,306.1 L527.4,298.7 L544.6,302.7 L554.6,293.2 L566.1,288.6 L594.9,294.2 L608.2,302.9 L611.9,296.8 L622.2,293 L642,271.1 L647.2,242.6 L656.4,233.6 L658.4,221 L652.2,207.5 L651.9,196.5 L661.4,186.3 L655.5,181.7 L658.6,179.3 L644.7,177.1 L645.6,166.6 L633,162.9 L631,157.8 L626.2,159.6 L607.5,147.1 L624.3,130.6 L616.2,132.2 L605.8,126 L595,128.3 L559.9,122.1 L562.2,139.7 L552.6,138 L546.3,143.5 L537.2,144.6 L536.3,149.6 L531.3,212.1 L540.6,249.8 L536.2,250.7 L536,258.7 L519.6,260.2 L515.5,264.1 L510.7,259.3 L504.7,262.2 L494.9,259.5 L490.8,254.9 L482.1,261.6 L478.4,257.3 L480.1,252.9 L476.8,250.8 Z"></path>
+              <path class="apure-municipality" data-municipality="san-fernando" tabindex="0" role="button" aria-label="Seleccionar municipio San Fernando" d="M585.7,124.8 L595,128.3 L605.8,126 L616.2,132.2 L624.3,130.6 L607.5,147.1 L626.2,159.6 L631,157.8 L633,162.9 L645.6,166.6 L644.7,177.1 L658.6,179.3 L655.5,181.7 L657.9,184.6 L672.3,187.5 L684,176.6 L707.4,170.2 L709.2,161.9 L717.9,155.4 L723.3,139.8 L739.7,131.2 L736.3,122.2 L721.3,121.2 L722.1,117.9 L715.7,111.7 L713.2,116.2 L701.1,117 L701.9,124.9 L697.8,125.2 L697.5,122.6 L692.7,126.7 L671.1,118.5 L659.3,118.3 L654.4,114.5 L642.3,118.2 L642,115.6 L634.4,116.1 L629.8,109.8 L622,107.7 L622.5,103.6 L613.6,99.6 L608.8,103.2 L601.8,101.2 L600.6,118.4 Z"></path>
+              <path class="apure-municipality" data-municipality="romulo-gallegos" tabindex="0" role="button" aria-label="Seleccionar municipio Rómulo Gallegos" d="M429.5,173 L422.1,183.5 L408.8,190.1 L371.3,182 L365.3,185.5 L350.8,164.5 L351.3,167.5 L342.3,175.1 L335.1,174.4 L323.8,180.2 L309.3,179.3 L306.6,182.3 L293.1,183 L288.2,179 L279.7,181.3 L261.4,179.1 L295.3,205.2 L291.5,210.7 L359.9,297.1 L362.8,297.2 L367.3,289.2 L377.8,289.1 L384.3,284 L395.5,286.4 L404.1,277 L422.6,274.1 L424.7,270.9 L428.5,273.3 L438.1,265.6 L454.9,264.3 L463.9,254.4 L466.6,256.8 L467.8,253.2 L472.9,253.1 L438.2,228 Z"></path>
+            </g>
+            <g class="apure-map-labels" aria-hidden="true">
+              <text x="490" y="175">Achaguas</text>
+              <text x="578" y="111">Biruaca</text>
+              <text x="389" y="135">Muñoz</text>
+              <text x="205" y="175">Páez</text>
+              <text x="554" y="235">Pedro Camejo</text>
+              <text x="372" y="229">Rómulo Gallegos</text>
+              <text x="665" y="144">San Fernando</text>
+            </g>
+          </svg>
+        </div>
+        <p class="apure-map-attribution">Límites referenciales, no catastrales: <a href="https://www.geoboundaries.org/" target="_blank" rel="noopener noreferrer">geoBoundaries</a> · estado 2020 (CC BY 3.0 IGO) y municipios 2015 (ODbL 1.0). No representa ubicaciones de unidades ni cobertura de respuesta.</p>
+      </div>
+
+      <aside class="apure-map-sidebar" aria-labelledby="apure-map-sidebar-title">
+        <label for="apureMunicipalitySearch" id="apure-map-sidebar-title">Buscar un municipio</label>
+        <div class="apure-map-search-wrap"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i><input id="apureMunicipalitySearch" type="search" placeholder="Escribe el municipio" autocomplete="off"></div>
+        <div class="apure-municipality-list" id="apureMunicipalityList" role="group" aria-label="Seleccionar municipio">
+          <button type="button" class="apure-municipality-option" data-municipality="san-fernando" aria-pressed="false">San Fernando</button>
+          <button type="button" class="apure-municipality-option" data-municipality="biruaca" aria-pressed="false">Biruaca</button>
+          <button type="button" class="apure-municipality-option" data-municipality="achaguas" aria-pressed="false">Achaguas</button>
+          <button type="button" class="apure-municipality-option" data-municipality="muñoz" aria-pressed="false">Muñoz</button>
+          <button type="button" class="apure-municipality-option" data-municipality="páez" aria-pressed="false">Páez</button>
+          <button type="button" class="apure-municipality-option" data-municipality="pedro-camejo" aria-pressed="false">Pedro Camejo</button>
+          <button type="button" class="apure-municipality-option" data-municipality="romulo-gallegos" aria-pressed="false">Rómulo Gallegos</button>
+        </div>
+        <div class="apure-map-detail" id="apureMapDetail" aria-live="polite">
+          <span class="apure-detail-kicker"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Estado Apure</span>
+          <h3>Selecciona tu municipio</h3>
+          <p>El mapa te ayuda a ubicar los municipios donde trabaja ZOEDAN Apure. Selecciona un área o usa el buscador.</p>
+        </div>
+        <a class="apure-map-link" href="contacto.html"><i class="fa-solid fa-circle-question" aria-hidden="true"></i> ¿Necesitas orientación? Contáctanos</a>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 3. SECCIÓN DE SERVICIOS -->
+  <section class="services-section" id="servicios">
+    <span id="solicitar" class="anchor-target" aria-hidden="true"></span>
+    <div class="section-heading">
+      <span class="section-kicker">Atención y prevención</span>
+      <h2 class="section-title">Servicios principales</h2>
+      <p>Conoce cómo podemos acompañar a tu comunidad antes, durante y después de una emergencia.</p>
+    </div>
+    <div class="cards-container">
+      <div class="service-card">
+        <div class="card-icon"><i class="fa-solid fa-truck-medical"></i></div>
+        <h3>Atención Prehospitalaria</h3>
+        <p>Conoce cómo se coordina la atención inicial y qué información compartir cuando solicites ayuda. Ante una urgencia, llama al 911.</p>
+        <a class="service-card-action btn-pill btn-service" href="prehospitalario.html">
+          <i class="fa-solid fa-circle-info" aria-hidden="true"></i> Ver información
+        </a>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+        <h3>Evaluación de riesgos</h3>
+        <p>Solicitudes de orientación y valoración preventiva. La visita y su alcance requieren coordinación previa.</p>
+        <button class="service-card-action btn-pill btn-service" type="button" data-service-type="Evaluación de riesgos">
+          <i class="fa-solid fa-handshake" aria-hidden="true"></i> Solicitar
+        </button>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon"><i class="fa-solid fa-users-rays"></i></div>
+        <h3>Capacitaciones</h3>
+        <p>Cursos de primeros auxilios y simulacros para empresas, escuelas y comunidades.</p>
+        <button class="service-card-action btn-pill btn-service" type="button" data-service-type="Capacitación comunitaria">
+          <i class="fa-solid fa-handshake" aria-hidden="true"></i> Solicitar
+        </button>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+        <h3>Orientación preventiva</h3>
+        <p>Infórmate sobre preparación ante riesgos, consulta canales oficiales y sigue las orientaciones emitidas para tu zona.</p>
+        <button class="service-card-action btn-pill btn-service" type="button" data-service-type="Asesoría en prevención">
+          <i class="fa-solid fa-comments" aria-hidden="true"></i> Pedir orientación
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="preparedness-section" id="preparacion">
+    <div class="preparedness-heading">
+      <span class="section-kicker">Orientación ciudadana</span>
+      <h2 class="section-title">Prepárate para actuar</h2>
+      <p>Una comunidad informada responde mejor. Sigue estas recomendaciones básicas ante cualquier eventualidad.</p>
+    </div>
+    <div class="preparedness-steps">
+      <article class="preparedness-step">
+        <span class="step-number">01</span>
+        <div><i class="fa-solid fa-clipboard-check" aria-hidden="true"></i><h3>Antes</h3><p>Identifica riesgos cerca de tu hogar, acuerda rutas y punto de encuentro, guarda contactos de emergencia y prepara agua, linterna, medicamentos necesarios y documentos protegidos.</p></div>
+      </article>
+      <article class="preparedness-step">
+        <span class="step-number">02</span>
+        <div><i class="fa-solid fa-person-running" aria-hidden="true"></i><h3>Durante</h3><p>Aléjate de la zona peligrosa si puedes hacerlo con seguridad. No cruces corrientes de agua ni te acerques a cables caídos o estructuras dañadas; sigue las instrucciones oficiales.</p></div>
+      </article>
+      <article class="preparedness-step">
+        <span class="step-number">03</span>
+        <div><i class="fa-solid fa-people-arrows" aria-hidden="true"></i><h3>Después</h3><p>Comprueba cómo están tus familiares sin exponerte. No regreses a zonas evacuadas hasta recibir autorización y mantente atento a la información oficial.</p></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="home-citizen-guide" aria-labelledby="home-citizen-guide-title">
+    <div class="home-guide-heading">
+      <span class="section-kicker">Información para la comunidad</span>
+      <h2 id="home-citizen-guide-title">Encuentra orientación según lo que necesitas</h2>
+      <p>Consulta recomendaciones y conoce las funciones de cada división. Las actividades y evaluaciones requieren coordinación previa; no son canales para reportar emergencias.</p>
+    </div>
+    <div class="home-guide-grid">
+      <a class="home-guide-card" href="gestion-riesgo.html">
+        <span><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></span>
+        <div><h3>Gestión de riesgo</h3><p>Identifica amenazas, reduce vulnerabilidades y prepárate con tu comunidad.</p></div>
+        <i class="fa-solid fa-arrow-right home-guide-arrow" aria-hidden="true"></i>
+      </a>
+      <a class="home-guide-card" href="educacion.html">
+        <span><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></span>
+        <div><h3>Educación y capacitación</h3><p>Conoce opciones de charlas, primeros auxilios y simulacros coordinados.</p></div>
+        <i class="fa-solid fa-arrow-right home-guide-arrow" aria-hidden="true"></i>
+      </a>
+      <a class="home-guide-card" href="operaciones.html">
+        <span><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i></span>
+        <div><h3>Operaciones</h3><p>Aprende cómo informar una situación y facilitar la respuesta de los equipos.</p></div>
+        <i class="fa-solid fa-arrow-right home-guide-arrow" aria-hidden="true"></i>
+      </a>
+      <a class="home-guide-card" href="prehospitalario.html">
+        <span><i class="fa-solid fa-truck-medical" aria-hidden="true"></i></span>
+        <div><h3>Atención prehospitalaria</h3><p>Orientación general sobre cómo pedir ayuda y actuar con seguridad mientras llega.</p></div>
+        <i class="fa-solid fa-arrow-right home-guide-arrow" aria-hidden="true"></i>
+      </a>
+      <a class="home-guide-card" href="publicaciones.html">
+        <span><i class="fa-solid fa-bullhorn" aria-hidden="true"></i></span>
+        <div><h3>Noticias y avisos</h3><p>Consulta publicaciones institucionales. Para alertas urgentes, sigue también los canales oficiales de las autoridades.</p></div>
+        <i class="fa-solid fa-arrow-right home-guide-arrow" aria-hidden="true"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- BOTÓN FLOTANTE PERMANENTE DE EMERGENCIA -->
+  <button id="floatEmergencyBtn" class="float-emergency-btn" title="Reportar Emergencia">
+    <i class="fa-solid fa-phone-volume"></i>
+  </button>
+
+  <!-- MODAL DE REPORTE -->
+  <div class="fb-modal-overlay" id="fbModalOverlay">
+    <div class="fb-modal-card">
+      
+      <!-- Encabezado -->
+      <div class="fb-modal-header">
+        <h3>Crear Reporte de Emergencia</h3>
+        <button class="fb-modal-close" id="closeFbModalBtn" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <!-- Cuerpo -->
+      <div class="fb-modal-body">
+        
+        <!-- Identificación -->
+        <div class="fb-user-badge">
+          <div class="fb-user-avatar"><i class="fa-solid fa-user-shield"></i></div>
+          <div class="fb-user-info">
+            <div class="name">Ciudadano / Reportante</div>
+            <div class="tag"><i class="fa-solid fa-earth-americas"></i> Envío directo a Sala de Guardia</div>
+          </div>
+        </div>
+
+        <!-- Selección de Incidencia -->
+        <div class="fb-incident-selector">
+          <div class="incident-chip selected" data-type="Accidente de Tránsito">
+            <i class="fa-solid fa-car-burst"></i> Accidente Tránsito
+          </div>
+          <div class="incident-chip" data-type="Emergencia Médica / Traslado">
+            <i class="fa-solid fa-heart-pulse"></i> Emergencia Médica
+          </div>
+          <div class="incident-chip" data-type="Inundación / Crecida">
+            <i class="fa-solid fa-house-tsunami"></i> Inundación / Crecida
+          </div>
+          <div class="incident-chip" data-type="Incendio / Estructural">
+            <i class="fa-solid fa-fire"></i> Incendio / Fuego
+          </div>
+        </div>
+
+        <!-- Observaciones -->
+        <textarea class="fb-textarea" id="incidentDetails" rows="2" placeholder="Describe brevemente lo ocurrido (Ej: choque entre dos motos, personas heridas)..."></textarea>
+
+        <!-- Ubicación GPS -->
+        <div class="fb-location-box">
+          <div class="location-box-header">
+            <div class="location-title">
+              <i class="fa-solid fa-location-dot"></i> Ubicación del Incidente
+            </div>
+            <span class="gps-status" id="gpsStatusBadge">Esperando capturar GPS</span>
+          </div>
+
+          <div class="location-details" id="locationDetailsText">
+            Presiona <strong>"Obtener mi GPS actual"</strong> para adjuntar automáticamente tus coordenadas exactas.
+          </div>
+
+          <div class="location-actions">
+            <button type="button" class="btn-gps-auto" id="getGpsBtn">
+              <i class="fa-solid fa-crosshairs"></i> Obtener mi GPS actual
+            </button>
+          </div>
+        </div>
+
+        <!-- Guía WhatsApp -->
+        <div class="fb-guide-steps">
+          <h4><i class="fa-solid fa-lightbulb"></i> ¿Cómo enviar ubicación precisa en WhatsApp?</h4>
+          <ol>
+            <li>Al presionar el botón de abajo, se abrirá el chat oficial de Protección Civil.</li>
+            <li>En WhatsApp, toca el icono de <strong>clip 📎</strong> o <strong>más ➕</strong>.</li>
+            <li>Selecciona <strong>Ubicación</strong> 📍 y elige <strong>"Ubicación en tiempo real"</strong> para un rastreo exacto de las unidades.</li>
+          </ol>
+        </div>
+
+      </div>
+
+      <!-- Pie -->
+      <div class="fb-modal-footer">
+        <button class="fb-submit-btn" id="sendWhatsappBtn">
+          <i class="fa-brands fa-whatsapp"></i> Enviar Reporte a Protección Civil
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- VISOR DE IMÁGENES -->
+  <div class="fb-modal-overlay" id="serviceModalOverlay">
+    <div class="fb-modal-card service-modal-card">
+      <div class="fb-modal-header">
+        <h3>Solicitar Servicio</h3>
+        <button class="fb-modal-close" id="closeServiceModalBtn" type="button" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form class="service-form" id="serviceRequestForm">
+        <div class="fb-modal-body">
+          <p class="service-intro">Completa tus datos y describe el servicio que necesitas. Este formulario no es para emergencias.</p>
+          <label for="serviceName">Nombre y apellido</label>
+          <input id="serviceName" name="name" type="text" autocomplete="name" required>
+          <label for="servicePhone">Teléfono de contacto</label>
+          <input id="servicePhone" name="phone" type="tel" autocomplete="tel" required>
+          <label for="serviceType">Tipo de servicio</label>
+          <select id="serviceType" name="service" required>
+            <option value="">Selecciona una opción</option>
+            <option>Atención prehospitalaria</option>
+            <option>Evaluación de riesgos</option>
+            <option>Inspección preventiva de inmueble</option>
+            <option>Evaluación de riesgos comunitarios</option>
+            <option>Capacitación comunitaria</option>
+            <option>Simulacro de evacuación</option>
+            <option>Capacitación en primeros auxilios</option>
+            <option>Charla de prevención</option>
+            <option>Otra actividad educativa</option>
+            <option>Asesoría en prevención</option>
+            <option>Otro servicio</option>
+          </select>
+          <label for="serviceDetails">Información de la solicitud</label>
+          <textarea id="serviceDetails" name="details" rows="4" required placeholder="Indica lugar, cantidad de personas y detalles importantes..."></textarea>
+        </div>
+        <div class="fb-modal-footer">
+          <button class="fb-submit-btn" id="sendServiceRequestBtn" type="submit"><i class="fa-brands fa-whatsapp"></i> Solicitar por WhatsApp</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="image-viewer-overlay" id="imageViewerOverlay" role="dialog" aria-modal="true" aria-label="Vista ampliada de imagen">
+    <button class="image-viewer-close" id="imageViewerClose" type="button" aria-label="Cerrar imagen">
+      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+    </button>
+    <img id="imageViewerImage" class="image-viewer-image" src="" alt="">
+  </div>
+
+  <div class="post-detail-overlay" id="postDetailOverlay" role="dialog" aria-modal="true" aria-label="Detalle de publicación">
+    <article class="post-detail-card">
+      <header class="post-detail-header">
+        <div class="post-detail-title-row">
+          <img src="img/pc logo.png" alt="" class="muro-profile-avatar">
+          <div><strong>Protección Civil Apure</strong><span><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Cuenta institucional</span></div>
+        </div>
+        <button class="post-detail-close" id="postDetailClose" type="button" aria-label="Cerrar publicación">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+      </header>
+      <div class="post-detail-content">
+        <span class="post-detail-kicker"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Publicación oficial</span>
+        <div class="post-detail-date" id="postDetailDate"></div>
+        <h2 class="post-detail-body-title" id="postDetailTitle"></h2>
+        <div class="post-detail-gallery" id="postDetailGallery"></div>
+        <p class="post-detail-text" id="postDetailText"></p>
+        <div class="post-detail-reactions" id="postDetailReactions"></div>
+        <button class="post-share-button" id="postShareButton" type="button">
+          <i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Compartir publicación
+        </button>
+        <div class="post-detail-pdf" id="postDetailPdf"></div>
+      </div>
+    </article>
+  </div>
+
+  <section class="muro-section" id="muro">
+  <div class="container">
+    <h2 class="section-title">Muro de Noticias y Avisos</h2>
+    <div id="muroGridContainer" class="muro-grid">
+      <!-- Las publicaciones de Firestore se renderizan automáticamente aquí -->
+    </div>
+  </div>
+</section>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img src="img/pc logo.png" alt="Protección Civil" class="footer-logo">
+        <div>
+          <h2>Protección Civil</h2>
+          <p>Prevención, atención y gestión de riesgos al servicio de la comunidad.</p>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3>Enlaces rápidos</h3>
+        <a href="#inicio">Inicio</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="prevencion.html">Prevención</a>
+        <a href="quienes-somos.html">Quiénes Somos</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="publicaciones.html">Publicaciones</a>
+        <a href="#muro">Noticias y avisos</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Atención</h3>
+        <a href="tel:911"><i class="fa-solid fa-phone"></i> Emergencias: 911</a>
+        <a href="https://wa.me/584264744951" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> WhatsApp institucional</a>
+        <a href="admin.html" class="footer-admin-link"><i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i> Iniciar sesión</a>
+      </div>
+
+      <div class="footer-column footer-social-column">
+        <h3>Síguenos</h3>
+        <div class="footer-socials">
+          <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://www.facebook.com/profile.php?id=61556602676193" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Protección Civil y Administración de Desastres</span>
+      <span>Comprometidos con tu seguridad</span>
+    </div>
+  </footer>
+
+  <!-- Carga de SDKs de Firebase primero -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <!-- Lógica personalizada JavaScript -->
+  <script src="script.js"></script>
+  <script src="apure-map.js"></script>
+</body>
+</html>

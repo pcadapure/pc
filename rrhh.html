@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recursos Humanos | Protección Civil</title>
+  <link rel="icon" type="image/png" href="img/pc logo.png">
+  <link rel="apple-touch-icon" href="img/pc logo.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#0046e7">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="simple-header">
+    <a href="index.html" class="simple-brand"><img src="img/pc logo.png" alt="Protección Civil" class="logo-pc"><span>PROTECCIÓN CIVIL Y ADMINISTRACIÓN DE DESASTRES ZOEDAN APURE</span></a>
+    <button class="hamburger-btn" id="hamburgerBtn" type="button" aria-label="Abrir menú"><i class="fa-solid fa-bars"></i></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Inicio</a></li>
+      <li class="nav-dropdown active-dropdown">
+        <button class="nav-dropdown-toggle" type="button" aria-expanded="false">
+          <span>Divisiones</span>
+          <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+        </button>
+        <div class="nav-dropdown-menu">
+          <a href="direccion.html">Dirección</a>
+          <a href="operaciones.html">Operaciones</a>
+          <a href="rrhh.html" aria-current="page">Recursos Humanos</a>
+          <a href="gestion-riesgo.html">Gestión de riesgo</a>
+          <a href="educacion.html">Educación</a>
+          <a href="prehospitalario.html">Prehospitalaria</a>
+        </div>
+      </li>
+      <li><a href="publicaciones.html">Publicaciones</a></li>
+      <li><a href="quienes-somos.html">Quiénes Somos</a></li>
+      <li><button id="requestServiceNav" class="btn-pill btn-service" type="button"><i class="fa-solid fa-handshake" aria-hidden="true"></i> Solicitar Servicio</button></li>
+      <li><button id="reportEmergencyNav" class="btn-pill" type="button"><i class="fa-solid fa-phone-volume" aria-hidden="true"></i> Reportar Emergencia</button></li>
+    </ul>
+  </header>
+
+  <main class="info-page rrhh-portal">
+    <section class="info-hero rrhh-hero">
+      <span class="info-kicker"><i class="fa-solid fa-id-card" aria-hidden="true"></i> Portal Institucional</span>
+      <h1>Recursos Humanos y Administración</h1>
+      <p>Encuentra orientación para tus trámites, solicita los formatos de Recursos Humanos y contacta directamente con la jefatura.</p>
+    </section>
+
+    <div class="rrhh-blog-layout">
+      <section class="rrhh-resources" aria-labelledby="rrhh-resources-title">
+        <div class="rrhh-section-heading">
+          <span class="section-kicker">Trámites y formatos</span>
+          <h2 id="rrhh-resources-title">¿Qué necesitas gestionar?</h2>
+          <p>Selecciona el trámite para consultar con Recursos Humanos y recibir el formato oficial correspondiente.</p>
+        </div>
+
+        <div class="rrhh-resource-grid">
+          <article class="rrhh-resource-card">
+            <span class="rrhh-resource-icon"><i class="fa-solid fa-arrow-up-right-dots" aria-hidden="true"></i></span>
+            <span class="rrhh-resource-category">Desarrollo profesional</span>
+            <h3>Solicitud de ascenso</h3>
+            <p>Consulta los requisitos y solicita la planilla para iniciar el trámite de ascenso.</p>
+            <button type="button" class="rrhh-resource-link" data-rrhh-form="ascenso">Ver planilla <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+          </article>
+
+          <article class="rrhh-resource-card">
+            <span class="rrhh-resource-icon"><i class="fa-solid fa-people-group" aria-hidden="true"></i></span>
+            <span class="rrhh-resource-category">Servicios</span>
+            <h3>Solicitud de servicio</h3>
+            <p>Solicita orientación y el formato correspondiente para requerimientos de servicio.</p>
+            <button type="button" class="rrhh-resource-link" data-rrhh-form="servicio">Ver planilla <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+          </article>
+
+          <article class="rrhh-resource-card">
+            <span class="rrhh-resource-icon"><i class="fa-solid fa-umbrella-beach" aria-hidden="true"></i></span>
+            <span class="rrhh-resource-category">Permisos y reposos</span>
+            <h3>Vacaciones, permisos o reposos</h3>
+            <p>Pregunta por los formatos y recaudos necesarios para tu solicitud.</p>
+            <button type="button" class="rrhh-resource-link" data-rrhh-form="permiso">Ver planilla <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+          </article>
+
+          <article class="rrhh-resource-card">
+            <span class="rrhh-resource-icon"><i class="fa-solid fa-file-circle-check" aria-hidden="true"></i></span>
+            <span class="rrhh-resource-category">Documentos laborales</span>
+            <h3>Constancia de trabajo</h3>
+            <p>Solicita una constancia u otro documento relacionado con tu expediente laboral.</p>
+            <button type="button" class="rrhh-resource-link" data-rrhh-form="constancia">Ver planilla <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+          </article>
+
+        </div>
+
+        <p class="rrhh-download-note"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Abre el trámite que necesitas para descargar su planilla PDF. Imprímela, complétala y llévala a la sede para su revisión, validación y firma.</p>
+      </section>
+
+      <aside class="rrhh-contact-card" aria-labelledby="rrhh-contact-title">
+        <span class="rrhh-contact-icon"><i class="fa-solid fa-user-tie" aria-hidden="true"></i></span>
+        <span class="section-kicker">Atención directa</span>
+        <h2 id="rrhh-contact-title">Jefatura de Recursos Humanos</h2>
+        <p>Para consultas sobre trámites, requisitos o formatos oficiales, comunícate con el equipo de RRHH.</p>
+        <a class="rrhh-contact-method" href="mailto:rrhh.apure@proteccioncivil.gob.ve">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+          <span><strong>Correo electrónico</strong><small>rrhh.apure@proteccioncivil.gob.ve</small></span>
+        </a>
+        <a class="rrhh-contact-method" href="https://wa.me/584264744951?text=Hola%2C%20quisiera%20contactar%20a%20la%20Jefatura%20de%20Recursos%20Humanos." target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+          <span><strong>WhatsApp institucional</strong><small>Solicita que te comuniquen con RRHH</small></span>
+        </a>
+        <p class="rrhh-contact-hours"><i class="fa-regular fa-clock" aria-hidden="true"></i> Atención: lunes a viernes, 8:00 a. m. – 3:00 p. m.</p>
+      </aside>
+    </div>
+  </main>
+
+  <div class="fb-modal-overlay rrhh-modal-overlay" id="rrhhFormModal" aria-hidden="true">
+    <section class="fb-modal-card rrhh-form-modal" role="dialog" aria-modal="true" aria-labelledby="rrhhModalTitle" aria-describedby="rrhhModalInstructions" tabindex="-1">
+      <header class="fb-modal-header">
+        <h3 id="rrhhModalTitle">Planilla de Recursos Humanos</h3>
+        <button class="fb-modal-close" id="rrhhModalClose" type="button" aria-label="Cerrar ventana"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      </header>
+      <div class="fb-modal-body rrhh-modal-body">
+        <p class="rrhh-modal-intro" id="rrhhModalDescription"></p>
+        <div class="rrhh-modal-instructions" id="rrhhModalInstructions">
+          <h4><i class="fa-solid fa-circle-info" aria-hidden="true"></i> ¿Qué debes hacer?</h4>
+          <ol>
+            <li>Descarga e imprime la planilla PDF.</li>
+            <li>Completa los datos y adjunta los recaudos solicitados por Recursos Humanos.</li>
+            <li>Lleva el documento a la sede para revisión, validación y firma.</li>
+          </ol>
+          <p>Esta es una planilla de solicitud referencial; el trámite queda sujeto a la revisión y aprobación de la institución.</p>
+        </div>
+        <p class="rrhh-modal-status" id="rrhhModalStatus" aria-live="polite"></p>
+      </div>
+      <footer class="fb-modal-footer rrhh-modal-footer">
+        <button class="btn-pill rrhh-download-button" id="rrhhDownloadForm" type="button"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Descargar planilla PDF</button>
+      </footer>
+    </section>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img src="img/pc logo.png" alt="Protección Civil" class="footer-logo">
+        <div>
+          <h2>Protección Civil</h2>
+          <p>Prevención, atención y gestión de riesgos al servicio de la comunidad.</p>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3>Enlaces rápidos</h3>
+        <a href="index.html">Inicio</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="prevencion.html">Prevención</a>
+        <a href="quienes-somos.html">Quiénes Somos</a>
+        <a href="contacto.html">Contacto</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Atención</h3>
+        <a href="tel:911"><i class="fa-solid fa-phone"></i> Emergencias: 911</a>
+        <a href="https://wa.me/584264744951" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> WhatsApp institucional</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Protección Civil y Administración de Desastres - ZOEDAN Apure</span>
+      <span>Comprometidos con tu seguridad</span>
+    </div>
+  </footer>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="rrhh-portal.js"></script>
+</body>
+</html>
