@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Información ciudadana, prevención, preparación familiar, servicios coordinados y canales de emergencia de Protección Civil ZOEDAN Apure.">
+  <meta name="theme-color" content="#0046e7">
+  <title>Protección Civil ZOEDAN Apure</title>
+  <link rel="icon" type="image/png" href="img/pc logo.png">
+  <link rel="apple-touch-icon" href="img/pc logo.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Iconos FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="home-page">
+
+  <!-- BANNER PRINCIPAL (HERO) -->
+  <section class="hero-banner" id="inicio">
+    <div class="shape-yellow"></div>
+    <div class="shape-red"></div>
+
+    <nav class="navbar">
+      <div class="brand-logo">
+        <img src="img/pc logo.png" alt="logopc" class="logo-pc">
+        <span class="brand-title">PROTECCIÓN CIVIL Y ADMINISTRACION DE DESASTRES ZOEDAN APURE</span>
+      </div>
+
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menú">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#inicio">Inicio</a></li>
+        <li class="nav-dropdown">
+          <button class="nav-dropdown-toggle" type="button" aria-expanded="false">
+            <span>Divisiones</span>
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="direccion.html">Dirección</a>
+            <a href="operaciones.html">Operaciones</a>
+            <a href="rrhh.html">Recursos Humanos</a>
+            <a href="gestion-riesgo.html">Gestión de riesgo</a>
+            <a href="educacion.html">Educación</a>
+            <a href="libro-pcad.html">Libro de estudio PCAD</a>
+            <a href="prehospitalario.html">Prehospitalaria</a>
+          </div>
+        </li>
+        <li><a href="articulos.html">Artículos</a></li>
+        <li><a href="publicaciones.html">Publicaciones</a></li>
+        <li><a href="quienes-somos.html">Quiénes Somos</a></li>
+        <li class="social-nav-item">
+          <div class="social-icons">
+            <a href="#" aria-label="TikTok" title="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+            <a href="#" aria-label="YouTube" title="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61556602676193" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="#" aria-label="Instagram" title="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+          </div>
+        </li>
+        <li><button id="requestServiceNav" class="btn-pill btn-service"><i class="fa-solid fa-handshake" aria-hidden="true"></i> Solicitar Servicio</button></li>
+        <li><button id="reportEmergencyNav" class="btn-pill"><i class="fa-solid fa-phone-volume" aria-hidden="true"></i> Reportar Emergencia</button></li>
+      </ul>
+    </nav>
+    <div class="nav-divider"></div>
+
+    <div class="slider-container" id="slidesWrapper">
+      <button class="arrow-btn prev" id="prevBtn" type="button" title="Diapositiva anterior" aria-label="Diapositiva anterior"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+
+      <div class="slides-wrapper">
+        <div class="hero-slide hero-slide--welcome active">
+          <div class="hero-welcome-icon" aria-hidden="true">
+            <img src="img/pc%20logo.png" alt="">
+          </div>
+          <div class="slide-text-content">
+            <span class="hero-welcome-label">Protección Civil ZOEDAN Apure</span>
+            <h1 class="hero-title">¡Qué bueno tenerte aquí!</h1>
+            <p class="hero-description">Te damos la bienvenida a este espacio de orientación y apoyo. Salvar vidas es nuestra misión y hacerlo con eficiencia, un honor.</p>
+            <a class="hero-welcome-link" href="articulos.html">Explora nuestras guías <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <div class="hero-slide">
+          <div class="slide-text-content">
+            <h1 class="hero-title">PREVENCIÓN, INFORMACIÓN Y ACCIÓN PARA PROTEGERTE</h1>
+            <p class="hero-description">Encuentra orientación ciudadana, conoce nuestros servicios y aprende cómo prepararte antes de una emergencia.</p>
+          </div>
+          <div class="slide-image-content">
+            <a href="img/CLASE.jpeg" target="_blank" rel="noopener noreferrer" class="image-link" aria-label="Abrir imagen de Personal PC">
+              <img src="img/CLASE.jpeg" alt="Personal PC" class="person-img">
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-slide">
+          <div class="slide-text-content">
+            <h1 class="hero-title">COMUNIDADES PREPARADAS, COMUNIDADES MÁS SEGURAS</h1>
+            <p class="hero-description">Conoce las opciones de capacitación y preparación que pueden coordinarse con escuelas, instituciones y comunidades.</p>
+          </div>
+          <div class="slide-image-content">
+            <a href="img/CAPT.jpg" target="_blank" rel="noopener noreferrer" class="image-link" aria-label="Abrir imagen de Bombero / Rescatista">
+              <img src="img/CAPT.jpg" alt="Bombero / Rescatista" class="person-img">
+            </a>
+          </div>
+        </div>
+      </div>
+
+<button
+  class="arrow-btn next"
+  id="nextBtn"
+  type="button"
+  title="Siguiente diapositiva"
+  aria-label="Siguiente diapositiva">
+  <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+</button>
+   </div>
+  </section>
+
+
+  <section class="home-shortcuts" aria-labelledby="home-shortcuts-title">
+    <div class="home-shortcuts-heading">
+      <span class="section-kicker">Acceso rápido</span>
+      <h2 id="home-shortcuts-title">¿Qué necesitas hacer?</h2>
+      <p>Entra directamente a la información más consultada.</p>
+    </div>
+    <div class="home-shortcuts-grid">
+      <a class="home-shortcut-card" href="articulos.html">
+        <span><i class="fa-solid fa-book-medical" aria-hidden="true"></i></span>
+        <div><h3>Consultar artículos</h3><p>Primeros auxilios, prevención y emergencias.</p></div>
+        <i class="fa-solid fa-arrow-right home-shortcut-arrow" aria-hidden="true"></i>
+      </a>
+      <a class="home-shortcut-card" href="#servicios">
+        <span><i class="fa-solid fa-handshake-angle" aria-hidden="true"></i></span>
+        <div><h3>Solicitar un servicio</h3><p>Capacitaciones, evaluaciones y orientación.</p></div>
+        <i class="fa-solid fa-arrow-right home-shortcut-arrow" aria-hidden="true"></i>
+      </a>
+      <a class="home-shortcut-card" href="#mapa-apure">
+        <span><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i></span>
+        <div><h3>Buscar mi municipio</h3><p>Explora los municipios del estado Apure.</p></div>
+        <i class="fa-solid fa-arrow-right home-shortcut-arrow" aria-hidden="true"></i>
+      </a>
+      <a class="home-shortcut-card" href="#preparacion">
+        <span><i class="fa-solid fa-list-check" aria-hidden="true"></i></span>
+        <div><h3>Cómo prepararme</h3><p>Pasos sencillos para antes, durante y después.</p></div>
+        <i class="fa-solid fa-arrow-right home-shortcut-arrow" aria-hidden="true"></i>
+      </a>
+    </div>
+  </section>
+
+  <section class="home-welcome" aria-labelledby="home-welcome-title">
+    <span class="section-kicker">Protección Civil ZOEDAN Apure</span>
+    <h2 id="home-welcome-title">¡Bienvenidos!</h2>
+    <p>Este portal reúne información para ayudarte a prevenir riesgos, prepararte en familia, conocer nuestros servicios y consultar avisos institucionales. Explora las guías y encuentra el área que puede orientarte.</p>
+    <div class="home-welcome-actions">
+      <a href="#servicios" class="btn-pill btn-service"><i class="fa-solid fa-compass" aria-hidden="true"></i> Explorar servicios</a>
+      <a href="#preparacion" class="home-welcome-link"><i class="fa-solid fa-list-check" aria-hidden="true"></i> Guía de preparación</a>
+    </div>
+  </section>
+
+    <section class="home-random-articles" aria-labelledby="home-random-articles-title">
+    <div class="home-random-articles-heading">
+      <div>
+        <span class="section-kicker">Orientación ciudadana</span>
+        <h2 id="home-random-articles-title">Artículos para leer.</h2>
+      </div>
+      <div class="home-random-articles-controls">
+        <button class="home-article-control" id="homeArticlesPause" type="button" aria-pressed="false" aria-controls="homeRandomArticles" disabled>
+          <i class="fa-solid fa-pause" aria-hidden="true"></i>
+          <span>Pausar</span>
+        </button>
+        <button class="home-article-control home-article-next" id="homeArticlesNext" type="button" aria-label="Mostrar otros artículos" aria-controls="homeRandomArticles" disabled>
+          <i class="fa-solid fa-shuffle" aria-hidden="true"></i>
+          <span>Otros artículos</span>
+        </button>
+      </div>
+    </div>
+    <div class="home-random-article-grid" id="homeRandomArticles" aria-live="polite">
+      <p class="home-articles-status" role="status">Cargando artículos...</p>
+    </div>
+    <a class="home-random-articles-all" href="articulos.html">Ver todos los artículos <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+  </section>
+
+  <section class="headquarters-location" id="ubicacion" aria-labelledby="headquarters-location-title">
+    <div class="headquarters-location-heading">
+      <h2 id="headquarters-location-title">Ubicación</h2>
+      <p>Sede de Protección Civil en el Parque José Antonio Páez, San Fernando de Apure.</p>
+    </div>
+    <div class="headquarters-location-card">
+      <div class="headquarters-location-map">
+        <iframe
+          title="Mapa de la sede de Protección Civil en el Parque José Antonio Páez, San Fernando de Apure"
+          src="https://maps.google.com/maps?q=Protecci%C3%B3n%20Civil%2C%20Parque%20Jos%C3%A9%20Antonio%20P%C3%A1ez%2C%20San%20Fernando%20de%20Apure%2C%20Venezuela&z=16&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="headquarters-location-info">
+        <span class="headquarters-location-icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
+        <span class="headquarters-location-label">Sede institucional</span>
+        <h3>Parque José Antonio Páez</h3>
+        <p>San Fernando de Apure, estado Apure, Venezuela.</p>
+        <a class="headquarters-location-link" href="https://www.google.com/maps/search/?api=1&query=Protecci%C3%B3n%20Civil%2C%20Parque%20Jos%C3%A9%20Antonio%20P%C3%A1ez%2C%20San%20Fernando%20de%20Apure%2C%20Venezuela" target="_blank" rel="noopener noreferrer">
+          <i class="fa-solid fa-diamond-turn-right" aria-hidden="true"></i> Cómo llegar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. SECCIÓN DE SERVICIOS -->
+  <section class="services-section" id="servicios">
+    <span id="solicitar" class="anchor-target" aria-hidden="true"></span>
+    <div class="section-heading">
+      <span class="section-kicker">Atención y prevención</span>
+      <h2 class="section-title">Servicios principales</h2>
+      <p>Conoce cómo podemos acompañar a tu comunidad antes, durante y después de una emergencia.</p>
+    </div>
+    <div class="cards-container">
+      <div class="service-card">
+        <div class="card-icon"><i class="fa-solid fa-truck-medical"></i></div>
+        <h3>Atención Prehospitalaria</h3>
+        <p>Conoce cómo se coordina la atención inicial y qué información compartir cuando solicites ayuda. Ante una urgencia, llama al 911.</p>
+        <a class="service-card-action btn-pill btn-service" href="prehospitalario.html">
+          <i class="fa-solid fa-circle-info" aria-hidden="true"></i> Ver información
+        </a>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+        <h3>Evaluación de riesgos</h3>
+        <p>Solicitudes de orientación y valoración preventiva. La visita y su alcance requieren coordinación previa.</p>
+        <button class="service-card-action btn-pill btn-service" type="button" data-service-type="Evaluación de riesgos">
+          <i class="fa-solid fa-handshake" aria-hidden="true"></i> Solicitar
+        </button>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon"><i class="fa-solid fa-users-rays"></i></div>
+        <h3>Capacitaciones</h3>
+        <p>Cursos de primeros auxilios y simulacros para empresas, escuelas y comunidades.</p>
+        <button class="service-card-action btn-pill btn-service" type="button" data-service-type="Capacitación comunitaria">
+          <i class="fa-solid fa-handshake" aria-hidden="true"></i> Solicitar
+        </button>
+      </div>
+
+      <div class="service-card">
+        <div class="card-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+        <h3>Orientación preventiva</h3>
+        <p>Infórmate sobre preparación ante riesgos, consulta canales oficiales y sigue las orientaciones emitidas para tu zona.</p>
+        <button class="service-card-action btn-pill btn-service" type="button" data-service-type="Asesoría en prevención">
+          <i class="fa-solid fa-comments" aria-hidden="true"></i> Pedir orientación
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="preparedness-section" id="preparacion">
+    <div class="preparedness-heading">
+      <span class="section-kicker">Orientación ciudadana</span>
+      <h2 class="section-title">Prepárate para actuar</h2>
+      <p>Una comunidad informada responde mejor. Sigue estas recomendaciones básicas ante cualquier eventualidad.</p>
+    </div>
+    <div class="preparedness-steps">
+      <article class="preparedness-step">
+        <span class="step-number">01</span>
+        <div><i class="fa-solid fa-clipboard-check" aria-hidden="true"></i><h3>Antes</h3><p>Identifica riesgos cerca de tu hogar, acuerda rutas y punto de encuentro, guarda contactos de emergencia y prepara agua, linterna, medicamentos necesarios y documentos protegidos.</p></div>
+      </article>
+      <article class="preparedness-step">
+        <span class="step-number">02</span>
+        <div><i class="fa-solid fa-person-running" aria-hidden="true"></i><h3>Durante</h3><p>Aléjate de la zona peligrosa si puedes hacerlo con seguridad. No cruces corrientes de agua ni te acerques a cables caídos o estructuras dañadas; sigue las instrucciones oficiales.</p></div>
+      </article>
+      <article class="preparedness-step">
+        <span class="step-number">03</span>
+        <div><i class="fa-solid fa-people-arrows" aria-hidden="true"></i><h3>Después</h3><p>Comprueba cómo están tus familiares sin exponerte. No regreses a zonas evacuadas hasta recibir autorización y mantente atento a la información oficial.</p></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="home-citizen-guide" aria-labelledby="home-citizen-guide-title">
+    <div class="home-guide-heading">
+      <span class="section-kicker">Información para la comunidad</span>
+      <h2 id="home-citizen-guide-title">Encuentra orientación según lo que necesitas</h2>
+      <p>Consulta recomendaciones y conoce las funciones de cada división. Las actividades y evaluaciones requieren coordinación previa; no son canales para reportar emergencias.</p>
+    </div>
+    <div class="home-guide-grid">
+      <a class="home-guide-card" href="gestion-riesgo.html">
+        <span><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></span>
+        <div><h3>Gestión de riesgo</h3><p>Identifica amenazas, reduce vulnerabilidades y prepárate con tu comunidad.</p></div>
+        <i class="fa-solid fa-arrow-right home-guide-arrow" aria-hidden="true"></i>
+      </a>
+      <a class="home-guide-card" href="educacion.html">
+        <span><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></span>
+        <div><h3>Educación y capacitación</h3><p>Conoce opciones de charlas, primeros auxilios y simulacros coordinados.</p></div>
+        <i class="fa-solid fa-arrow-right home-guide-arrow" aria-hidden="true"></i>
+      </a>
+      <a class="home-guide-card" href="libro-pcad.html">
+        <span><i class="fa-solid fa-book-open-reader" aria-hidden="true"></i></span>
+        <div><h3>Libro de estudio PCAD</h3><p>Consulta el Libro Azul página por página y busca temas en su contenido.</p></div>
+        <i class="fa-solid fa-arrow-right home-guide-arrow" aria-hidden="true"></i>
+      </a>
+      <a class="home-guide-card" href="operaciones.html">
+        <span><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i></span>
+        <div><h3>Operaciones</h3><p>Aprende cómo informar una situación y facilitar la respuesta de los equipos.</p></div>
+        <i class="fa-solid fa-arrow-right home-guide-arrow" aria-hidden="true"></i>
+      </a>
+      <a class="home-guide-card" href="prehospitalario.html">
+        <span><i class="fa-solid fa-truck-medical" aria-hidden="true"></i></span>
+        <div><h3>Atención prehospitalaria</h3><p>Orientación general sobre cómo pedir ayuda y actuar con seguridad mientras llega.</p></div>
+        <i class="fa-solid fa-arrow-right home-guide-arrow" aria-hidden="true"></i>
+      </a>
+      <a class="home-guide-card" href="articulos.html">
+        <span><i class="fa-solid fa-book-medical" aria-hidden="true"></i></span>
+        <div><h3>Artículos y guías</h3><p>Aprende sobre primeros auxilios, emergencias, prevención y preparación familiar.</p></div>
+        <i class="fa-solid fa-arrow-right home-guide-arrow" aria-hidden="true"></i>
+      </a>
+      <a class="home-guide-card" href="publicaciones.html">
+        <span><i class="fa-solid fa-bullhorn" aria-hidden="true"></i></span>
+        <div><h3>Noticias y avisos</h3><p>Consulta publicaciones institucionales. Para alertas urgentes, sigue también los canales oficiales de las autoridades.</p></div>
+        <i class="fa-solid fa-arrow-right home-guide-arrow" aria-hidden="true"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- BOTÓN FLOTANTE PERMANENTE DE EMERGENCIA -->
+  <button id="floatEmergencyBtn" class="float-emergency-btn" title="Reportar Emergencia">
+    <i class="fa-solid fa-phone-volume"></i>
+  </button>
+
+  <!-- MODAL DE REPORTE -->
+  <div class="fb-modal-overlay" id="fbModalOverlay">
+    <div class="fb-modal-card">
+      
+      <!-- Encabezado -->
+      <div class="fb-modal-header">
+        <h3>Crear Reporte de Emergencia</h3>
+        <button class="fb-modal-close" id="closeFbModalBtn" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <!-- Cuerpo -->
+      <div class="fb-modal-body">
+        
+        <!-- Identificación -->
+        <div class="fb-user-badge">
+          <div class="fb-user-avatar"><i class="fa-solid fa-user-shield"></i></div>
+          <div class="fb-user-info">
+            <div class="name">Ciudadano / Reportante</div>
+            <div class="tag"><i class="fa-solid fa-earth-americas"></i> Envío directo a Sala de Guardia</div>
+          </div>
+        </div>
+
+        <!-- Selección de Incidencia -->
+        <div class="fb-incident-selector">
+          <div class="incident-chip selected" data-type="Accidente de Tránsito">
+            <i class="fa-solid fa-car-burst"></i> Accidente Tránsito
+          </div>
+          <div class="incident-chip" data-type="Emergencia Médica / Traslado">
+            <i class="fa-solid fa-heart-pulse"></i> Emergencia Médica
+          </div>
+          <div class="incident-chip" data-type="Inundación / Crecida">
+            <i class="fa-solid fa-house-tsunami"></i> Inundación / Crecida
+          </div>
+          <div class="incident-chip" data-type="Incendio / Estructural">
+            <i class="fa-solid fa-fire"></i> Incendio / Fuego
+          </div>
+        </div>
+
+        <!-- Observaciones -->
+        <textarea class="fb-textarea" id="incidentDetails" rows="2" placeholder="Describe brevemente lo ocurrido (Ej: choque entre dos motos, personas heridas)..."></textarea>
+
+        <!-- Ubicación GPS -->
+        <div class="fb-location-box">
+          <div class="location-box-header">
+            <div class="location-title">
+              <i class="fa-solid fa-location-dot"></i> Ubicación del Incidente
+            </div>
+            <span class="gps-status" id="gpsStatusBadge">Esperando capturar GPS</span>
+          </div>
+
+          <div class="location-details" id="locationDetailsText">
+            Presiona <strong>"Obtener mi GPS actual"</strong> para adjuntar automáticamente tus coordenadas exactas.
+          </div>
+
+          <div class="location-actions">
+            <button type="button" class="btn-gps-auto" id="getGpsBtn">
+              <i class="fa-solid fa-crosshairs"></i> Obtener mi GPS actual
+            </button>
+          </div>
+        </div>
+
+        <!-- Guía WhatsApp -->
+        <div class="fb-guide-steps">
+          <h4><i class="fa-solid fa-lightbulb"></i> ¿Cómo enviar ubicación precisa en WhatsApp?</h4>
+          <ol>
+            <li>Al presionar el botón de abajo, se abrirá el chat oficial de Protección Civil.</li>
+            <li>En WhatsApp, toca el icono de <strong>clip 📎</strong> o <strong>más ➕</strong>.</li>
+            <li>Selecciona <strong>Ubicación</strong> 📍 y elige <strong>"Ubicación en tiempo real"</strong> para un rastreo exacto de las unidades.</li>
+          </ol>
+        </div>
+
+      </div>
+
+      <!-- Pie -->
+      <div class="fb-modal-footer">
+        <button class="fb-submit-btn" id="sendWhatsappBtn">
+          <i class="fa-brands fa-whatsapp"></i> Enviar Reporte a Protección Civil
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- VISOR DE IMÁGENES -->
+  <div class="fb-modal-overlay" id="serviceModalOverlay">
+    <div class="fb-modal-card service-modal-card">
+      <div class="fb-modal-header">
+        <h3>Solicitar Servicio</h3>
+        <button class="fb-modal-close" id="closeServiceModalBtn" type="button" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form class="service-form" id="serviceRequestForm">
+        <div class="fb-modal-body">
+          <p class="service-intro">Completa tus datos y describe el servicio que necesitas. Este formulario no es para emergencias.</p>
+          <label for="serviceName">Nombre y apellido</label>
+          <input id="serviceName" name="name" type="text" autocomplete="name" required>
+          <label for="servicePhone">Teléfono de contacto</label>
+          <input id="servicePhone" name="phone" type="tel" autocomplete="tel" required>
+          <label for="serviceType">Tipo de servicio</label>
+          <select id="serviceType" name="service" required>
+            <option value="">Selecciona una opción</option>
+            <option>Atención prehospitalaria</option>
+            <option>Evaluación de riesgos</option>
+            <option>Inspección preventiva de inmueble</option>
+            <option>Evaluación de riesgos comunitarios</option>
+            <option>Capacitación comunitaria</option>
+            <option>Simulacro de evacuación</option>
+            <option>Capacitación en primeros auxilios</option>
+            <option>Charla de prevención</option>
+            <option>Otra actividad educativa</option>
+            <option>Asesoría en prevención</option>
+            <option>Otro servicio</option>
+          </select>
+          <label for="serviceDetails">Información de la solicitud</label>
+          <textarea id="serviceDetails" name="details" rows="4" required placeholder="Indica lugar, cantidad de personas y detalles importantes..."></textarea>
+        </div>
+        <div class="fb-modal-footer">
+          <button class="fb-submit-btn" id="sendServiceRequestBtn" type="submit"><i class="fa-brands fa-whatsapp"></i> Solicitar por WhatsApp</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="image-viewer-overlay" id="imageViewerOverlay" role="dialog" aria-modal="true" aria-label="Vista ampliada de imagen">
+    <button class="image-viewer-close" id="imageViewerClose" type="button" aria-label="Cerrar imagen">
+      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+    </button>
+    <img id="imageViewerImage" class="image-viewer-image" src="" alt="">
+  </div>
+
+  <div class="post-detail-overlay" id="postDetailOverlay" role="dialog" aria-modal="true" aria-label="Detalle de publicación">
+    <article class="post-detail-card">
+      <header class="post-detail-header">
+        <div class="post-detail-title-row">
+          <img src="img/pc logo.png" alt="" class="muro-profile-avatar">
+          <div><strong>Protección Civil Apure</strong><span><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Cuenta institucional</span></div>
+        </div>
+        <button class="post-detail-close" id="postDetailClose" type="button" aria-label="Cerrar publicación">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+      </header>
+      <div class="post-detail-content">
+        <span class="post-detail-kicker"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Publicación oficial</span>
+        <div class="post-detail-date" id="postDetailDate"></div>
+        <h2 class="post-detail-body-title" id="postDetailTitle"></h2>
+        <div class="post-detail-gallery" id="postDetailGallery"></div>
+        <p class="post-detail-text" id="postDetailText"></p>
+        <div class="post-detail-reactions" id="postDetailReactions"></div>
+        <button class="post-share-button" id="postShareButton" type="button">
+          <i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Compartir publicación
+        </button>
+        <div class="post-detail-pdf" id="postDetailPdf"></div>
+      </div>
+    </article>
+  </div>
+
+  <section class="muro-section" id="muro">
+  <div class="container">
+    <h2 class="section-title">Muro de Noticias y Avisos</h2>
+    <div id="muroGridContainer" class="muro-grid">
+      <!-- Las publicaciones de Firestore se renderizan automáticamente aquí -->
+    </div>
+  </div>
+</section>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img src="img/pc logo.png" alt="Protección Civil" class="footer-logo">
+        <div>
+          <h2>Protección Civil</h2>
+          <p>Prevención, atención y gestión de riesgos al servicio de la comunidad.</p>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3>Enlaces rápidos</h3>
+        <a href="#inicio">Inicio</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="prevencion.html">Prevención</a>
+        <a href="quienes-somos.html">Quiénes Somos</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="libro-pcad.html">Libro de estudio PCAD</a>
+        <a href="publicaciones.html">Publicaciones</a>
+        <a href="#muro">Noticias y avisos</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Atención</h3>
+        <a href="tel:911"><i class="fa-solid fa-phone"></i> Emergencias: 911</a>
+        <a href="https://wa.me/584264744951" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> WhatsApp institucional</a>
+        <a href="admin.html" class="footer-admin-link"><i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i> Iniciar sesión</a>
+      </div>
+
+      <div class="footer-column footer-social-column">
+        <h3>Síguenos</h3>
+        <div class="footer-socials">
+          <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://www.facebook.com/profile.php?id=61556602676193" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Protección Civil y Administración de Desastres</span>
+      <span>Comprometidos con tu seguridad</span>
+    </div>
+  </footer>
+
+  <!-- Carga de SDKs de Firebase primero -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <!-- Lógica personalizada JavaScript -->
+  <script src="script.js"></script>
+  <script src="apure-map.js"></script>
+  <script src="article-images.js"></script>
+  <script src="home-articles.js"></script>
+</body>
+</html>

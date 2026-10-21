@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="es" class="article-library-document">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Guías de primeros auxilios, prevención de emergencias y preparación familiar de Protección Civil ZOEDAN Apure.">
+  <meta name="theme-color" content="#0046e7">
+  <title>Artículos y guías | Protección Civil ZOEDAN Apure</title>
+  <link rel="icon" type="image/png" href="img/pc logo.png">
+  <link rel="apple-touch-icon" href="img/pc logo.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="simple-header">
+    <a href="index.html" class="simple-brand">
+      <img src="img/pc logo.png" alt="Protección Civil" class="logo-pc">
+      <span>PROTECCIÓN CIVIL Y ADMINISTRACIÓN DE DESASTRES ZOEDAN APURE</span>
+    </a>
+    <button class="hamburger-btn" id="hamburgerBtn" type="button" aria-label="Abrir menú">
+      <i class="fa-solid fa-bars" aria-hidden="true"></i>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Inicio</a></li>
+      <li class="nav-dropdown">
+        <button class="nav-dropdown-toggle" type="button" aria-expanded="false">
+          <span>Divisiones</span>
+          <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+        </button>
+        <div class="nav-dropdown-menu">
+          <a href="direccion.html">Dirección</a>
+          <a href="operaciones.html">Operaciones</a>
+          <a href="rrhh.html">Recursos Humanos</a>
+          <a href="gestion-riesgo.html">Gestión del riesgo</a>
+          <a href="educacion.html">Educación</a>
+          <a href="libro-pcad.html">Libro de estudio PCAD</a>
+          <a href="prehospitalario.html">Prehospitalaria</a>
+        </div>
+      </li>
+      <li><a class="active" href="articulos.html" aria-current="page">Artículos</a></li>
+      <li><a href="publicaciones.html">Publicaciones</a></li>
+      <li><a href="quienes-somos.html">Quiénes Somos</a></li>
+      <li><button id="requestServiceNav" class="btn-pill btn-service" type="button"><i class="fa-solid fa-handshake" aria-hidden="true"></i> Solicitar Servicio</button></li>
+      <li><button id="reportEmergencyNav" class="btn-pill" type="button"><i class="fa-solid fa-phone-volume" aria-hidden="true"></i> Reportar Emergencia</button></li>
+    </ul>
+  </header>
+
+  <main class="article-library-page">
+    <div class="article-portal-topline">
+      <span>Protección Civil ZOEDAN Apure · Información para la comunidad</span>
+      <a href="tel:911"><i class="fa-solid fa-phone" aria-hidden="true"></i> Emergencias: 911</a>
+    </div>
+
+    <section class="article-portal-view" id="articleListingView" aria-labelledby="article-page-title">
+      <div class="article-portal-heading">
+        <div>
+          <span class="article-portal-kicker">Prevención · Educación · Protección</span>
+          <h1 id="article-page-title">Información para protegerte</h1>
+          <p>Noticias y guías prácticas para responder mejor ante emergencias y cuidar a tu comunidad.</p>
+        </div>
+        <a class="article-portal-all-link" href="#articulos-temas">Explorar todos los temas <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </div>
+
+      <div class="article-portal-layout">
+        <section class="article-news-main" aria-labelledby="article-news-title">
+          <div class="article-section-heading">
+            <h2 id="article-news-title">Artículos destacados</h2>
+            <span>Orientación ciudadana</span>
+          </div>
+          <div class="article-news-lead" id="featuredArticle"></div>
+          <div class="article-recent-list">
+            <h2>También te puede interesar</h2>
+            <div id="latestArticles"></div>
+          </div>
+        </section>
+
+        <aside class="article-portal-sidebar" aria-label="Buscar artículos y temas">
+          <form class="article-search-form" id="articleSearchForm" role="search">
+            <label class="visually-hidden" for="articleSearch">Buscar en los artículos</label>
+            <input id="articleSearch" type="search" placeholder="Buscar artículos...">
+            <button type="submit" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></button>
+          </form>
+          <section class="article-sidebar-block">
+            <h2>Temas de orientación</h2>
+            <div class="article-filter-list" role="group" aria-label="Filtrar artículos por tema">
+              <button class="article-filter" type="button" data-filter="todos" aria-pressed="true">Todos los temas</button>
+            </div>
+          </section>
+          <section class="article-sidebar-emergency">
+            <span><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> ¿Emergencia?</span>
+            <h2>Llama al 911</h2>
+            <p>Indica la ubicación exacta, qué ocurrió y los peligros presentes.</p>
+            <a href="tel:911">Llamar ahora <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </section>
+        </aside>
+      </div>
+
+      <section class="school-prevention-section" aria-labelledby="school-topics-title">
+        <div class="school-section-heading">
+          <span class="article-portal-kicker">Prevención y gestión del riesgo</span>
+          <h2 id="school-topics-title">Menú escolar y autoprotección</h2>
+          <p>Conoce los principales riesgos y consulta recomendaciones para proteger a estudiantes, docentes y comunidad educativa antes, durante y después de una emergencia.</p>
+        </div>
+        <div class="school-topic-grid" id="schoolTopicGrid"></div>
+      </section>
+
+      <section class="school-planning-section" aria-labelledby="school-planning-title">
+        <div class="school-section-heading">
+          <span class="article-portal-kicker">Organización y planificación escolar</span>
+          <h2 id="school-planning-title">Herramientas para una escuela preparada</h2>
+          <p>La prevención se construye con participación, planificación y práctica. Revisa los módulos para organizar la gestión del riesgo en tu institución.</p>
+        </div>
+        <div class="school-planning-grid" id="schoolPlanningGrid"></div>
+      </section>
+
+      <section class="school-quick-section" aria-labelledby="school-quick-title">
+        <div class="school-section-heading">
+          <span class="article-portal-kicker">Acceso rápido</span>
+          <h2 id="school-quick-title">Información esencial para actuar</h2>
+        </div>
+        <div class="school-quick-grid" id="schoolQuickGrid"></div>
+      </section>
+
+      <section class="article-more-section" id="articulos-temas" aria-labelledby="article-more-title">
+        <div class="article-section-heading">
+          <div>
+            <span class="article-portal-kicker">Biblioteca ciudadana</span>
+            <h2 id="article-more-title">Todos los artículos</h2>
+          </div>
+          <span class="article-results-count" id="articleResultsCount" aria-live="polite"></span>
+        </div>
+        <div class="article-card-grid" id="articleCardGrid"></div>
+        <p class="article-empty-state" id="articleEmptyState" hidden>No encontramos artículos con esos términos. Prueba otra palabra o selecciona “Todos los temas”.</p>
+      </section>
+      <div class="article-callout">
+        <strong>Importante:</strong> estas guías ofrecen orientación general y educativa; no sustituyen una capacitación certificada, evaluación médica ni instrucciones de los servicios de emergencia.
+      </div>
+
+    </section>
+
+    <section class="article-detail-view" id="articleDetailView" aria-labelledby="articleDetailTitle" hidden>
+      <nav class="article-breadcrumb" aria-label="Ruta de navegación">
+        <a href="index.html">Inicio</a><i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+        <a href="#articulos">Artículos</a><i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+        <span id="articleDetailCategory">Guía ciudadana</span>
+      </nav>
+      <section class="article-guide-banner" id="articleGuideBanner" aria-label="Guía de orientación" hidden>
+        <div class="article-guide-banner-copy" id="articleGuideBannerCopy">
+          <span class="article-guide-topic">
+            <span id="articleGuideTopic">Tema</span>
+            <i id="articleGuideIcon" class="fa-solid fa-cloud-showers-water" aria-hidden="true"></i>
+          </span>
+          <h1 id="articleDetailTitle"></h1>
+          <p class="article-detail-intro" id="articleDetailIntro"></p>
+        </div>
+        <aside class="article-guide-contact" aria-label="Contacto de emergencia">
+          <span>Emergencias: 911</span>
+          <a href="tel:911">Llamar al 911 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          <p>Sigue las alertas e indicaciones oficiales de tu localidad.</p>
+        </aside>
+      </section>
+      <div class="article-detail-layout">
+        <article class="article-detail-main">
+          <div class="article-detail-content" id="articleDetailContent"></div>
+          <div class="article-callout urgent"><strong>Ante una emergencia real:</strong> llama al 911 y sigue las instrucciones del operador. No te expongas a peligros para auxiliar a otra persona.</div>
+          <a class="article-back-link" href="#articulos"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Volver a todos los artículos</a>
+        </article>
+        <aside class="article-detail-sidebar" aria-label="Artículos recientes y emergencia">
+          <form class="article-search-form" id="detailSearchForm" role="search">
+            <label class="visually-hidden" for="detailArticleSearch">Buscar en los artículos</label>
+            <input id="detailArticleSearch" type="search" placeholder="Buscar artículos...">
+            <button type="submit" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></button>
+          </form>
+          <section class="article-sidebar-block">
+            <h2>Artículos relacionados</h2>
+            <div id="relatedArticles"></div>
+          </section>
+          <section class="article-sidebar-emergency">
+            <span><i class="fa-solid fa-phone-volume" aria-hidden="true"></i> Atención inmediata</span>
+            <h2>911</h2>
+            <p>Comparte tu ubicación exacta y describe lo que está ocurriendo.</p>
+            <a href="tel:911">Llamar al 911 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </section>
+        </aside>
+      </div>
+    </section>
+
+    <div id="articleSources" hidden>
+    <section class="info-hero" aria-labelledby="article-source-title">
+      <span class="info-kicker">Biblioteca ciudadana</span>
+      <h1 id="article-source-title">Artículos y guías para cuidarnos</h1>
+      <p>Consulta información práctica sobre primeros auxilios, preparación familiar y cómo actuar ante situaciones de riesgo. Busca un tema o abre una guía para leerla completa.</p>
+      <nav class="page-section-nav" aria-label="Acceso rápido a los artículos">
+        <a href="#primeros-auxilios">Primeros auxilios</a>
+        <a href="#rcp-atragantamiento">RCP y atragantamiento</a>
+        <a href="#hemorragias">Heridas y hemorragias</a>
+        <a href="#traumatismos">Golpes y fracturas</a>
+        <a href="#quemaduras">Quemaduras</a>
+        <a href="#calor">Calor e hidratación</a>
+        <a href="#mordeduras">Mordeduras y picaduras</a>
+        <a href="#inundaciones">Inundaciones</a>
+        <a href="#incendios">Incendios</a>
+        <a href="#sismos">Sismos</a>
+        <a href="#plan-familiar">Plan familiar</a>
+        <a href="#seguridad-vial">Seguridad vial</a>
+      </nav>
+    </section>
+
+    <section aria-labelledby="article-list-title">
+      <h2 id="article-list-title" class="section-title">Explora los temas</h2>
+      <div class="article-tools">
+        <label class="article-search">
+          <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          <input id="articleSearchSource" type="search" aria-label="Buscar artículos" placeholder="Buscar: quemaduras, inundaciones, RCP...">
+        </label>
+        <div class="article-filter-list" role="group" aria-label="Filtrar artículos por tema">
+          <button class="article-filter" type="button" data-filter="todos" aria-pressed="true">Todos</button>
+          <button class="article-filter" type="button" data-filter="salud" aria-pressed="false">Primeros auxilios</button>
+          <button class="article-filter" type="button" data-filter="desastres" aria-pressed="false">Emergencias</button>
+          <button class="article-filter" type="button" data-filter="preparacion" aria-pressed="false">Preparación</button>
+          <button class="article-filter" type="button" data-filter="seguridad" aria-pressed="false">Seguridad</button>
+        </div>
+      </div>
+      <p class="article-results-count" id="articleResultsCountSource" aria-live="polite"></p>
+
+      <div class="article-list" id="articleList">
+        <details class="learning-article" id="primeros-auxilios" data-category="salud">
+          <summary>
+            <span class="article-icon"><i class="fa-solid fa-kit-medical" aria-hidden="true"></i></span>
+            <span class="article-heading">
+              <span class="article-category-label">Primeros auxilios</span>
+              <h2>¿Qué son los primeros auxilios y cómo empezar?</h2>
+              <p>Principios para proteger la escena, pedir ayuda y apoyar a una persona sin exponerte.</p>
+            </span>
+          </summary>
+          <div class="article-content">
+            <p>Los primeros auxilios son la ayuda inicial y temporal que se brinda ante una lesión o enfermedad repentina hasta que llegue personal capacitado. Su objetivo es preservar la vida, evitar que la condición empeore y facilitar la atención profesional; no sustituyen una evaluación médica ni una capacitación práctica.</p>
+            <h3>La prioridad: proteger, alertar y ayudar</h3>
+            <ol>
+              <li><strong>Protege la escena.</strong> Antes de acercarte, observa tránsito, fuego, humo, electricidad, derrumbes, sustancias peligrosas, violencia y agua en movimiento. No entres en un lugar inseguro. Usa guantes u otra barrera si está disponible.</li>
+              <li><strong>Comprueba si responde.</strong> Háblale en voz alta y observa si respira con normalidad. Evita moverla salvo que permanezca en peligro inmediato.</li>
+              <li><strong>Pide ayuda pronto.</strong> Llama al 911 o señala a una persona concreta para que llame. Informa ubicación exacta, qué ocurrió, número y condición aparente de las personas, riesgos presentes y un teléfono de contacto. No cuelgues hasta que el operador lo indique.</li>
+              <li><strong>Apoya sin causar daño.</strong> Sigue las instrucciones del operador, tranquiliza a la persona, evita que pierda calor y vigila cambios en su estado hasta que llegue ayuda.</li>
+            </ol>
+            <h3>Qué observar e informar</h3>
+            <p>Describe lo que ves, no intentes diagnosticar: si está consciente, si respira de manera normal, si hay sangrado abundante, dolor intenso o una lesión evidente; cuándo comenzó el problema; y si existen peligros alrededor. Comparte si la persona lo comunica, pero no administres medicamentos ni comida por iniciativa propia.</p>
+            <h3>Si está inconsciente</h3>
+            <p>Solicita ayuda urgente. Si respira normalmente y no sospechas una lesión de cuello, espalda o pelvis, colócala de lado para ayudar a mantener despejada la vía respiratoria. Si puede haber traumatismo, no la muevas; vigila su respiración y sigue al operador. Si deja de respirar normalmente, inicia RCP solo dentro de tus capacidades y siguiendo las indicaciones telefónicas.</p>
+            <h3>Lo que no se debe hacer</h3>
+            <ul>
+              <li>No te pongas en riesgo ni muevas a una persona con posible lesión de columna, salvo peligro inmediato.</li>
+              <li>No des líquidos, alimentos, alcohol, medicamentos ni remedios caseros a una persona inconsciente o confusa.</li>
+              <li>No retires objetos clavados, no limpies heridas graves en profundidad y no intentes acomodar huesos o articulaciones.</li>
+              <li>No cuelgues una llamada de emergencia para buscar información en redes sociales; sigue las instrucciones oficiales.</li>
+            </ul>
+            <div class="article-callout urgent"><strong>Emergencia:</strong> ante dificultad para respirar, pérdida del conocimiento, sangrado abundante, dolor fuerte en el pecho, signos de accidente cerebrovascular, convulsión prolongada, quemadura grave o lesión importante, llama al 911 de inmediato.</div>
+            <p>La mejor preparación es aprender con un curso presencial certificado de primeros auxilios y RCP. Practicar con instructores permite adquirir destrezas que no se aprenden solo leyendo.</p>
+          </div>
+        </details>
+
+        <details class="learning-article" id="rcp-atragantamiento" data-category="salud">
+          <summary>
+            <span class="article-icon"><i class="fa-solid fa-heart-pulse" aria-hidden="true"></i></span>
+            <span class="article-heading">
+              <span class="article-category-label">Primeros auxilios</span>
+              <h2>RCP y atragantamiento: pedir ayuda a tiempo</h2>
+              <p>Cómo reconocer una urgencia respiratoria y activar la respuesta de emergencia.</p>
+            </span>
+          </summary>
+          <div class="article-content">
+            <h3>Cuando una persona no responde y no respira normalmente</h3>
+            <ol>
+              <li>Comprueba que la escena sea segura. Llama al 911 o pide a alguien que lo haga. Si estás en un lugar público y hay un DEA cerca, pide a otra persona que lo traiga; no dejes sola a la persona afectada ni retrases la RCP para buscarlo. En casa, sigue las instrucciones del operador y comienza las compresiones si sabes hacerlas.</li>
+              <li>DEA significa desfibrilador externo automático: es un equipo portátil que analiza el ritmo del corazón y, si hace falta, indica una descarga eléctrica para ayudar a restablecerlo. Puede usarlo una persona sin formación siguiendo sus instrucciones de voz y las indicaciones del operador de emergencias.</li>
+              <li>Si eres una persona adulta sin entrenamiento en ventilaciones, las compresiones torácicas continuas son mejor que no hacer nada. Coloca las manos en el centro del pecho y sigue el ritmo y las instrucciones del operador del 911.</li>
+              <li>Si tienes formación vigente, realiza RCP de acuerdo con el curso que recibiste. En adultos, las guías de entrenamiento indican compresiones firmes y rápidas, a un ritmo de 100 a 120 por minuto y con una profundidad aproximada de 5 a 6 centímetros; permite que el pecho vuelva a su posición entre compresiones.</li>
+              <li>Enciende el DEA apenas esté disponible y sigue sus indicaciones de voz. Nadie debe tocar a la persona mientras el equipo analiza o administra una descarga.</li>
+            </ol>
+            <p>La RCP en bebés y niños, las ventilaciones y otras situaciones requieren técnicas distintas. Si no estás entrenado, llama al 911 y sigue al operador; solicita capacitación para aprender la técnica adecuada.</p>
+            <h3>Si alguien se está atragantando</h3>
+            <p>Si la persona puede hablar, toser con fuerza o respirar, anímala a seguir tosiendo y obsérvala. Si no puede hablar, respirar o toser eficazmente, es una emergencia: pide ayuda y llama al 911. Aplica únicamente las maniobras para su edad que hayas aprendido en una capacitación reconocida y sigue las indicaciones del operador.</p>
+            <ul>
+              <li>Las maniobras no son iguales para adultos, niños pequeños y bebés. No apliques empujes abdominales a un bebé.</li>
+              <li>Si la persona queda inconsciente, bájala con cuidado al suelo, activa emergencias e inicia RCP según tu formación e instrucciones del operador.</li>
+              <li>No introduzcas los dedos a ciegas en la boca: podrías empujar el objeto más adentro. Retíralo solo si lo ves claramente y puedes alcanzarlo con seguridad.</li>
+              <li>Tras un episodio de atragantamiento que requirió maniobras, busca evaluación médica.</li>
+            </ul>
+            <div class="article-callout">Las técnicas de RCP y desobstrucción deben aprenderse con práctica supervisada. Si dudas, activa el 911 y sigue en tiempo real las instrucciones del operador.</div>
+          </div>
+        </details>
+
+        <details class="learning-article" id="hemorragias" data-category="salud">
+          <summary>
+            <span class="article-icon"><i class="fa-solid fa-bandage" aria-hidden="true"></i></span>
+            <span class="article-heading">
+              <span class="article-category-label">Primeros auxilios</span>
+              <h2>Heridas y hemorragias</h2>
+              <p>Control inicial del sangrado, protección de heridas y señales para pedir atención urgente.</p>
+            </span>
+          </summary>
+          <div class="article-content">
+            <h3>Ante un sangrado externo</h3>
+            <ol>
+              <li>Verifica que la escena sea segura; usa guantes o una barrera limpia para reducir el contacto con sangre.</li>
+              <li>Coloca una gasa o tela limpia sobre la herida y aplica presión firme y continua. Si se empapa, coloca más material encima sin retirar el primero.</li>
+              <li>Llama al 911 si el sangrado es abundante, no se detiene, la herida es profunda o amplia, hay una amputación o la persona se ve débil, pálida, fría o confundida.</li>
+              <li>Mantén a la persona quieta y abrigada. No le des comida ni bebida si requiere atención urgente.</li>
+            </ol>
+            <h3>Heridas con objetos incrustados</h3>
+            <p>No retires el objeto ni presiones directamente sobre él. Aplica presión alrededor para controlar el sangrado, procura que el objeto no se mueva y solicita atención urgente.</p>
+            <h3>Cortes menores</h3>
+            <p>Cuando el sangrado sea leve y esté controlado, lava la herida con agua limpia, cúbrela con un apósito limpio y vigila signos de infección. Busca evaluación si no puedes limpiarla bien, es una mordedura, tiene suciedad incrustada, sus bordes están muy separados o no conoces el estado de vacunación antitetánica.</p>
+            <p>No uses torniquetes improvisados. Los dispositivos comerciales para hemorragias potencialmente mortales deben utilizarse con capacitación o siguiendo las instrucciones del operador de emergencias.</p>
+          </div>
+        </details>
+
+        <details class="learning-article" id="traumatismos" data-category="salud">
+          <summary>
+            <span class="article-icon"><i class="fa-solid fa-bone" aria-hidden="true"></i></span>
+            <span class="article-heading">
+              <span class="article-category-label">Primeros auxilios</span>
+              <h2>Golpes, fracturas y lesiones de cabeza o cuello</h2>
+              <p>Cómo reducir el riesgo de empeorar una lesión mientras llega personal capacitado.</p>
+            </span>
+          </summary>
+          <div class="article-content">
+            <h3>Ante un golpe fuerte o posible fractura</h3>
+            <ul>
+              <li>No endereces ni intentes recolocar un hueso o articulación. Evita que la zona se mueva en la posición encontrada.</li>
+              <li>Si hay herida, cúbrela sin empujar huesos expuestos. Para controlar sangrado, aplica presión alrededor, no sobre el hueso que sobresale.</li>
+              <li>Solicita atención urgente ante deformidad, dolor intenso, incapacidad para usar la extremidad, entumecimiento, herida abierta o cambio de color/temperatura en manos o pies.</li>
+              <li>Una compresa fría envuelta en tela puede ayudar con una lesión menor; no coloques hielo directamente sobre la piel.</li>
+            </ul>
+            <h3>Posible lesión de cabeza, cuello o espalda</h3>
+            <p>Después de una caída, choque o golpe importante, pide ayuda y evita mover a la persona, especialmente si tiene dolor en cuello o espalda, debilidad, hormigueo, confusión o pérdida del conocimiento. Mantén su cabeza y cuello quietos sin forzar una posición y vigila si respira.</p>
+            <p>Vómitos repetidos, convulsiones, somnolencia creciente, dolor de cabeza intenso, sangrado por oídos/nariz o conducta inusual después de un golpe requieren evaluación urgente. No la dejes sola ni le des medicamentos o comida sin indicación médica.</p>
+          </div>
+        </details>
+
+        <details class="learning-article" id="quemaduras" data-category="salud">
+          <summary>
+            <span class="article-icon"><i class="fa-solid fa-fire-flame-simple" aria-hidden="true"></i></span>
+            <span class="article-heading">
+              <span class="article-category-label">Primeros auxilios</span>
+              <h2>Quemaduras por calor, electricidad o sustancias</h2>
+              <p>Detener la exposición y enfriar con seguridad, sin remedios que lesionen más la piel.</p>
+            </span>
+          </summary>
+          <div class="article-content">
+            <ol>
+              <li>Asegura primero la escena. En una quemadura eléctrica, no toques a la persona hasta que se haya cortado la corriente; llama al 911.</li>
+              <li>Enfría una quemadura térmica con agua corriente fresca durante 20 minutos, si es posible. No uses hielo ni agua helada.</li>
+              <li>Retira anillos, relojes o ropa ajustada antes de que aumente la hinchazón, pero no despegues la ropa pegada a la piel ni revientes ampollas.</li>
+              <li>Cubre suavemente con un apósito estéril no adherente o una tela limpia. No apliques mantequilla, pasta dental, aceites, cremas ni polvos.</li>
+            </ol>
+            <h3>Cuándo buscar atención urgente</h3>
+            <p>Llama al 911 por quemaduras grandes o profundas, eléctricas o químicas; por lesión en cara, manos, pies, genitales o articulaciones; por inhalación de humo; o si la persona tiene dificultad respiratoria, confusión o dolor intenso. Niños pequeños y personas mayores requieren especial precaución.</p>
+            <h3>Productos químicos</h3>
+            <p>Evita el contacto con el producto y protégete. Si es seguro, retira ropa o joyas contaminadas y enjuaga la piel con abundante agua limpia mientras llega ayuda. No intentes neutralizar el químico con otra sustancia. Si entró en los ojos, enjuaga con agua limpia y solicita asistencia urgente. Informa al personal qué producto estuvo involucrado, si lo sabes.</p>
+          </div>
+        </details>
+
+        <details class="learning-article" id="calor" data-category="salud">
+          <summary>
+            <span class="article-icon"><i class="fa-solid fa-sun" aria-hidden="true"></i></span>
+            <span class="article-heading">
+              <span class="article-category-label">Salud y prevención</span>
+              <h2>Calor intenso, deshidratación y agotamiento</h2>
+              <p>Medidas para reducir la exposición y actuar ante señales de enfermedad por calor.</p>
+            </span>
+          </summary>
+          <div class="article-content">
+            <h3>Prevención en días calurosos</h3>
+            <ul>
+              <li>Toma agua con regularidad y procura estar en sombra o espacios ventilados, especialmente en las horas de mayor calor.</li>
+              <li>Usa ropa ligera, descansos frecuentes y protección solar. Reduce el ejercicio y el trabajo intenso bajo el sol.</li>
+              <li>Presta atención a niñas y niños, personas mayores, embarazadas, personas enfermas y quienes trabajan al aire libre.</li>
+              <li>Nunca dejes a una persona o animal dentro de un vehículo estacionado.</li>
+            </ul>
+            <h3>Si alguien se siente mal por el calor</h3>
+            <p>Llévala a un lugar fresco y ventilado, afloja ropa innecesaria y enfría el cuerpo con paños húmedos o agua fresca. Si está completamente despierta y puede tragar, puede beber sorbos de agua. No le des líquidos si está confusa, vomita, convulsiona o está inconsciente.</p>
+            <p>Confusión, desmayo, convulsiones, temperatura corporal muy elevada o piel caliente requieren atención de emergencia: llama al 911 y comienza a enfriar mientras llega ayuda, sin dejar sola a la persona.</p>
+          </div>
+        </details>
+
+        <details class="learning-article" id="mordeduras" data-category="salud">
+          <summary>
+            <span class="article-icon"><i class="fa-solid fa-spider" aria-hidden="true"></i></span>
+            <span class="article-heading">
+              <span class="article-category-label">Primeros auxilios</span>
+              <h2>Mordeduras de serpiente, animales y picaduras</h2>
+              <p>Aléjate del animal, evita remedios peligrosos y busca evaluación médica.</p>
+            </span>
+          </summary>
+          <div class="article-content">
+            <h3>Mordedura de serpiente</h3>
+            <ol>
+              <li>Aléjate del animal. No intentes atraparlo ni matarlo. Si puedes hacerlo desde una distancia segura, recuerda su apariencia para describirla; no te arriesgues a tomar una foto.</li>
+              <li>Llama al 911 y busca atención médica urgente, aunque al principio haya poco dolor o no veas síntomas.</li>
+              <li>Mantén a la persona tranquila y quieta. Retira anillos, pulseras o ropa ajustada cerca de la zona afectada antes de que se hinche y mantenla inmóvil en una posición cómoda.</li>
+              <li>Observa cambios en respiración, conciencia y zona afectada. Informa la hora de la mordedura y cualquier cambio al personal de emergencia.</li>
+            </ol>
+            <p>No cortes ni succiones la herida; no pongas hielo, descargas eléctricas, hierbas, químicos ni torniquetes. No intentes capturar la serpiente. El tratamiento específico debe realizarse en un centro de salud.</p>
+            <h3>Mordeduras de perros u otros animales</h3>
+            <p>Aléjate del animal y, cuando sea seguro, lava la herida con abundante agua limpia y jabón. Si sangra, aplica presión con una tela limpia. Busca valoración médica para determinar si se necesita tratamiento contra infección, tétanos o rabia; es especialmente importante si la mordedura rompió la piel, es profunda o el animal no puede identificarse.</p>
+            <h3>Picaduras y reacción alérgica</h3>
+            <p>Aléjate del área donde haya insectos. Una dificultad repentina para respirar, hinchazón de lengua o garganta, desmayo o reacción generalizada puede ser una alergia grave: llama al 911. Si la persona tiene un autoinyector de adrenalina recetado, ayúdala a usarlo según las instrucciones del dispositivo y su plan médico, sin retrasar la llamada.</p>
+          </div>
+        </details>
+
+        <details class="learning-article" id="inundaciones" data-category="desastres">
+          <summary>
+            <span class="article-icon"><i class="fa-solid fa-house-flood-water" aria-hidden="true"></i></span>
+            <span class="article-heading">
+              <span class="article-category-label">Gestión del riesgo</span>
+              <h2>Inundaciones, lluvias y crecidas de ríos</h2>
+              <p>Prepárate antes de las lluvias y aléjate de corrientes, cauces y zonas anegadas.</p>
+            </span>
+          </summary>
+          <div class="article-content">
+            <h3>Antes</h3>
+            <ul>
+              <li>Conoce si tu escuela, vivienda o trabajo está en una zona expuesta a inundaciones; ubica las salidas y las áreas seguras en terreno alto.</li>
+              <li>Elabora un plan de emergencia y un croquis con rutas de evacuación, puntos de encuentro y apoyo para quienes lo necesiten.</li>
+              <li>Mantén limpios, con ayuda adulta y sin exponerte, los desagües, canaletas y bajantes para evitar que se acumule agua.</li>
+              <li>Guarda productos tóxicos y materiales de laboratorio en recipientes cerrados, identificados y por encima del nivel que podría alcanzar el agua.</li>
+              <li>Prepara agua potable, alimentos, linterna, radio portátil, baterías, medicamentos y documentos protegidos; participa en simulacros escolares.</li>
+              <li>Atiende los avisos oficiales y evacúa con tiempo cuando lo indiquen. No esperes a que el agua rodee el plantel o la vivienda.</li>
+            </ul>
+            <h3>Durante</h3>
+            <ul>
+              <li>Mantén la calma, activa el plan escolar y sigue las instrucciones de las autoridades y brigadistas.</li>
+              <li>Ante una alerta oficial, evacúa de inmediato por la ruta indicada hacia un lugar seguro y elevado; lleva solo lo esencial si está a mano.</li>
+              <li>No camines, nades ni conduzcas por calles, puentes o corrientes inundadas. El agua puede ocultar huecos, objetos peligrosos y cables eléctricos.</li>
+              <li>No toques equipos eléctricos mojados ni cables caídos. Corta los servicios únicamente si puedes hacerlo desde un lugar seco y seguro, sin acercarte al agua; de lo contrario, aléjate y avisa a emergencias.</li>
+              <li>Aléjate de árboles, postes, alambradas y estructuras metálicas durante tormentas eléctricas. Mantente informado por radio y no regreses por pertenencias.</li>
+            </ul>
+            <h3>Después</h3>
+            <ul>
+              <li>Permanece en un lugar seguro y vuelve solo cuando las autoridades lo indiquen. Evita edificios dañados, zonas anegadas y cables expuestos.</li>
+              <li>Mantén a niñas y niños lejos del agua de inundación: puede estar contaminada y esconder peligros.</li>
+              <li>No conectes la electricidad ni uses equipos mojados hasta que una persona técnica confirme que es seguro. Reporta daños y peligros a las autoridades.</li>
+              <li>Desecha alimentos y agua que hayan tenido contacto con el agua de inundación. Para limpiar lodo o escombros, usa botas y guantes y evita el contacto con heridas.</li>
+              <li>Sigue las actualizaciones oficiales sobre el tiempo, la calidad del agua y la reapertura de la escuela o comunidad.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="learning-article" id="incendios" data-category="desastres">
+          <summary>
+            <span class="article-icon"><i class="fa-solid fa-fire" aria-hidden="true"></i></span>
+            <span class="article-heading">
+              <span class="article-category-label">Gestión del riesgo</span>
+              <h2>Incendios en viviendas y exposición al humo</h2>
+              <p>Evacúa, alerta y no regreses a buscar objetos en un lugar con fuego o humo.</p>
+            </span>
+          </summary>
+          <div class="article-content">
+            <h3>Antes</h3>
+            <ol>
+              <li>Conoce el plan escolar o familiar, las salidas disponibles, las rutas alternas y el punto de encuentro exterior.</li>
+              <li>Mantén pasillos y salidas despejados; identifica las alarmas y participa en simulacros tranquilos y supervisados.</li>
+              <li>No sobrecargues tomacorrientes. Avisa a una persona adulta sobre cables dañados, olor a gas u otras condiciones peligrosas; no intentes repararlos.</li>
+              <li>Mantén fósforos, encendedores y materiales inflamables fuera del alcance de los niños. Sigue las normas de seguridad en cocinas, laboratorios y áreas verdes.</li>
+              <li>Confirma que alarmas, extintores y equipos de emergencia reciban mantenimiento por personal autorizado. Usa un extintor únicamente si estás capacitado, el fuego es incipiente y tienes una salida segura detrás de ti.</li>
+            </ol>
+            <h3>Durante</h3>
+            <ol>
+              <li>Al escuchar la alarma o detectar humo o fuego, avisa a las personas cercanas, activa el plan y evacúa de inmediato por la ruta segura indicada. Llama al 911 desde el exterior.</li>
+              <li>Camina con calma, no corras ni uses ascensores. Si hay humo, mantente cerca del suelo y cubre nariz y boca con una tela si está a mano, sin retrasar la salida.</li>
+              <li>No abras una puerta que esté caliente ni cruces humo denso o llamas. Cierra las puertas detrás de ti si puedes hacerlo al salir sin demora.</li>
+              <li>Si la salida está bloqueada, entra en una habitación alejada del fuego, cierra la puerta, llama al 911 y comunica tu ubicación. Señaliza desde una ventana solo si puedes hacerlo sin acercarte al humo o las llamas.</li>
+              <li>Una vez fuera, dirígete al punto de encuentro y permanece allí para el conteo. No regreses por pertenencias ni entres a rescatar a alguien: informa a los bomberos dónde podría estar.</li>
+            </ol>
+            <h3>Después</h3>
+            <ul>
+              <li>Permanece en el punto seguro y sigue las instrucciones de bomberos, Protección Civil y responsables del plantel. No reingreses hasta recibir autorización oficial.</li>
+              <li>Avisa si alguien falta, presenta lesiones o pudo inhalar humo; llama al 911 y sigue las indicaciones del operador. No ingreses a una estructura para auxiliar.</li>
+              <li>Evita zonas calientes, cenizas, cables caídos, cilindros y estructuras dañadas. No enciendas equipos ni restablezcas servicios hasta que personal autorizado confirme que es seguro.</li>
+              <li>Desecha alimentos expuestos al humo, calor o agentes de extinción cuando exista duda sobre su seguridad. La limpieza de daños debe esperar la evaluación y autorización correspondientes.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="learning-article" id="sismos" data-category="desastres">
+          <summary>
+            <span class="article-icon"><i class="fa-solid fa-house-crack" aria-hidden="true"></i></span>
+            <span class="article-heading">
+              <span class="article-category-label">Gestión del riesgo</span>
+              <h2>Sismos: qué hacer antes, durante y después</h2>
+              <p>Reduce lesiones protegiéndote, alejándote de peligros y siguiendo fuentes oficiales.</p>
+            </span>
+          </summary>
+          <div class="article-content">
+            <h3>Antes</h3>
+            <p>Identifica lugares interiores lejos de ventanas y objetos que puedan caer; fija estantes y objetos pesados; practica cómo protegerte y prepara un kit familiar. Conoce cómo cortar servicios básicos solo si recibes capacitación o instrucciones apropiadas.</p>
+            <h3>Durante</h3>
+            <p>Si estás dentro, agáchate, cúbrete y sujétate bajo un mueble resistente o junto a una pared interior, lejos de vidrios y objetos que puedan caer. No corras hacia afuera mientras tiembla ni uses ascensores. Si estás al aire libre, aléjate de edificios, postes, árboles y cables. Si conduces, detente en un lugar seguro alejado de puentes, túneles y líneas eléctricas.</p>
+            <h3>Después</h3>
+            <ul>
+              <li>Anticipa réplicas; revisa lesiones sin entrar en estructuras dañadas.</li>
+              <li>Si hueles gas, ves cables expuestos o hay daños importantes, aléjate y avisa a las autoridades; no enciendas fuego ni interruptores en una posible fuga.</li>
+              <li>Usa mensajes de texto cuando sea posible para mantener libres las líneas telefónicas y sigue canales oficiales.</li>
+              <li>No entres a edificios ni regreses a zonas evacuadas hasta recibir autorización.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="learning-article" id="tsunamis" data-category="desastres">
+          <summary>
+            <span class="article-icon"><i class="fa-solid fa-water" aria-hidden="true"></i></span>
+            <span class="article-heading">
+              <span class="article-category-label">Gestión del riesgo</span>
+              <h2>Tsunamis: reconoce las señales y evacúa a tiempo</h2>
+              <p>Qué hacer ante un aviso de tsunami, un sismo fuerte en la costa o una retirada inusual del mar.</p>
+            </span>
+          </summary>
+          <div class="article-content">
+            <h3>Antes</h3>
+            <ul>
+              <li>Conoce si tu escuela, vivienda o lugar de trabajo está en una zona costera expuesta y ubica las rutas a pie hacia terreno alto o tierra adentro.</li>
+              <li>Prepara un plan con puntos de encuentro, rutas alternas y apoyo para niñas y niños, personas mayores y personas con discapacidad.</li>
+              <li>Reconoce las señales naturales: un sismo costero fuerte o prolongado, un cambio repentino del nivel del mar o un rugido inusual. Pueden requerir evacuar sin esperar una alerta oficial.</li>
+              <li>Participa en simulacros y conoce las señales de alarma y las instrucciones de las autoridades locales.</li>
+              <li>Ten lista una mochila con agua, alimentos, linterna, radio portátil, baterías y artículos esenciales de primeros auxilios.</li>
+            </ul>
+            <h3>Durante</h3>
+            <ul>
+              <li>Si sientes un sismo costero fuerte o prolongado, protégete durante el movimiento. Cuando termine, evacúa a pie hacia una zona alta y alejada de la costa; no esperes a ver el mar ni a recibir un aviso.</li>
+              <li>Ante una alerta oficial, evacúa de inmediato por las rutas indicadas y sigue las instrucciones de las autoridades y brigadistas.</li>
+              <li>Avanza con rapidez y en orden. Evita usar vehículos si pueden causar congestión; ayuda a quienes necesiten apoyo sin ponerte en riesgo.</li>
+              <li>Aléjate de playas, desembocaduras, esteros, ríos y zonas bajas. No te detengas a observar ni a recoger pertenencias.</li>
+            </ul>
+            <h3>Después</h3>
+            <ul>
+              <li>Permanece en la zona segura. No vuelvas a la costa después de la primera ola: pueden llegar varias olas durante horas.</li>
+              <li>Regresa únicamente cuando las autoridades confirmen que el peligro terminó. Mantente informado por canales oficiales o una radio portátil.</li>
+              <li>Evita escombros, cables caídos, posibles fugas de gas, agua contaminada y edificios dañados. No ingreses a zonas afectadas para rescatar personas; informa a los equipos de emergencia.</li>
+              <li>Si estás en Apure, los tsunamis son principalmente un peligro costero: ante crecidas e inundaciones, sigue el plan local y las indicaciones oficiales para tu zona.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="learning-article" id="deslizamientos" data-category="desastres">
+          <summary>
+            <span class="article-icon"><i class="fa-solid fa-mountain-sun" aria-hidden="true"></i></span>
+            <span class="article-heading">
+              <span class="article-category-label">Gestión del riesgo</span>
+              <h2>Deslizamientos: señales de alerta y autoprotección</h2>
+              <p>Presta atención a cambios en el terreno y evacúa si las autoridades lo indican.</p>
+            </span>
+          </summary>
+          <div class="article-content">
+            <h3>Señales que requieren atención</h3>
+            <p>Después de lluvias intensas, observa grietas nuevas o que aumentan en el suelo y las paredes, inclinación repentina de árboles o postes, puertas que dejan de cerrar, ruidos inusuales del terreno y cambios de caudal o agua turbia en quebradas. Una señal aislada no confirma un deslizamiento, pero debe comunicarse a las autoridades; no te acerques a verificarla.</p>
+            <h3>Antes de que ocurra</h3>
+            <ul>
+              <li>Conoce si tu vivienda, escuela o ruta habitual está próxima a taludes, laderas, cauces o zonas de relleno.</li>
+              <li>Mantén despejados los drenajes sin acercarte a taludes inestables; no cortes laderas ni descargues agua en ellas.</li>
+              <li>Identifica salidas hacia terreno estable y acuerda cómo evacuar con personas que necesiten asistencia.</li>
+            </ul>
+            <h3>Durante una posible emergencia</h3>
+            <p>Evacúa temprano si las autoridades lo indican o si notas señales de peligro inminente. Aléjate lateralmente de la trayectoria del flujo si puedes hacerlo por una ruta segura; no cruces un cauce, deslizamiento o carretera cubierta por lodo. Si estás en un edificio, sal solo si la salida está segura y dirígete al punto de encuentro acordado.</p>
+            <h3>Después</h3>
+            <p>No regreses ni atravieses el área afectada: el terreno puede seguir moviéndose y puede haber cables, fugas o estructuras inestables. Avisa a los equipos de respuesta sobre personas desaparecidas y sigue fuentes oficiales antes de volver.</p>
+          </div>
+        </details>
+
+        <details class="learning-article" id="riesgos-quimicos" data-category="desastres">
+          <summary>
+            <span class="article-icon"><i class="fa-solid fa-flask" aria-hidden="true"></i></span>
+            <span class="article-heading">
+              <span class="article-category-label">Gestión del riesgo</span>
+              <h2>Riesgos químicos: fugas, derrames y exposición</h2>
+              <p>Aléjate del producto desconocido y deja la intervención a equipos especializados.</p>
+            </span>
+          </summary>
+          <div class="article-content">
+            <h3>Prevención en escuelas y viviendas</h3>
+            <ul>
+              <li>Conserva productos en sus envases originales, con etiquetas legibles, cerrados y fuera del alcance de niños.</li>
+              <li>No mezcles productos de limpieza; algunas combinaciones liberan gases peligrosos.</li>
+              <li>Guarda sustancias separadas de alimentos y fuentes de calor. En laboratorios, exige supervisión adulta, ventilación y equipo adecuado.</li>
+              <li>Conoce las fichas e instrucciones de seguridad del producto y las normas de almacenamiento del centro educativo.</li>
+            </ul>
+            <h3>Si hay un derrame, fuga u olor inusual</h3>
+            <ol>
+              <li>No toques, huelas de cerca ni intentes limpiar una sustancia desconocida. No enciendas luces, motores o llamas si sospechas vapores inflamables.</li>
+              <li>Avisa a las personas, aléjate del lugar y evita atravesar la nube o el líquido. Si ocurre en una escuela, activa el protocolo y reúne al grupo en una zona segura contra el viento, siguiendo indicaciones oficiales.</li>
+              <li>Llama al 911 desde una ubicación segura. Indica el lugar, el producto si se conoce, la cantidad aproximada, el número de personas expuestas y síntomas observados.</li>
+              <li>No regreses a recoger objetos ni permitas el ingreso hasta que los equipos especializados declaren segura el área.</li>
+            </ol>
+            <h3>Si una persona estuvo expuesta</h3>
+            <p>No entres al área contaminada para rescatarla sin equipo especializado. Una vez que los rescatistas indiquen que es seguro, aléjala de la fuente, evita contacto con ropa contaminada y sigue sus instrucciones. Si presenta dificultad para respirar, irritación intensa, confusión o desmayo, solicita atención médica urgente. No provoques vómito ni apliques neutralizantes.</p>
+          </div>
+        </details>
+
+        <details class="learning-article" id="brigadas-escolares" data-category="escolar">
+          <summary>
+            <span class="article-icon"><i class="fa-solid fa-people-group" aria-hidden="true"></i></span>
+            <span class="article-heading">
+              <span class="article-category-label">Organización escolar</span>
+              <h2>Brigadas y comités escolares de gestión del riesgo</h2>
+              <p>Organiza responsabilidades claras para que toda la comunidad participe en la prevención.</p>
+            </span>
+          </summary>
+          <div class="article-content">
+            <h3>Comité escolar</h3>
+            <p>La dirección y el comité coordinan la planificación, identifican amenazas y recursos, establecen los procedimientos de alerta y evacuación, organizan simulacros y mantienen coordinación con las autoridades de protección y salud de la localidad. La conformación debe adecuarse a las normas vigentes y al tamaño del centro educativo.</p>
+            <h3>Brigadas y funciones</h3>
+            <ul>
+              <li><strong>Evacuación y orden:</strong> orienta a las personas hacia rutas seguras y zonas de encuentro, sin sustituir a los equipos profesionales.</li>
+              <li><strong>Alerta y comunicación:</strong> activa las señales acordadas, informa a los responsables y facilita el reporte de la emergencia.</li>
+              <li><strong>Primeros auxilios:</strong> presta apoyo solo según su formación y solicita asistencia médica a tiempo.</li>
+              <li><strong>Prevención:</strong> comunica peligros, verifica que pasillos y salidas estén despejados y reporta fallas de equipos.</li>
+            </ul>
+            <h3>Participación de la comunidad</h3>
+            <p>Docentes, personal, representantes y estudiantes tienen roles acordes a su edad y capacitación. Prevé acompañamiento para niñas y niños pequeños, personas con discapacidad y quienes requieran asistencia. Mantén una lista actualizada de responsables y suplentes.</p>
+            <div class="article-callout">Las brigadas escolares no deben realizar rescates en incendios, estructuras inestables, sustancias químicas o aguas peligrosas. Su prioridad es alertar, guiar a un lugar seguro y esperar personal especializado.</div>
+          </div>
+        </details>
+
+        <details class="learning-article" id="plan-riesgos-escolar" data-category="escolar">
+          <summary>
+            <span class="article-icon"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i></span>
+            <span class="article-heading">
+              <span class="article-category-label">Organización escolar</span>
+              <h2>Plan escolar de gestión integral del riesgo</h2>
+              <p>Elabora un plan basado en las amenazas, vulnerabilidades y capacidades de la escuela.</p>
+            </span>
+          </summary>
+          <div class="article-content">
+            <h3>Qué debe conocer el plan</h3>
+            <ul>
+              <li><strong>Amenazas:</strong> eventos naturales y riesgos internos que podrían afectar a estudiantes, personal, instalaciones y continuidad de clases.</li>
+              <li><strong>Vulnerabilidades:</strong> personas o áreas expuestas, barreras de acceso, horarios, condiciones de infraestructura y necesidades de apoyo.</li>
+              <li><strong>Capacidades:</strong> personas capacitadas, comunicaciones, botiquines, alarmas, recursos, rutas y puntos de encuentro disponibles.</li>
+              <li><strong>Acciones:</strong> prevención y mitigación, responsables, procedimientos de alerta, evacuación, reunión, comunicación familiar y regreso seguro.</li>
+            </ul>
+            <h3>Mapa o croquis de riesgo</h3>
+            <p>Dibuja aulas, escaleras, salidas, áreas de reunión y recursos; marca los peligros observados y las rutas alternativas. Recorre el plantel con personal responsable y verifica que el mapa corresponda con la realidad. No publiques información sensible sobre vulnerabilidades que pueda poner en riesgo a la comunidad.</p>
+            <h3>Revisión y continuidad educativa</h3>
+            <p>Asigna responsables y suplentes, registra los contactos institucionales y revisa el plan al cambiar instalaciones, distribución, personal o riesgos. Prevé cómo comunicar la suspensión de clases, proteger documentos y coordinar la reanudación segura de actividades.</p>
+            <p>Solicita acompañamiento de Protección Civil y autoridades educativas para que la planificación se ajuste a las normas locales y a las características del centro.</p>
+          </div>
+        </details>
+
+        <details class="learning-article" id="evacuacion-simulacros" data-category="escolar">
+          <summary>
+            <span class="article-icon"><i class="fa-solid fa-person-walking-arrow-right" aria-hidden="true"></i></span>
+            <span class="article-heading">
+              <span class="article-category-label">Organización escolar</span>
+              <h2>Evacuación y simulacros escolares</h2>
+              <p>Practica una salida ordenada, verifica los puntos de encuentro y mejora el plan.</p>
+            </span>
+          </summary>
+          <div class="article-content">
+            <h3>Prepara el ejercicio</h3>
+            <p>Define objetivos, escenario, responsables, señal de inicio y cierre, rutas y área de reunión. Informa previamente según el tipo de simulacro y evita sorpresas que puedan generar temor. Considera niñas y niños pequeños, visitantes y personas que necesiten asistencia.</p>
+            <h3>Durante la evacuación</h3>
+            <ol>
+              <li>Al escuchar la señal, interrumpe la actividad y sigue las instrucciones del personal designado.</li>
+              <li>Avanza por la ruta indicada, sin correr, empujar ni regresar por objetos. Mantén libres las salidas.</li>
+              <li>Dirígete al punto de encuentro y permanece con tu grupo; no te disperses ni reingreses al edificio.</li>
+              <li>Los responsables pasan lista y reportan de inmediato si falta alguien o hay una persona lesionada.</li>
+            </ol>
+            <h3>Evalúa y mejora</h3>
+            <p>Registra cuánto tardó el ejercicio, problemas de rutas, señales que no se escucharon, dificultades de accesibilidad y acciones positivas. Conversa con los participantes sin buscar culpables y asigna fechas para corregir los problemas. Repite los ejercicios conforme al plan y las instrucciones de las autoridades educativas.</p>
+            <div class="article-callout">Reglas simples: camina con calma, escucha las instrucciones, conserva la fila y ayuda sin ponerte en peligro.</div>
+          </div>
+        </details>
+
+        <details class="learning-article" id="senales-seguridad" data-category="escolar">
+          <summary>
+            <span class="article-icon"><i class="fa-solid fa-signs-post" aria-hidden="true"></i></span>
+            <span class="article-heading">
+              <span class="article-category-label">Organización escolar</span>
+              <h2>Señales de seguridad y rutas de evacuación</h2>
+              <p>Haz que las salidas, advertencias y equipos puedan identificarse y mantenerse accesibles.</p>
+            </span>
+          </summary>
+          <div class="article-content">
+            <h3>Señalización que debe comprenderse</h3>
+            <p>Las señales deben ser visibles, legibles y coherentes con la normativa aplicable. En general, el rojo se utiliza para prohibición o equipos contra incendio; el amarillo para advertencias; el azul para obligación; y el verde para salvamento, salidas o rutas. Verifica siempre el significado completo del pictograma y las reglas vigentes del país.</p>
+            <h3>Instalación y mantenimiento</h3>
+            <ul>
+              <li>Marca rutas de salida y puntos de encuentro sin obstruir la circulación ni colocar carteles que confundan.</li>
+              <li>Mantén visibles los avisos y equipos; verifica iluminación, fijación y estado de las señales con personal responsable.</li>
+              <li>Las puertas y salidas deben poder abrirse de forma segura. No bloquees pasillos, escaleras ni accesos con muebles.</li>
+              <li>Enseña a estudiantes y visitantes el significado de alarmas y señales. Define alternativas si una salida queda inutilizable.</li>
+            </ul>
+            <p>La señalización no reemplaza un plan de emergencia, el mantenimiento de las instalaciones ni los simulacros.</p>
+          </div>
+        </details>
+
+        <details class="learning-article" id="numeros-emergencia" data-category="preparacion">
+          <summary>
+            <span class="article-icon"><i class="fa-solid fa-phone-volume" aria-hidden="true"></i></span>
+            <span class="article-heading">
+              <span class="article-category-label">Acceso rápido</span>
+              <h2>Números de emergencia y cómo reportar</h2>
+              <p>Ten a mano los contactos oficiales y comunica datos claros al pedir ayuda.</p>
+            </span>
+          </summary>
+          <div class="article-content">
+            <h3>En una emergencia inmediata</h3>
+            <ul>
+              <li><strong>911 o 171:</strong> Sistema Integrado de Respuesta a Emergencias; comunica si necesitas Policía, Bomberos, ambulancia o Protección Civil.</li>
+              <li><strong>0800-PCIVIL-1 (0800-7248451):</strong> línea gratuita de Protección Civil Nacional.</li>
+              <li><strong>0800-LLUVIA (0800-558842):</strong> línea para reportar crecidas, inundaciones y eventos hidrometeorológicos.</li>
+            </ul>
+            <p>La disponibilidad de las líneas puede variar según la zona. Confirma los números por canales oficiales y conserva también los contactos locales verificados.</p>
+            <h3>Qué decir al operador</h3>
+            <ol>
+              <li>Indica primero el lugar exacto: municipio, sector, calle, punto de referencia y acceso a la escuela.</li>
+              <li>Explica qué sucedió, qué peligros continúan y cuántas personas necesitan ayuda.</li>
+              <li>Informa si hay lesiones graves, humo, fuego, derrame, agua o cables, sin acercarte a comprobarlo.</li>
+              <li>Proporciona tu nombre y un número de retorno; mantén la línea disponible y sigue las instrucciones.</li>
+            </ol>
+            <p>Asigna a un adulto para esperar a los equipos en un acceso seguro. No sustituyas la llamada de emergencia por mensajes en redes sociales o solicitudes de servicio no urgentes.</p>
+            <a class="article-emergency-link" href="tel:911"><i class="fa-solid fa-phone" aria-hidden="true"></i> Llamar al 911</a>
+          </div>
+        </details>
+
+        <details class="learning-article" id="mochila-escolar" data-category="preparacion">
+          <summary>
+            <span class="article-icon"><i class="fa-solid fa-kit-medical" aria-hidden="true"></i></span>
+            <span class="article-heading">
+              <span class="article-category-label">Acceso rápido</span>
+              <h2>Mochila y recursos de emergencia escolar</h2>
+              <p>Prepara suministros útiles para evacuar o permanecer temporalmente en un lugar seguro.</p>
+            </span>
+          </summary>
+          <div class="article-content">
+            <h3>Kit institucional básico</h3>
+            <ul>
+              <li>Agua potable, alimentos no perecederos y vasos o utensilios seguros, adaptados a la cantidad de personas y al tiempo previsto.</li>
+              <li>Linterna, radio a pilas, baterías de repuesto, silbato, cargador portátil y lista de contactos.</li>
+              <li>Botiquín institucional revisado por personal responsable, guantes y materiales de higiene.</li>
+              <li>Copias protegidas de listas de asistencia, contactos familiares, autorizaciones y datos necesarios para la reunión segura.</li>
+              <li>Artículos de apoyo y accesibilidad, medicamentos personales entregados y administrados solo conforme al protocolo escolar, y suministros para bebés o personas con necesidades específicas.</li>
+            </ul>
+            <h3>Organiza sin crear riesgos</h3>
+            <p>Guarda los recursos en un lugar señalizado, seco, accesible para adultos responsables y fuera de salidas o pasillos. No guardes combustible, sustancias peligrosas ni medicamentos sin control. Designa quién revisa inventario, fechas de vencimiento y estado de las baterías; adapta la mochila a la edad de los alumnos y a las instrucciones de la institución.</p>
+            <h3>Plan individual</h3>
+            <p>Representantes y escuela deben coordinar los apoyos particulares, las personas autorizadas para recoger a cada estudiante y el procedimiento de reunión familiar. No publiques listas con datos personales sensibles.</p>
+          </div>
+        </details>
+
+        <details class="learning-article" id="primeros-pasos-emergencia" data-category="preparacion">
+          <summary>
+            <span class="article-icon"><i class="fa-solid fa-list-check" aria-hidden="true"></i></span>
+            <span class="article-heading">
+              <span class="article-category-label">Acceso rápido</span>
+              <h2>¿Qué hacer primero ante una emergencia escolar?</h2>
+              <p>Una secuencia básica para activar el plan, proteger al grupo y solicitar ayuda.</p>
+            </span>
+          </summary>
+          <div class="article-content">
+            <ol>
+              <li><strong>Conserva la calma y verifica el peligro.</strong> No ingreses en humo, agua, instalaciones dañadas ni áreas con sustancias desconocidas.</li>
+              <li><strong>Activa la alerta acordada.</strong> Avisa al responsable del centro y utiliza la señal de emergencia establecida en el plan.</li>
+              <li><strong>Protege y organiza al grupo.</strong> Sigue el procedimiento adecuado para el evento, guía a estudiantes por rutas seguras y no permitas que regresen por pertenencias.</li>
+              <li><strong>Llama al 911.</strong> Designa a un adulto para reportar el lugar, tipo de incidente, riesgos y número de personas afectadas.</li>
+              <li><strong>Reúne y verifica.</strong> En el punto seguro, pasa lista y comunica de inmediato si alguien falta o necesita atención.</li>
+              <li><strong>Espera instrucciones oficiales.</strong> No reingreses ni publiques información no confirmada. Mantén a las familias informadas mediante el canal institucional establecido.</li>
+            </ol>
+            <p>La respuesta exacta depende del peligro: en un sismo, incendio, inundación o incidente químico se aplican acciones diferentes. Usa el plan escolar practicado y las indicaciones de los equipos de emergencia.</p>
+          </div>
+        </details>
+
+        <details class="learning-article" id="plan-familiar" data-category="preparacion">
+          <summary>
+            <span class="article-icon"><i class="fa-solid fa-people-group" aria-hidden="true"></i></span>
+            <span class="article-heading">
+              <span class="article-category-label">Preparación familiar</span>
+              <h2>Plan familiar y mochila de emergencia</h2>
+              <p>Organiza cómo comunicarse, dónde reunirse y qué llevar si deben salir rápido.</p>
+            </span>
+          </summary>
+          <div class="article-content">
+            <h3>Prepara un plan sencillo</h3>
+            <ol>
+              <li>Identifica amenazas de tu zona y define rutas de salida principales y alternativas.</li>
+              <li>Elige un lugar de encuentro cerca de casa y otro fuera del vecindario.</li>
+              <li>Designa un contacto familiar que viva en otra localidad; cada persona debe conocer su número.</li>
+              <li>Acuerda cómo ayudar a personas que necesitan asistencia, niñas, personas mayores y mascotas.</li>
+              <li>Practica el plan y actualiza teléfonos, direcciones y necesidades médicas.</li>
+            </ol>
+            <h3>Qué incluir en el kit</h3>
+            <ul>
+              <li>Agua potable y alimentos no perecederos para varios días, según la cantidad de personas.</li>
+              <li>Linterna, pilas, radio portátil, cargador o batería externa y silbato.</li>
+              <li>Botiquín básico, medicamentos de uso habitual y artículos de higiene personal.</li>
+              <li>Copias protegidas de documentos, lista de contactos, algo de dinero y llaves de repuesto.</li>
+              <li>Ropa, abrigo, calzado resistente, mascarillas y artículos para bebés, personas mayores o mascotas según las necesidades del hogar.</li>
+            </ul>
+            <p>Guarda el kit en un lugar conocido, accesible y protegido. Revisa vencimientos, baterías, medicamentos y documentos periódicamente. Adapta su contenido a la duración probable de la emergencia, clima local y capacidades de cada persona; no existe una única mochila que cubra todas las situaciones.</p>
+          </div>
+        </details>
+
+        <details class="learning-article" id="seguridad-vial" data-category="seguridad">
+          <summary>
+            <span class="article-icon"><i class="fa-solid fa-car-burst" aria-hidden="true"></i></span>
+            <span class="article-heading">
+              <span class="article-category-label">Seguridad vial</span>
+              <h2>Qué hacer ante un accidente de tránsito</h2>
+              <p>Protégete del tráfico, informa con precisión y no muevas a una persona lesionada.</p>
+            </span>
+          </summary>
+          <div class="article-content">
+            <ol>
+              <li>Detente en un lugar seguro. No cruces la vía ni te acerques si hay fuego, combustible, cables, tráfico activo u otro peligro.</li>
+              <li>Llama al 911 e indica carretera, sentido de circulación, punto de referencia, cantidad de vehículos y personas heridas, y peligros presentes.</li>
+              <li>No muevas a las personas lesionadas, salvo que exista un peligro inmediato y puedas trasladarlas sin exponerte. Evita que caminen.</li>
+              <li>No retires cascos ni equipo de protección; no endereces cuello o espalda. Sigue las instrucciones del operador y mantén a las personas abrigadas.</li>
+              <li>Si hay sangrado abundante y la escena es segura, aplica presión directa con una tela limpia. No te expongas a sangre sin barrera.</li>
+            </ol>
+            <p>Evita que curiosos bloqueen la vía o el acceso de los equipos. No publiques imágenes que identifiquen a personas heridas; ayuda a preservar su privacidad y facilita el trabajo de respuesta.</p>
+          </div>
+        </details>
+      </div>
+
+      <p class="article-empty-state" id="articleEmptyStateSource" hidden>No encontramos artículos con esos términos. Prueba otra palabra o selecciona “Todos”.</p>
+
+      <div class="article-callout">
+        <strong>Importante:</strong> esta biblioteca ofrece orientación general y educativa, no constituye diagnóstico ni sustituye atención médica, cursos certificados o instrucciones de los servicios de emergencia. Ante peligro inmediato, llama al 911.
+        <br><a class="article-emergency-link" href="tel:911"><i class="fa-solid fa-phone" aria-hidden="true"></i> Llamar al 911</a>
+      </div>
+    </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img src="img/pc logo.png" alt="Protección Civil" class="footer-logo">
+        <div>
+          <h2>Protección Civil</h2>
+          <p>Prevención, atención y gestión de riesgos al servicio de la comunidad.</p>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>Enlaces rápidos</h3>
+        <a href="index.html">Inicio</a>
+        <a href="articulos.html">Artículos y guías</a>
+        <a href="publicaciones.html">Publicaciones</a>
+        <a href="libro-pcad.html">Libro de estudio PCAD</a>
+      </div>
+      <div class="footer-column">
+        <h3>Atención</h3>
+        <a href="tel:911"><i class="fa-solid fa-phone" aria-hidden="true"></i> Emergencias: 911</a>
+        <a href="https://wa.me/584264744951" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp institucional</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Protección Civil y Administración de Desastres</span>
+      <span>Comprometidos con tu seguridad</span>
+    </div>
+  </footer>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="script.js"></script>
+  <script src="article-images.js"></script>
+  <script src="articulos.js"></script>
+</body>
+</html>
