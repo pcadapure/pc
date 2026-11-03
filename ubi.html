@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obtener Ubicación GPS</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; background: #f4f4f9; color: #333; }
+        button { background: #007bff; color: white; border: none; padding: 12px 20px; font-size: 16px; border-radius: 5px; cursor: pointer; margin-top: 20px; }
+        button:hover { background: #0056b3; }
+        .result { margin-top: 20px; font-size: 18px; background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: inline-block; text-align: left; }
+    </style>
+</head>
+<body>
+
+    <h2>Localizador GPS Web</h2>
+    <p>Haz clic en el botón para obtener tus coordenadas exactas.</p>
+    <button onclick="obtenerUbicacion()">Obtener Ubicación</button>
+
+    <div class="result" id="resultado" style="display:none;">
+        <p><strong>Latitud:</strong> <span id="lat">Cargando...</span></p>
+        <p><strong>Longitud:</strong> <span id="lon">Cargando...</span></p>
+        <p><strong>Precisión:</strong> <span id="acc">Cargando...</span> metros</p>
+    </div>
+
+    <script>
+        function obtenerUbicacion() {
+            const resDiv = document.getElementById('resultado');
+            const latSpan = document.getElementById('lat');
+            const lonSpan = document.getElementById('lon');
+            const accSpan = document.getElementById('acc');
+
+            if (!navigator.geolocation) {
+                alert("Tu navegador no soporta geolocalización.");
+                return;
+            }
+
+            resDiv.style.display = "block";
+            latSpan.innerText = "Obteniendo...";
+            lonSpan.innerText = "Obteniendo...";
+            accSpan.innerText = "...";
+
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    const accuracy = position.coords.accuracy;
+
+                    latSpan.innerText = latitude;
+                    lonSpan.innerText = longitude;
+                    accSpan.innerText = accuracy;
+                },
+                (error) => {
+                    let mensaje = "";
+                    switch(error.code) {
+                        case error.PERMISSION_DENIED:
+                            mensaje = "Permiso denegado por el usuario.";
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            mensaje = "Información de ubicación no disponible.";
+                            break;
+                        case error.TIMEOUT:
+                            mensaje = "Tiempo de espera agotado.";
+                            break;
+                        default:
+                            mensaje = "Error desconocido.";
+                    }
+                    alert("Error al obtener ubicación: " + mensaje);
+                    resDiv.style.display = "none";
+                },
+                {
+                    enableHighAccuracy: true,
+                    timeout: 10000,
+                    maximumAge: 0
+                }
+            );
+        }
+    </script>
+
+</body>
+</html>
