@@ -313,14 +313,21 @@ document.addEventListener('DOMContentLoaded', () => {
   window.db = db;
 
   if ('serviceWorker' in navigator && /^https?:$/.test(window.location.protocol)) {
-    navigator.serviceWorker.register('sw.js').then(registration => {
-      if (registration.waiting) {
+    const hadServiceWorkerController = Boolean(navigator.serviceWorker.controller);
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (hadServiceWorkerController) {
         window.location.reload();
       }
+    });
 
-      navigator.serviceWorker.addEventListener('controllerchange', () => {
-        window.location.reload();
+    navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).then(registration => {
+      registration.update().catch(error => {
+        console.error('No se pudo comprobar si hay una actualización del sitio:', error);
       });
+
+      if (registration.waiting) {
+        registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+      }
     }).catch(error => {
       console.error('No se pudo registrar el service worker:', error);
     });
