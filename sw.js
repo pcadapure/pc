@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pcad-apure-v94';
+const CACHE_NAME = 'pcad-apure-v95';
 const APP_SHELL = [
   './',
   './index.html',
@@ -17,7 +17,8 @@ const APP_SHELL = [
   './gestion-riesgo.html',
   './prehospitalario.html',
   './operaciones.html',
-  './servicios.html',
+  './servicios.html',
+
   './quienes-somos.html',
   './contacto.html',
   './styles.css',
@@ -48,6 +49,12 @@ self.addEventListener('install', event => {
   self.skipWaiting();
 });
 
+self.addEventListener('message', event => {
+  if (event.data?.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+});
+
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys => Promise.all(
@@ -59,38 +66,28 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', (event) => {
   const url = event.request.url;
-  const isHtmlRequest = event.request.method === 'GET' && event.request.headers.get('accept')?.includes('text/html');
+  const requestUrl = new URL(url);
 
   // 1. IGNORAR COMPLETAMENTE Firebase Storage y Firestore
   if (url.includes('firebasestorage.googleapis.com') || url.includes('firestore.googleapis.com')) {
     return;
   }
 
-  // 2. Actualizar las páginas HTML desde la red y conservar una copia nueva
-  if (isHtmlRequest) {
-    event.respondWith(
-      fetch(event.request).then(response => {
-        if (response && response.status === 200 && response.type === 'basic') {
-          const responseCopy = response.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(event.request, responseCopy));
-        }
-        return response;
-      }).catch(() => caches.match(event.request))
-    );
+  if (event.request.method !== 'GET' || requestUrl.origin !== self.location.origin) {
     return;
   }
 
-  // 3. Manejo normal para recursos locales y externos
+  // Consult the network first so published pages and assets replace stale cached versions.
   event.respondWith(
-    caches.match(event.request).then(cachedResponse => {
+    fetch(new Request(event.request, { cache: 'no-cache' })).then(response => {
+      if (response && response.status === 200 && response.type === 'basic') {
+        event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.put(event.request, response.clone())));
+      }
+      return response;
+    }).catch(async error => {
+      const cachedResponse = await caches.match(event.request);
       if (cachedResponse) return cachedResponse;
-
-      return fetch(event.request).then(response => {
-        if (!response || response.status !== 200 || response.type !== 'basic') return response;
-        const responseCopy = response.clone();
-        caches.open(CACHE_NAME).then(cache => cache.put(event.request, responseCopy));
-        return response;
-      });
+      throw error;
     })
   );
 });
