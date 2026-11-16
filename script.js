@@ -1420,6 +1420,7 @@ document.addEventListener('DOMContentLoaded', () => {
     postDetailOverlay.dataset.postId = card.dataset.postId || '';
     postDetailOverlay.dataset.shareTitle = card.dataset.title || 'Publicación';
     postDetailOverlay.dataset.shareText = card.dataset.content || '';
+    window.trackContentView?.('publicacion', card.dataset.postId || '', card.dataset.title || 'Publicación');
     const reactions = JSON.parse(card.dataset.reactions || '{}');
     postDetailReactions.innerHTML = ['meGusta', 'apoyo', 'importante'].map(reaction => `
       <button class="reaction-button" data-reaction="${reaction}" data-post-id="${card.dataset.postId}" type="button">
