@@ -1013,6 +1013,88 @@ a.btn-pill:focus-visible,
   font-size: 0.75rem;
 }
 
+.home-popular-content {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid #dce5ef;
+}
+
+.home-popular-title {
+  margin-bottom: 12px;
+  color: var(--text-dark);
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.home-popular-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.home-popular-card {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  height: 100%;
+  padding: 13px;
+  border: 1px solid #dce5ef;
+  border-radius: 13px;
+  background: #ffffff;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.home-popular-card:hover,
+.home-popular-card:focus-visible {
+  transform: translateY(-2px);
+  border-color: #e85d24;
+  box-shadow: 0 10px 20px rgba(0, 45, 100, 0.09);
+  outline: none;
+}
+
+.home-popular-rank {
+  display: inline-flex;
+  width: 34px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: #fff0e4;
+  color: #b94b16;
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.home-popular-copy {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.home-popular-copy strong {
+  color: var(--text-dark);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.home-popular-copy > span,
+.home-popular-status,
+.home-popular-privacy {
+  color: #64748b;
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.home-popular-privacy {
+  margin-top: 10px;
+}
+
 .home-random-articles {
   max-width: 1200px;
   margin: 24px auto 0;
@@ -2689,7 +2771,7 @@ a.btn-pill:focus-visible,
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
-    transition: opacity 0.18s ease, visibility 0.18s ease, transform 0.18s ease;
+    transition: opacity 0.18s ease, transform 0.18s ease;
     z-index: 1000;
     pointer-events: none;
     border-radius: 0 0 18px 18px;
@@ -11484,5 +11566,121 @@ body.home-page {
   .home-page article:hover,
   .home-page .service-card:hover {
     transform: none;
+  }
+}
+
+@media (max-width: 992px) {
+  .shared-nav-header {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px 14px;
+  }
+
+  .shared-nav-header .simple-brand {
+    flex: 1 0 100%;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    padding: 6px 8px;
+  }
+
+  .shared-nav-header .simple-brand .logo-pc {
+    flex: 0 0 auto;
+    height: 38px;
+  }
+
+  .shared-nav-header .simple-brand span {
+    max-width: min(220px, calc(100vw - 90px));
+    font-size: clamp(0.65rem, 1.8vw, 0.78rem);
+  }
+
+  .shared-nav-header .hamburger-btn {
+    display: inline-flex !important;
+    width: 42px;
+    height: 42px;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    padding: 6px;
+    border-radius: 10px;
+  }
+
+  .shared-nav-header .nav-links {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    max-height: calc(100vh - 130px);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    overflow-y: auto;
+    margin: 0;
+    padding: 12px 14px 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 0 0 16px 16px;
+    background: linear-gradient(180deg, rgba(0, 32, 108, 0.98), rgba(0, 54, 181, 0.98));
+    box-shadow: 0 14px 28px rgba(0, 18, 52, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0.18s;
+  }
+
+  .shared-nav-header .nav-links.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+    pointer-events: auto !important;
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0s;
+  }
+
+  .shared-nav-header .nav-links li,
+  .shared-nav-header .nav-links > li > a,
+  .shared-nav-header .nav-dropdown-toggle {
+    width: 100%;
+    text-align: center;
+  }
+
+  .shared-nav-header .nav-dropdown-menu {
+    position: static;
+    width: 100%;
+    min-width: 0;
+    margin-top: 6px;
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .shared-nav-header .weather-widget-copy {
+    display: grid;
+    max-width: 108px;
+  }
+
+  .shared-nav-header .weather-widget {
+    flex: 0 1 168px;
+    max-width: 168px;
+    min-width: 0;
+    gap: 5px;
+    padding: 7px 9px;
+  }
+
+  .shared-nav-header .weather-widget-condition,
+  .shared-nav-header .weather-widget-temperatures {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .shared-nav-header .weather-widget-condition {
+    font-size: 0.56rem;
+  }
+
+  .shared-nav-header .weather-widget-temperatures {
+    font-size: 0.48rem;
   }
 }
