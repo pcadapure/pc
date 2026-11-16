@@ -1,5 +1,6 @@
 (() => {
   const WEATHER_URL = 'https://api.open-meteo.com/v1/forecast?latitude=7.89&longitude=-67.47&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min&timezone=America%2FCaracas&forecast_days=1';
+  const WEATHER_FALLBACK_URL = 'https://wttr.in/San+Fernando+de+Apure?format=j1';
   const WEATHER_ICONS = {
     clear: 'fa-sun',
     partlyCloudy: 'fa-cloud-sun',
@@ -22,6 +23,21 @@
     if (code === 85 || code === 86) return { text: 'Chubascos de nieve', icon: WEATHER_ICONS.snow };
     if (code >= 95 && code <= 99) return { text: 'Tormenta', icon: WEATHER_ICONS.thunderstorm };
     throw new Error(`Código meteorológico no reconocido: ${code}`);
+  };
+  const fallbackWeatherDescription = code => {
+    if (code === 113) return { text: 'Despejado', icon: WEATHER_ICONS.clear };
+    if (code === 116) return { text: 'Parcialmente nublado', icon: WEATHER_ICONS.partlyCloudy };
+    if (code === 119 || code === 122) return { text: 'Nublado', icon: WEATHER_ICONS.cloudy };
+    if ([143, 248, 260].includes(code)) return { text: 'Neblina', icon: WEATHER_ICONS.fog };
+    if ([200, 386, 389, 392, 395].includes(code)) return { text: 'Tormenta', icon: WEATHER_ICONS.thunderstorm };
+    if ([179, 182, 227, 230, 317, 320, 323, 326, 329, 332, 335, 338, 350, 362, 365, 368, 371, 374, 377].includes(code)) {
+      return { text: 'Precipitación', icon: WEATHER_ICONS.snow };
+    }
+    if ([353, 356, 359].includes(code)) return { text: 'Chubascos', icon: WEATHER_ICONS.showers };
+    if ([176, 185, 263, 266, 281, 284, 293, 296, 299, 302, 305, 308, 311, 314].includes(code)) {
+      return { text: 'Lluvia', icon: WEATHER_ICONS.rain };
+    }
+    throw new Error(`Código meteorológico de respaldo no reconocido: ${code}`);
   };
   const header = document.querySelector('.navbar, .simple-header');
   if (!header || header.querySelector('.weather-widget')) return;
@@ -46,24 +62,55 @@
   const condition = widget.querySelector('.weather-widget-condition');
   const temperatures = widget.querySelector('.weather-widget-temperatures');
   const icon = widget.querySelector('.weather-widget-icon');
+  const fetchForecast = async url => {
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), 6500);
+    try {
+      const response = await fetch(url, { signal: controller.signal });
+      if (!response.ok) throw new Error(`El servicio meteorológico respondió HTTP ${response.status}`);
+      return await response.json();
+    } finally {
+      window.clearTimeout(timeoutId);
+    }
+  };
+  const getOpenMeteoForecast = async () => {
+    const forecast = await fetchForecast(WEATHER_URL);
+    const currentTemperature = forecast.current?.temperature_2m;
+    const weatherCode = forecast.current?.weather_code;
+    const maximum = forecast.daily?.temperature_2m_max?.[0];
+    const minimum = forecast.daily?.temperature_2m_min?.[0];
+    if (![currentTemperature, weatherCode, maximum, minimum].every(Number.isFinite)) {
+      throw new Error('La respuesta de Open-Meteo está incompleta.');
+    }
+    return { currentTemperature, weather: weatherDescription(weatherCode), maximum, minimum };
+  };
+  const getFallbackForecast = async () => {
+    const forecast = await fetchForecast(WEATHER_FALLBACK_URL);
+    const current = forecast.current_condition?.[0];
+    const today = forecast.weather?.[0];
+    const currentTemperature = Number(current?.temp_C);
+    const weatherCode = Number(current?.weatherCode);
+    const maximum = Number(today?.maxtempC);
+    const minimum = Number(today?.mintempC);
+    if (![currentTemperature, weatherCode, maximum, minimum].every(Number.isFinite)) {
+      throw new Error('La respuesta del servicio meteorológico alternativo está incompleta.');
+    }
+    return { currentTemperature, weather: fallbackWeatherDescription(weatherCode), maximum, minimum };
+  };
   const loadForecast = async () => {
     try {
-      const response = await fetch(WEATHER_URL);
-      if (!response.ok) throw new Error(`El servicio meteorológico respondió HTTP ${response.status}`);
-      const forecast = await response.json();
-      const currentTemperature = forecast.current?.temperature_2m;
-      const weatherCode = forecast.current?.weather_code;
-      const maximum = forecast.daily?.temperature_2m_max?.[0];
-      const minimum = forecast.daily?.temperature_2m_min?.[0];
-      if (![currentTemperature, weatherCode, maximum, minimum].every(Number.isFinite)) {
-        throw new Error('La respuesta meteorológica está incompleta.');
+      let data;
+      try {
+        data = await getOpenMeteoForecast();
+      } catch (error) {
+        console.warn('Open-Meteo no respondió; se intentará el servicio alternativo.', error);
+        data = await getFallbackForecast();
       }
 
-      const weather = weatherDescription(weatherCode);
-      icon.className = `fa-solid ${weather.icon} weather-widget-icon`;
-      condition.textContent = `${weather.text} · ${Math.round(currentTemperature)}°C`;
-      temperatures.textContent = `Máx. ${Math.round(maximum)}° · mín. ${Math.round(minimum)}°`;
-      widget.title = `Pronóstico de hoy para San Fernando de Apure: ${weather.text}, ${Math.round(currentTemperature)}°C. Máxima ${Math.round(maximum)}°, mínima ${Math.round(minimum)}°.`;
+      icon.className = `fa-solid ${data.weather.icon} weather-widget-icon`;
+      condition.textContent = `${data.weather.text} · ${Math.round(data.currentTemperature)}°C`;
+      temperatures.textContent = `Máx. ${Math.round(data.maximum)}° · mín. ${Math.round(data.minimum)}°`;
+      widget.title = `Pronóstico de hoy para San Fernando de Apure: ${data.weather.text}, ${Math.round(data.currentTemperature)}°C. Máxima ${Math.round(data.maximum)}°, mínima ${Math.round(data.minimum)}°.`;
     } catch (error) {
       console.error('No se pudo cargar el pronóstico del clima:', error);
       condition.textContent = 'Pronóstico no disponible';
