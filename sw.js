@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pcad-apure-v101';
+const CACHE_NAME = 'pcad-apure-v103';
 const OFFLINE_CACHE_NAME = 'pcad-apure-offline-v1';
 const APP_SHELL = [
   './',
@@ -8,6 +8,7 @@ const APP_SHELL = [
   './article-images.js',
   './articulos.js',
   './home-articles.js',
+  './site-analytics.js',
   './rrhh.html',
   './educacion.html',
   './libro-pcad.html',
@@ -55,6 +56,7 @@ const OFFLINE_CONTENT = [
   './prehospitalario.html',
   './operaciones.html',
   './home-articles.js',
+  './site-analytics.js',
   './site-search.js',
   './site-search.css',
   './weather.js',
