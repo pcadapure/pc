@@ -1,0 +1,26 @@
+{
+  "name": "Protección Civil Apure",
+  "short_name": "PC Apure",
+  "description": "Información, prevención y atención de Protección Civil ZOEDAN Apure.",
+  "lang": "es-VE",
+  "start_url": "index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f9fc",
+  "theme_color": "#0046e7",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "img/pc logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "img/pc logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
