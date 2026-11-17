@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aprende a navegar el sitio de Protección Civil Apure, buscar información, solicitar servicios y usar sus funciones principales.">
+  <meta name="theme-color" content="#0046e7">
+  <title>Guía de uso | Protección Civil ZOEDAN Apure</title>
+  <link rel="icon" type="image/png" href="img/pc logo.png">
+  <link rel="apple-touch-icon" href="img/pc logo.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="site-analytics.js" defer></script>
+</head>
+<body>
+  <header class="simple-header shared-nav-header">
+    <a href="index.html" class="simple-brand">
+      <img src="img/pc logo.png" alt="Protección Civil" class="logo-pc">
+      <span>PROTECCIÓN CIVIL Y ADMINISTRACIÓN DE DESASTRES ZOEDAN APURE</span>
+    </a>
+    <button class="hamburger-btn" id="hamburgerBtn" type="button" aria-label="Abrir menú">
+      <i class="fa-solid fa-bars" aria-hidden="true"></i>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Inicio</a></li>
+      <li class="nav-dropdown">
+        <button class="nav-dropdown-toggle" type="button" aria-expanded="false">
+          <span>Secciones</span>
+          <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+        </button>
+        <div class="nav-dropdown-menu">
+          <a href="educacion.html">Educación</a>
+          <a href="gestion-riesgo.html">Gestión de riesgo</a>
+          <a href="operaciones.html">Operaciones</a>
+          <a href="prehospitalario.html">Prehospitalaria</a>
+          <a href="libro-pcad.html">Libro de estudio PCAD</a>
+        </div>
+      </li>
+      <li><a href="articulos.html">Artículos</a></li>
+      <li><a href="publicaciones.html">Publicaciones</a></li>
+      <li><a href="quienes-somos.html">Quiénes Somos</a></li>
+    </ul>
+  </header>
+
+  <main class="info-page tutorial-page">
+    <section class="info-hero tutorial-hero">
+      <div class="tutorial-hero-copy">
+        <span class="info-kicker"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Guía práctica</span>
+        <h1>Cómo usar esta web</h1>
+        <p>Encuentra orientación, solicita un servicio y conoce las herramientas disponibles para navegar desde tu teléfono o computadora.</p>
+        <div class="tutorial-hero-actions">
+          <a class="tutorial-action-link" href="servicios.html"><i class="fa-solid fa-handshake-angle" aria-hidden="true"></i> Ver servicios</a>
+          <a class="tutorial-action-link tutorial-action-link-secondary" href="index.html"><i class="fa-solid fa-house" aria-hidden="true"></i> Ir al inicio</a>
+        </div>
+      </div>
+      <div class="tutorial-hero-art" aria-hidden="true">
+        <div class="tutorial-hero-orbit">
+          <span class="tutorial-hero-emblem"><i class="fa-solid fa-compass" aria-hidden="true"></i></span>
+          <span class="tutorial-hero-tag tutorial-hero-tag-search"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> Busca</span>
+          <span class="tutorial-hero-tag tutorial-hero-tag-service"><i class="fa-solid fa-handshake-angle" aria-hidden="true"></i> Solicita</span>
+          <span class="tutorial-hero-tag tutorial-hero-tag-settings"><i class="fa-solid fa-gear" aria-hidden="true"></i> Configura</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="tutorial-section" id="explorar" aria-labelledby="tutorial-explore-title">
+      <div class="tutorial-section-heading">
+        <span class="section-kicker">Navegación</span>
+        <h2 id="tutorial-explore-title">Explora la información</h2>
+        <p>Usa el menú superior o los accesos de la página de inicio para llegar a cada tema.</p>
+      </div>
+      <div class="tutorial-card-grid">
+        <article class="tutorial-card">
+          <span class="tutorial-card-icon"><i class="fa-solid fa-book-open" aria-hidden="true"></i></span>
+          <h3>Artículos y guías</h3>
+          <p>Consulta orientación sobre prevención, primeros auxilios y preparación. Abre una tarjeta para leer el artículo completo.</p>
+          <a href="articulos.html">Ver artículos <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </article>
+        <article class="tutorial-card">
+          <span class="tutorial-card-icon"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i></span>
+          <h3>Publicaciones y avisos</h3>
+          <p>Abre una publicación para ver sus detalles. Usa el botón de compartir si quieres enviarla a otra persona.</p>
+          <a href="publicaciones.html">Ver publicaciones <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </article>
+        <article class="tutorial-card">
+          <span class="tutorial-card-icon"><i class="fa-solid fa-book" aria-hidden="true"></i></span>
+          <h3>Libro de estudio PCAD</h3>
+          <p>Explora sus páginas y usa el buscador del sitio para localizar palabras o temas del libro.</p>
+          <a href="libro-pcad.html">Abrir el libro <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="tutorial-section" id="buscar" aria-labelledby="tutorial-search-title">
+      <div class="tutorial-section-heading">
+        <span class="section-kicker">Buscador</span>
+        <h2 id="tutorial-search-title">Busca un tema en toda la web</h2>
+      </div>
+      <ol class="tutorial-step-list">
+        <li><span>1</span><div><h3>Abre el buscador</h3><p>Toca <strong>Buscar</strong> en el encabezado o usa el atajo <kbd>Ctrl</kbd> + <kbd>K</kbd> (en Mac, <kbd>⌘</kbd> + <kbd>K</kbd>).</p></div></li>
+        <li><span>2</span><div><h3>Escribe una palabra o tema</h3><p>Por ejemplo: inundaciones, primeros auxilios, servicios o página 12.</p></div></li>
+        <li><span>3</span><div><h3>Abre un resultado</h3><p>Los resultados pueden llevarte a páginas, artículos, publicaciones o páginas del Libro PCAD.</p></div></li>
+      </ol>
+    </section>
+
+    <section class="tutorial-section" id="solicitar" aria-labelledby="tutorial-service-title">
+      <div class="tutorial-section-heading">
+        <span class="section-kicker">Atención institucional</span>
+        <h2 id="tutorial-service-title">Cómo solicitar un servicio</h2>
+        <p>La solicitud se prepara en tres pasos y se envía por WhatsApp institucional.</p>
+      </div>
+      <ol class="tutorial-step-list">
+        <li><span>1</span><div><h3>Selecciona el servicio y municipio</h3><p>En <a href="servicios.html">Servicios</a>, toca <strong>Solicitar</strong> en la opción que necesitas. El municipio preferido puede aparecer seleccionado; puedes cambiarlo.</p></div></li>
+        <li><span>2</span><div><h3>Escribe tus datos de contacto</h3><p>Indica tu nombre y un teléfono para que puedan dar seguimiento.</p></div></li>
+        <li><span>3</span><div><h3>Describe lo que necesitas y envía</h3><p>Agrega el lugar, la fecha aproximada y la cantidad de personas si aplica. Revisa el mensaje que se abrirá en WhatsApp y envíalo para completar la solicitud.</p></div></li>
+      </ol>
+      <p class="tutorial-notice"><i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i> El formulario de servicios no es para emergencias. Si existe peligro inmediato, llama al <a href="tel:911">911</a>.</p>
+    </section>
+
+    <section class="tutorial-section" id="emergencias" aria-labelledby="tutorial-emergency-title">
+      <div class="tutorial-section-heading">
+        <span class="section-kicker">Si necesitas ayuda urgente</span>
+        <h2 id="tutorial-emergency-title">Usa las opciones de emergencia</h2>
+      </div>
+      <div class="tutorial-emergency-grid">
+        <article class="tutorial-emergency-card">
+          <i class="fa-solid fa-phone-volume" aria-hidden="true"></i>
+          <div><h3>Peligro inmediato: llama al 911</h3><p>Di dónde estás, qué ocurrió y cuántas personas necesitan ayuda. No esperes a completar un formulario del sitio.</p></div>
+          <a href="tel:911">Llamar al 911</a>
+        </article>
+        <article class="tutorial-emergency-card">
+          <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+          <div><h3>Enviar un reporte</h3><p>El botón flotante de teléfono abre un formulario para elegir el tipo de situación, describirla y, si quieres, adjuntar tu ubicación GPS antes de continuar por WhatsApp.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="tutorial-section" id="herramientas" aria-labelledby="tutorial-tools-title">
+      <div class="tutorial-section-heading">
+        <span class="section-kicker">Personaliza la experiencia</span>
+        <h2 id="tutorial-tools-title">Accesibilidad y consulta sin conexión</h2>
+        <p>Abre el botón de configuración <i class="fa-solid fa-gear" aria-hidden="true"></i> que aparece en la parte inferior de la página.</p>
+      </div>
+      <div class="tutorial-card-grid tutorial-tool-grid">
+        <article class="tutorial-card">
+          <span class="tutorial-card-icon"><i class="fa-solid fa-universal-access" aria-hidden="true"></i></span>
+          <h3>Ajusta la lectura</h3>
+          <p>Cambia el tamaño del texto, activa mayor contraste o reduce las animaciones. Los cambios se guardan en este dispositivo.</p>
+        </article>
+        <article class="tutorial-card">
+          <span class="tutorial-card-icon"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i></span>
+          <h3>Selecciona el municipio del servicio</h3>
+          <p>Elige el municipio correspondiente al completar la solicitud. El sitio puede recordar tu selección en este dispositivo para futuras solicitudes.</p>
+        </article>
+        <article class="tutorial-card">
+          <span class="tutorial-card-icon"><i class="fa-solid fa-cloud-arrow-down" aria-hidden="true"></i></span>
+          <h3>Prepara guías para usar sin conexión</h3>
+          <p>Con internet, toca <strong>Preparar guías para uso sin conexión</strong>. Requiere abrir la web desde HTTPS; publicaciones en vivo y mapas externos necesitan internet.</p>
+        </article>
+        <article class="tutorial-card">
+          <span class="tutorial-card-icon"><i class="fa-solid fa-bell" aria-hidden="true"></i></span>
+          <h3>Activa avisos de publicaciones</h3>
+          <p>Puedes habilitar avisos del navegador para nuevas publicaciones. Requieren permiso del navegador y conexión; no son alertas oficiales de emergencia.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img src="img/pc logo.png" alt="Protección Civil" class="footer-logo">
+        <div><h2>Protección Civil</h2><p>Prevención, atención y gestión de riesgos al servicio de la comunidad.</p></div>
+      </div>
+      <div class="footer-column">
+        <h3>Enlaces rápidos</h3>
+        <a href="index.html">Inicio</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="articulos.html">Artículos y guías</a>
+        <a href="publicaciones.html">Publicaciones</a>
+        <a href="libro-pcad.html">Libro de estudio PCAD</a>
+      </div>
+      <div class="footer-column">
+        <h3>Atención</h3>
+        <a href="tel:911"><i class="fa-solid fa-phone" aria-hidden="true"></i> Emergencias: 911</a>
+        <a href="https://wa.me/584264744951" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp institucional</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Protección Civil y Administración de Desastres</span>
+      <span>Comprometidos con tu seguridad</span>
+    </div>
+  </footer>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
